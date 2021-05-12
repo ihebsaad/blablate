@@ -6,9 +6,9 @@ namespace app\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
-use Chatify\Http\Models\Message;
-use Chatify\Http\Models\Favorite;
-use Chatify\Facades\ChatifyMessenger as Chatify;
+use App\Http\Models\Message;
+use App\Http\Models\Favorite;
+use App\Facades\ChatifyMessenger as Chatify;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -99,7 +99,7 @@ class MessagesController extends Controller
      */
     public function download($fileName)
     {
-        $path = storage_path() . config('chatify.attachments.folder') . '/' . $fileName;
+        $path = storage_path() .'/'. config('chatify.attachments.folder') . '/' . $fileName;
         if (file_exists($path)) {
             return Response::download($path, $fileName);
         } else {
@@ -133,7 +133,7 @@ class MessagesController extends Controller
                     $attachment_title = $file->getClientOriginalName();
                     // upload attachment and store the new name
                     $attachment = Str::uuid() . "." . $file->getClientOriginalExtension();
-                    $file->storeAs( config('chatify.attachments.folder'), $attachment);
+                    $file->storeAs( "/" .config('chatify.attachments.folder'), $attachment);
                 } else {
                     $error_msg = "Extension de fichier non autorisée!";
                 }
@@ -438,7 +438,7 @@ class MessagesController extends Controller
                     // upload
                     $avatar = Str::uuid() . "." . $file->getClientOriginalExtension();
                     $update = User::where('id', Auth::user()->id)->update(['avatar' => $avatar]);
-                    $file->storeAs(  config('chatify.user_avatar.folder'), $avatar);
+                    $file->storeAs(  '/'.config('chatify.user_avatar.folder'), $avatar);
                     $success = $update ? 1 : 0;
                 } else {
                     $msg = "Extension de fichier non autorisée!";
