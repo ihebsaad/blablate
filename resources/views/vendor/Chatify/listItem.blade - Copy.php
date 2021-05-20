@@ -1,4 +1,21 @@
-
+{{-- -------------------- Saved Messages -------------------- --}}
+@if($get == 'saved')
+    <table class="messenger-list-item m-li-divider @if('user_'.Auth::user()->id == $id && $id != "0") m-list-active @endif">
+        <tr data-action="0">
+            {{-- Avatar side --}}
+            <td>
+            <div class="avatar av-m" style="background-color: #d9efff; text-align: center;">
+                <span class="far fa-bookmark" style="font-size: 22px; color: #68a5ff; margin-top: calc(50% - 10px);"></span>
+            </div>
+            </td>
+            {{-- center side --}}
+            <td>
+                <p data-id="{{ 'user_'.Auth::user()->id }}">Messages enregitrés <span>Vous</span></p>
+                <span>messages enregistrés</span>
+            </td>
+        </tr>
+    </table>
+@endif
 
 {{-- -------------------- All users/group list -------------------- --}}
 @if($get == 'users')
@@ -16,8 +33,8 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->username }} 
-        <?php if(isset($lastMessage)){?>    <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
+            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }} 
+            <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             {{-- Last Message user indicator --}}
             {!!
@@ -38,7 +55,7 @@
         </span>
         {{-- New messages counter --}}
             {!! $unseenCounter > 0 ? "<b>".$unseenCounter."</b>" : '' !!}
-        <?php } ?></td>
+        </td>
         
     </tr>
 </table>
@@ -70,30 +87,3 @@
 @endif
 
 
-<input id="id_user" type="hidden" value="<?php echo Auth::user()->id ;?>">
-<script>
-
-    $('.salons').click(function(){
-    // var  messenger = $(this).find('p[data-id]').attr('data-id');
-	// var salon= messenger.split('_')[1];
-   //  var   messenger = $(this).attr('data-id');
-         //  var type = $('#type').val();
-        var user = $('#id_user').val();
-         //if ( (val != '')) {
-       // var _token = $('input[name="_token"]').val();
-        var _token = $('meta[name="csrf-token"]').attr('content');
-		
-        $.ajax({
-            url: "{{ route('users.updating') }}",
-            method: "POST",
-            data: {user: user , champ:'salon' ,val:0, _token: _token},
-            success: function (data) {
-      
-             }
-        });
-        // } else {
-
-        // }
-   });
-
-</script>

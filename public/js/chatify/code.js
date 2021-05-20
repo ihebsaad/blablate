@@ -136,9 +136,11 @@ function cssMediaQueries() {
     }
     if (window.matchMedia('(max-width: 980px)').matches) {
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '1');
+        $('body').find('.salon-list-item').find('tr[data-action]').attr('data-action', '1');
         $('body').find('.favorite-list-item').find('div').attr('data-action', '1');
     } else {
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '0');
+        $('body').find('.salon-list-item').find('tr[data-action]').attr('data-action', '0');
         $('body').find('.favorite-list-item').find('div').attr('data-action', '0');
     }
 }
@@ -332,6 +334,68 @@ function IDinfo(id, type) {
     }
 }
 
+/****** SALON id Info ***********/
+
+function SalonIDinfo(id, type) {
+    // clear temporary message id
+    temporaryMsgId = 0;
+    // clear typing now
+    typingNow = 0;
+    // show loading bar
+    NProgress.start();
+    // disable message form
+    disableOnLoad();
+    if (messenger != 0) {
+        // get shared photos
+        getSharedPhotos(id);
+        // Get info
+        $.ajax({
+            url: url + '/salonidInfo',
+            method: 'POST',
+            data: { '_token': access_token, 'id': id, 'type': type },
+            dataType: 'JSON',
+            success: (data) => {
+                // avatar photo
+              ///  $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
+               /// $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
+                // Show shared and actions
+               /// $('.messenger-infoView-btns .delete-conversation').show();
+              ///  $('.messenger-infoView-shared').show();
+                // fetch messages
+                salonfetchMessages(id, type);
+                // focus on messaging input
+                messageInput.focus();
+                // update info in view
+              ///  $('.messenger-infoView .info-name').html(data.fetch.name);
+             ///   $('.m-header-messaging .user-name').html(data.fetch.name);
+                // Star status
+                data.favorite > 0
+                    ? $('.add-to-favorite').addClass('favorite')
+                    : $('.add-to-favorite').removeClass('favorite');
+                // form reset and focus
+                $("#message-form").trigger("reset");
+                cancelAttachment();
+                messageInput.focus();
+            },
+            error: () => {
+                console.error('Error, check server response!');
+                // remove loading bar
+                NProgress.done();
+                NProgress.remove();
+            }
+        });
+    } else {
+        // remove loading bar
+        NProgress.done();
+        NProgress.remove();
+    }
+}
+
+
+
+
+
+
 /**
  *-------------------------------------------------------------
  * Send message function
@@ -339,11 +403,13 @@ function IDinfo(id, type) {
  */
 function sendMessage() {
     temporaryMsgId += 1;
+    let salon = $("#salon").val();
     let tempID = 'temp_' + temporaryMsgId;
     let hasFile = $('.upload-attachment').val() ? true : false;
     if ($.trim(messageInput.val()).length > 0 || hasFile) {
         const formData = new FormData($("#message-form")[0]);
         formData.append('id', messenger.split('_')[1]);
+        formData.append('salon', salon);
         formData.append('type', messenger.split('_')[0]);
         formData.append('temporaryMsgId', tempID);
         formData.append('_token', access_token);
@@ -436,6 +502,44 @@ function fetchMessages(id, type) {
         });
     }
 }
+
+/**
+ *-------------------------------------------------------------
+ * Fetch messages of Salon from database
+ *-------------------------------------------------------------
+ */
+function salonfetchMessages(id, type) {
+    if (messenger != 0) {
+        $.ajax({
+            url: url + '/salonfetchMessages',
+            method: 'POST',
+            data: { '_token': access_token, 'id': id, 'type': type },
+            dataType: 'JSON',
+            success: (data) => {
+                // Enable message form if messenger not = 0; means if data is valid
+                if (messenger != 0) {
+                    disableOnLoad(false);
+                }
+                messagesContainer.find('.messages').html(data.messages);
+                // scroll to bottom
+                scrollBottom(messagesContainer);
+                // remove loading bar
+                NProgress.done();
+                NProgress.remove();
+
+                // trigger seen event
+              //  makeSeen(true);
+            },
+            error: () => {
+                // remove loading bar
+                NProgress.done();
+                NProgress.remove();
+                console.error('Failed to fetch messages! check your server response.');
+            }
+        });
+    }
+}
+
 
 /**
  *-------------------------------------------------------------
@@ -932,6 +1036,7 @@ $(document).ready(function () {
         channel.bind('pusher:subscription_succeeded', function () {
             // On connection state change [Updating] and get [info & msgs]
             IDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+            SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
         });
     });
 
@@ -949,7 +1054,13 @@ $(document).ready(function () {
         $('.messenger-list-item').removeClass('m-list-active');
         $(this).addClass('m-list-active');
     });
-
+    // set item active on click for salon
+	$('body').on('click', '.salon-list-item', function () {
+        $('.salon-list-item').removeClass('m-list-active');
+        $(this).addClass('m-list-active');
+		
+    });
+	
     // show info side button
     $('.messenger-infoView nav a , .show-infoSide').on('click', function () {
         $('.messenger-infoView').toggle();
@@ -975,8 +1086,20 @@ $(document).ready(function () {
         }
         messenger = $(this).find('p[data-id]').attr('data-id');
         IDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+		$("#salon").val(0);
+
     });
 
+    // click action for list item [salon]
+    $('body').on('click', '.salon-list-item', function () {
+        if ($(this).find('tr[data-action]').attr('data-action') == "1") {
+            $('.messenger-listView').hide();
+        }
+        messenger = $(this).find('p[data-id]').attr('data-id');
+        SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+		$("#salon").val(messenger.split('_')[1]);
+    });
+	
     // click action for favorite button
     $('body').on('click', '.favorite-list-item', function () {
         if ($(this).find('div').attr('data-action') == "1") {

@@ -18,3 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+ 
+$this->post('logout', 'Auth\LoginController@logout')->name('logout');
+$this->get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('/users/updating','UsersController@updating')->name('users.updating');
+
+/*
+Route::post('/salonidInfo', 'MessagesController@salonidFetchData');
+Route::post('/salonfetchMessages', 'MessagesController@salonfetch')->name('salon.messages');
+*/

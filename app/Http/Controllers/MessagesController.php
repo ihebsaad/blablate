@@ -12,7 +12,7 @@ use App\Facades\ChatifyMessenger as Chatify;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-
+use DB;
 
 class MessagesController extends Controller
 {
@@ -86,10 +86,37 @@ class MessagesController extends Controller
         return Response::json([
             'favorite' => $favorite,
             'fetch' => $fetch,
-            'user_avatar' => asset('/storage/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+            'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
         ]);
     }
 
+/****** SALON ********/	
+	
+    public function salonidFetchData(Request $request)
+    {
+        // Favorite
+        $favorite = Chatify::inFavorite($request['id']);
+
+        // User data
+        if ($request['type'] == 'user') {
+            $fetch = User::where('salon', $request['id'])->get();
+        }
+
+        // send the response
+        return Response::json([
+            'favorite' => $favorite,
+          //  'fetch' => $fetch,
+          //  'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+        ]);
+    }	
+	
+	
+	
+	
+	
+	
+	
+	
     /**
      * This method to make a links for the attachments
      * to be downloadable.
@@ -150,6 +177,7 @@ class MessagesController extends Controller
                 'type' => $request['type'],
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
+                'salon' => $request['salon'],
                 'body' => trim(htmlentities($request['message'])),
                 'attachment' => ($attachment) ? $attachment . ',' . $attachment_title : null,
             ]);
@@ -161,6 +189,7 @@ class MessagesController extends Controller
             Chatify::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
+                'salon' => $request['salon'],
                 'message' => Chatify::messageCard($messageData, 'default')
             ]);
         }
@@ -210,6 +239,43 @@ class MessagesController extends Controller
         ]);
     }
 
+	
+/*************************salon messages ***************************************/	
+	
+    public function salonfetch(Request $request)
+    {
+        // messages variable
+        $allMessages = null;
+         // fetch messages
+       // $query = Chatify::fetchMessagesQuery($request['id'])->orderBy('created_at', 'asc');
+       // $messages = $query->get();
+    $query = Chatify::fetchMessagesSalon($request['id'])->orderBy('created_at', 'asc');
+    $messages = $query->get();
+
+	//   $messages = DB::table('messages')->where('salon',$request['id'])->orderBy('created_at', 'asc')->get();
+        // if there is a messages
+        if ( count($messages) > 0) {
+            foreach ($messages as $message) {
+                $allMessages .= Chatify::messageCard(
+                    Chatify::fetchMessage($message->id)
+                );
+            }
+            // send the response
+            return Response::json([
+                'count' => count($messages),
+                'messages' => $allMessages,
+            ]);
+        }
+        // send the response
+        return Response::json([
+            'count' => count($messages),
+            'messages' => '<p class="message-hint"><span>Dites «salut» et lancez la messagerie</span></p>',
+        ]);
+		
+	 	//dd($messages);
+    }	
+	
+	
     /**
      * Make messages as seen
      *
@@ -239,7 +305,7 @@ class MessagesController extends Controller
             $join->on('messages.from_id', '=', 'users.id')
                 ->orOn('messages.to_id', '=', 'users.id');
         })
-            ->where('messages.from_id', Auth::user()->id)
+            ->where('messages.from_id', Auth::user()->id) //salon id ??
             ->orWhere('messages.to_id', Auth::user()->id)
             ->orderBy('messages.created_at', 'desc')
             ->get()
@@ -327,7 +393,7 @@ class MessagesController extends Controller
         return Response::json([
             'favorites' => $favorites->count() > 0
                 ? $favoritesList
-                : '<p class="message-hint"><span>Liste de favoris de controllers</span></p>',
+                : '<p class="message-hint"><span>Liste de favoris</span></p>',
         ], 200);
     }
 
@@ -373,7 +439,7 @@ class MessagesController extends Controller
         for ($i = 0; $i < count($shared); $i++) {
             $sharedPhotos .= view('Chatify::layouts.listItem', [
                 'get' => 'sharedPhoto',
-                'image' => asset('storage/attachments/' . $shared[$i]),
+                'image' => asset('storage/app/attachments/' . $shared[$i]),
             ])->render();
         }
         // send the response

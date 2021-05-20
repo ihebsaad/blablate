@@ -32,7 +32,7 @@
 .messenger-favorites div.avatar{
     border: 2px solid #fff;
 }
-.messenger-list-item:hover{
+.messenger-list-item:hover , .salon-list-item:hover{
     background: #f7f7f7;
 }
 .messenger-messagingView {
@@ -77,7 +77,7 @@
     text-decoration: none;
     color: #606679;
 }
-.messenger-list-item td p{
+.messenger-list-item td p,.salon-list-item td p{
     color: #606679;
 }
 .activeStatus{

@@ -30,6 +30,10 @@
     background: {{ $messengerColor }};
 }
 
+.salon-list-item td b{
+    background: {{ $messengerColor }};
+}
+
 .messenger-infoView nav a{
     color: {{ $messengerColor }};
 }

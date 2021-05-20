@@ -1,6 +1,6 @@
 <?php
 
-namespace app;
+namespace Chatify;
 
 use app\Http\Models\Message;
 use app\Http\Models\Favorite;
@@ -155,10 +155,16 @@ class ChatifyMessenger
      * @return Collection
      */
     public function fetchMessagesQuery($user_id){
-        return Message::where('from_id',Auth::user()->id)->where('to_id',$user_id)
-                    ->orWhere('from_id',$user_id)->where('to_id',Auth::user()->id);
+        return Message::where('from_id',Auth::user()->id)->where('to_id',$user_id)->where('salon',0)
+                    ->orWhere('from_id',$user_id)->where('to_id',Auth::user()->id)->where('salon',0);
     }
 
+	
+	/******** messages Salon ********/
+    public function fetchMessagesSalon($id){
+        return Message::where('salon',$id) ;
+    }
+	
     /**
      * create a new message to database
      *
@@ -173,6 +179,7 @@ class ChatifyMessenger
         $message->to_id = $data['to_id'];
         $message->body = $data['body'];
         $message->attachment = $data['attachment'];
+        $message->salon = $data['salon'];
         $message->save();
     }
 
@@ -198,7 +205,7 @@ class ChatifyMessenger
      * @return Collection
      */
     public function getLastMessageQuery($user_id){
-        return self::fetchMessagesQuery($user_id)->orderBy('created_at','DESC')->latest()->first();
+        return self::fetchMessagesQuery($user_id)->orderBy('created_at','DESC')->where('salon',0)->latest()->first();
     }
 
     /**

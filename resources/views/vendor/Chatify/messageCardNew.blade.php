@@ -21,7 +21,7 @@ use App\Http\Controllers\UsersController;
     @if(@$attachment[2] == 'image')
     <div>
         <div class="message-card">
-	@if($Message->salon >0)<div class="sender" style="border-radius:15px;padding:3px 3px;color:white;background-color:<?php echo UsersController::ChampById('messenger_color',$from_id);?>"><?php echo UsersController::ChampById('username',$from_id);?></div><br> @endif
+	@if($Message->salon >0)<div class="sender"><?php echo UsersController::ChampById('username',$from_id);?></div><br> @endif		
             <div class="image-file chat-image" style="width: 250px; height: 150px;background-image: url('{{ asset('storage/app/'.config('chatify.attachments.folder').'/'.$attachment[0]) }}')">
             </div>
         </div>

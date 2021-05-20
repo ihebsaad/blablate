@@ -5,7 +5,7 @@
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES - <?php echo Auth::user()->username ;?></span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
@@ -16,10 +16,10 @@
             <input type="text" class="messenger-search" placeholder="Recherche" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
-                <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
+                <a id="personnes" href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> Personnes</a>
-                <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
-                    <span class="fas fa-users"></span> Salons</a>
+                <a id="salons" href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
+                    <span class="fas fa-users" ></span> Salons</a>
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -43,7 +43,7 @@
            {{-- ---------------- [ Group Tab ] ---------------- --}}
            <div class="@if($route == 'group') show @endif messenger-tab app-scroll" data-view="groups">
                 {{-- items --}}
-                <p style="text-align: center;color:grey;">en cours</p>
+               {!! view('Chatify::layouts.salons', ['get' => 'saved','id' => $id])->render() !!}
              </div>
 
              {{-- ---------------- [ Search Tab ] ---------------- --}}
@@ -67,7 +67,7 @@
                     <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
                     <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
                     </div>
-                    <a href="#" class="user-name">{{ config('chatify.name') }}</a>
+                    <a href="#" class="user-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</a>
                 </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
@@ -113,6 +113,27 @@
         {!! view('Chatify::layouts.info')->render() !!}
     </div>
 </div>
+<script>
 
+    $('#personnes').click(function(){
+        var user = $('#id_user').val();
+         //if ( (val != '')) {
+     //   var _token = $('input[name="_token"]').val(); $('meta[name="csrf-token"]').attr('content')
+               var _token = $('meta[name="csrf-token"]').attr('content');
+
+        $.ajax({
+            url: "{{ route('users.updating') }}",
+            method: "POST",
+            data: {user: user , champ:'salon' ,val:0, _token: _token},
+            success: function (data) {
+      
+             }
+        });
+        // } else {
+
+        // }
+   });
+
+</script>
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')

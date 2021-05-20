@@ -150,7 +150,7 @@ body{
 .hide{
 	display: none;
 }
-.messenger-list-item{
+.messenger-list-item , .salon-list-item  {
 	margin: 0;
 	width: 100%;
   cursor: pointer;
@@ -161,27 +161,27 @@ body{
 	color: #fff !important;
 }
 
-.messenger-list-item td{
+.messenger-list-item td,.salon-list-item td,.salon-list-item td,.salon-list-item td{
 	padding: 10px;
 }
-.messenger-list-item tr>td:first-child{
+.messenger-list-item tr>td:first-child,.salon-list-item tr>td:first-child{
 	padding-right: 0;
 	width: 55px;
 }
-.messenger-list-item td p{
+.messenger-list-item td p, .salon-list-item td p{
 	margin-bottom: 4px;
 	font-size: 14px;
 	font-weight: 600;
 }
-.messenger-list-item td p span{
+.messenger-list-item td p span, .salon-list-item td p span{
 	float: right;
 }
-.messenger-list-item td span{
+.messenger-list-item td span , .salon-list-item td span{
 	color: #cacaca;
 	font-weight: 400;
 	font-size: 13px;
 }
-.messenger-list-item td b{
+.messenger-list-item td b, .salon-list-item td b{
 	float: right;
 	color: #fff;
 	padding: 0px 4px;
@@ -209,7 +209,9 @@ body{
 .av-s{
 	width: 32px;
     height: 32px;
+background-image: url('./bb.png');	
 }
+
 .messenger-favorites{
 	padding: 10px;
     overflow: auto;
