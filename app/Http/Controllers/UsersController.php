@@ -24,6 +24,10 @@ class UsersController extends Controller
      */
     public function index()
     {
+
+       $users = User::get();
+
+      return view('users.index',  compact('users') ); 
      }
 	 
 	 
@@ -51,4 +55,25 @@ class UsersController extends Controller
           User::where('id', $id)->update(array($champ => $val));
 
     }
+	
+	
+    public function view($id)
+    {
+        $user = User::find($id);
+      return view('users.view',  compact('user') ); 
+	
+	}
+	
+    public function destroy($id)
+    {
+        $user = User::find($id);
+         $user->delete();	
+	
+	}
+	
+	
+	
+	
+	
+	
 }

@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', '') }}</title>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('/public/js/app.js') }}" defer></script>
@@ -18,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
+	
+ 	
 </head>
 <body>
     <div id="app">
