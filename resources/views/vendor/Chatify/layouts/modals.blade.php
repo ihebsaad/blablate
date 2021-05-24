@@ -76,3 +76,31 @@
           </div>
       </div>
   </div>
+  
+  
+ {{-- ----------------------   Modal ---------------------- --}}
+  <div class="app-modal" data-name="emojis">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="emojis" data-modal='0'>
+                  <div class="app-modal-header">emojis</div>
+                  <div class="app-modal-body">
+     
+	 <style>
+.emoji{float:left; margin-left:10px;cursor:pointer;font-size:32px;}
+</style>
+<div class="emoji">😀</div> <div class="emoji">😁</div> <div class="emoji">😂</div> <div class="emoji">😃</div> <div class="emoji">😄</div> <div class="emoji">😅</div> <div class="emoji">😆</div> <div class="emoji">😇</div> <div class="emoji">😈</div> <div class="emoji">😉</div> <div class="emoji">😊</div> <div class="emoji">😋</div> <div class="emoji">😌</div> <div class="emoji">😍</div> <div class="emoji">😎</div> <div class="emoji">😏</div>
+<div class="emoji">😐</div> <div class="emoji">😑</div> <div class="emoji">😒</div> <div class="emoji">😓</div> <div class="emoji">😔</div> <div class="emoji">😕</div> <div class="emoji">😖</div> <div class="emoji">😗</div> 
+<div class="emoji">😘</div> <div class="emoji">😙</div> <div class="emoji">😚</div> <div class="emoji">😛</div> <div class="emoji">😜</div> <div class="emoji">😝</div> <div class="emoji">😞</div> <div class="emoji">😟</div>
+<div class="emoji">😠</div> <div class="emoji">😡</div> <div class="emoji">😢</div> <div class="emoji">😣</div> <div class="emoji">😤</div> <div class="emoji">😥</div> <div class="emoji">😦</div> <div class="emoji">😧</div>
+<div class="emoji">😨</div> <div class="emoji">😩</div> <div class="emoji">😪</div> <div class="emoji">😫</div> <div class="emoji">😬</div> <div class="emoji">😭</div> <div class="emoji">😮</div> <div class="emoji">😯</div>
+<div class="emoji">😰</div> <div class="emoji">😱</div> <div class="emoji">😲</div> <div class="emoji">😳</div> <div class="emoji">😴</div> <div class="emoji">😵</div> <div class="emoji">😶</div> <div class="emoji">😷</div> 
+
+                  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel emojis-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>
+  
+    

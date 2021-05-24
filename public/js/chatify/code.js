@@ -3,6 +3,8 @@
  * Global variables
  *-------------------------------------------------------------
  */
+ 
+ 
 var messenger,
     auth_id = $('meta[name=url]').attr('data-user'),
     route = $('meta[name=route]').attr('content'),
@@ -1246,6 +1248,31 @@ $(document).ready(function () {
         });
     });
 
+	    // Settings button action to show settings modal
+    $('.emojis-btn').on('click', function () {
+        app_modal({
+            name: 'emojis',
+        });
+    });
+	
+    $('.emojis-close').on('click', function () {
+        app_modal({
+            name: 'emojis',
+			show: false,
+
+        });
+    });	
+	
+    $('.emoji').on('click', function () {
+	var emojis =  $(this).html();
+	$('.m-send').val($('.m-send').val()+' '+emojis );
+	       
+		   app_modal({
+            name: 'emojis',
+			show: false,
+
+        });
+    });		
     // on submit settings' form
     $('#updateAvatar').on('submit', (e) => {
         e.preventDefault();
