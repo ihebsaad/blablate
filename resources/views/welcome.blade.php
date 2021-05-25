@@ -4,7 +4,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+<meta content="Sit de chat Français" name="description">
+  <meta content="tchat, chat en france,site de rencontres, site de discussions" name="keywords">
+
+ 
+<meta property="og:title"              content="Blablate, site de chat français" />
+<meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
+<meta property="og:image"              content="https://diminuer-mes-mensualites.fr/assets/img/clients/ros.jpg" />
+
+<meta name="twitter:title" content="Blablate, site de chat français">
+<meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
+<meta name="twitter:image" content="{{ asset('storage/logos/bb.png') }}">
+<meta name="twitter:card" content="summary_large_image">
+
+
+  <!-- Favicons -->
+  <link href="{{ asset('storage/logos/bb.png') }}"  rel="icon">
+  <link href="{{ asset('storage/logos/bb.png') }}" rel="apple-touch-icon">
+      <title>Blablate, site de chat français</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
