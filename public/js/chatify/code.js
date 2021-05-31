@@ -1173,8 +1173,8 @@ $(document).ready(function () {
         $(this).addClass('m-list-active');
     });
     // set item active on click for salon
-	$('body').on('click', '.salon-list-item', function () {
-        $('.salon-list-item').removeClass('m-list-active');
+	$('body').on('click', '.salon-list', function () {
+        $('.salon-list').removeClass('m-list-active');
         $(this).addClass('m-list-active');
 		
     });
@@ -1209,7 +1209,7 @@ $(document).ready(function () {
     });
 
     // click action for list item [salon]
-    $('body').on('click', '.salon-list-item', function () {
+    $('body').on('click', '.salon-list', function () {
         if ($(this).find('tr[data-action]').attr('data-action') == "1") {
             $('.messenger-listView').hide();
         }
