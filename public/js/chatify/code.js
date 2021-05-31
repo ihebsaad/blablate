@@ -1215,6 +1215,7 @@ $(document).ready(function () {
             $('.messenger-listView').hide();
         }
         messenger = $(this).find('p[data-id]').attr('data-id');
+		alert(messenger);
         SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
 		$("#salon").val(messenger.split('_')[1]);
     });
