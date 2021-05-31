@@ -5,7 +5,7 @@ use App\Http\Controllers\SalonsController;
   $salons=DB::table('salons')->get() ;?>
 {{-- -------------------- Saved Messages -------------------- --}}
 @if($get == 'saved')
-    <table class="m-li-divider @if('user_'.Auth::user()->id == $id && $id != "0") m-list-active @endif" style="width:100%">
+    <table class="salon-list m-li-divider @if('user_'.Auth::user()->id == $id && $id != "0") m-list-active @endif" style="width:100%">
 
 <?php foreach($salons as $salon){
 	$type=$salon->type;

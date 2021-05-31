@@ -155,11 +155,11 @@ function cssMediaQueries() {
     }
     if (window.matchMedia('(max-width: 980px)').matches) {
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '1');
-        $('body').find('.salon-list-item').find('tr[data-action]').attr('data-action', '1');
+        $('body').find('.salon-list').find('tr[data-action]').attr('data-action', '1');
         $('body').find('.favorite-list-item').find('div').attr('data-action', '1');
     } else {
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '0');
-        $('body').find('.salon-list-item').find('tr[data-action]').attr('data-action', '0');
+        $('body').find('.salon-list').find('tr[data-action]').attr('data-action', '0');
         $('body').find('.favorite-list-item').find('div').attr('data-action', '0');
     }
 }
