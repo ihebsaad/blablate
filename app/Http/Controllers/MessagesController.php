@@ -10,6 +10,7 @@ use App\Http\Models\Message;
 use App\Http\Models\Favorite;
 use App\Facades\ChatifyMessenger as Chatify;
 use App\User;
+use App\Salon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use DB;
@@ -95,18 +96,18 @@ class MessagesController extends Controller
     public function salonidFetchData(Request $request)
     {
         // Favorite
-        $favorite = Chatify::inFavorite($request['id']);
-
+      //  $favorite = Chatify::inFavorite($request['id']);
+		$fatch='';
         // User data
-        if ($request['type'] == 'user') {
-            $fetch = User::where('salon', $request['id'])->get();
+        if ($request['type'] == 'salon') {
+            $fetch =  DB::table('salons')->where('id', $request['id'])->first();
         }
-
-        // send the response
+         // send the response
         return Response::json([
-            'favorite' => $favorite,
-          //  'fetch' => $fetch,
-          //  'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+            'favorite' => 0,
+             'fetch' => $fetch,
+            'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+         //   'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/room.png'),
         ]);
     }	
 	
@@ -189,7 +190,7 @@ class MessagesController extends Controller
             Chatify::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
-                'salon' => $request['salon'],
+                 'salon' => $request['salon'],
                 'message' => Chatify::messageCard($messageData, 'default')
             ]);
         }
@@ -217,10 +218,10 @@ class MessagesController extends Controller
 
         // fetch messages
         $query = Chatify::fetchMessagesQuery($request['id'])->orderBy('created_at', 'asc');
-        $messages = $query->get();
+          $messages = $query->get();
 
         // if there is a messages
-        if ($query->count() > 0) {
+        if (count($messages) > 0) {
             foreach ($messages as $message) {
                 $allMessages .= Chatify::messageCard(
                     Chatify::fetchMessage($message->id)
@@ -228,13 +229,13 @@ class MessagesController extends Controller
             }
             // send the response
             return Response::json([
-                'count' => $query->count(),
+                'count' => count($messages),
                 'messages' => $allMessages,
             ]);
         }
         // send the response
         return Response::json([
-            'count' => $query->count(),
+            'count' => $messages->count(),
             'messages' => '<p class="message-hint"><span>Dites «salut» et lancez la messagerie</span></p>',
         ]);
     }

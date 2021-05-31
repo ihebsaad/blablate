@@ -73,27 +73,5 @@
 <input id="id_user" type="hidden" value="<?php echo Auth::user()->id ;?>">
 <script>
 
-    $('.salons').click(function(){
-    // var  messenger = $(this).find('p[data-id]').attr('data-id');
-	// var salon= messenger.split('_')[1];
-   //  var   messenger = $(this).attr('data-id');
-         //  var type = $('#type').val();
-        var user = $('#id_user').val();
-         //if ( (val != '')) {
-       // var _token = $('input[name="_token"]').val();
-        var _token = $('meta[name="csrf-token"]').attr('content');
-		
-        $.ajax({
-            url: "{{ route('users.updating') }}",
-            method: "POST",
-            data: {user: user , champ:'salon' ,val:0, _token: _token},
-            success: function (data) {
-      
-             }
-        });
-        // } else {
-
-        // }
-   });
-
+    
 </script>

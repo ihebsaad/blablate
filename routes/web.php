@@ -21,10 +21,21 @@ Route::get('/home', 'HomeController@index')->name('home');
  
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::get('/users','UsersController@index')->name('users');
 Route::get('/users/view/{id}', 'UsersController@view');
 Route::get('/users/destroy/{id}', 'UsersController@destroy');
+
+Route::post('/salons/updating','SalonsController@updating')->name('salons.updating');
+Route::get('/salons','SalonsController@index')->name('salons');
+Route::get('/salons/view/{id}', 'SalonsController@view');
+Route::get('/salons/destroy/{id}', 'SalonsController@destroy');
+Route::get('/salons/users', 'SalonsController@users')->name('salons.users');
+Route::get('/salons/create', 'SalonsController@create')->name('salons.create');
+Route::get('/salons/edit', 'SalonsController@edit')->name('salons.edit');
+Route::post('/salons/edit', 'SalonsController@edit')->name('salons.edit');
+Route::post('/salons/store/', 'SalonsController@store')->name('salons.store');
 
 
 /*

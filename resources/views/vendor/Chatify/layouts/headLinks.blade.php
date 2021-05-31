@@ -7,7 +7,7 @@
 {{-- scripts --}}
 <script src="{{ asset('/public/js/chatify/font.awesome.min.js') }}"></script>
 <script src="{{ asset('/public/js/chatify/autosize.js') }}"></script>
-<script src="{{ asset('/public/js/app.js') }}"></script>
+<script src="{{ asset('/public/js/app.js') }}" async  defer></script>
 <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
 
 {{-- styles --}}

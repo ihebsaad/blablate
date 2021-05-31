@@ -155,8 +155,22 @@ class ChatifyMessenger
      * @return Collection
      */
     public function fetchMessagesQuery($user_id){
-        return Message::where('from_id',Auth::user()->id)->where('to_id',$user_id)->where('salon',0)
+       return Message::where('from_id',Auth::user()->id)->where('to_id',$user_id)->where('salon',0)
                     ->orWhere('from_id',$user_id)->where('to_id',Auth::user()->id)->where('salon',0);
+		 		
+		 		
+	  /*    $messages = Message::where(function ($query) use($user_id) {
+                      $query->where('from_id',Auth::user()->id)
+                          ->where('to_id',$user_id)
+                          ->where('salon',0);
+                  })->orWhere(function($query) use($user_id){
+                      $query->where('from_id',$user_id)
+                          ->where('to_id',Auth::user()->id)
+                          ->where('salon',0);
+                  
+                  })->orderBy('created_at', 'asc')->get() ;
+				//  dd( $messages);
+	 	return $messages;		*/	
     }
 
 	

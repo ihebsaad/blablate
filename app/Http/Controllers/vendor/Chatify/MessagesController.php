@@ -186,11 +186,11 @@ class MessagesController extends Controller
         $allMessages = null;
 
         // fetch messages
-        $query = Chatify::fetchMessagesQuery($request['id'])->orderBy('created_at', 'asc');
-        $messages = $query->get();
+        $messages = Chatify::fetchMessagesQuery($request['id'])->orderBy('created_at', 'asc');
+     //   $messages = $query->get();
 
         // if there is a messages
-        if ($query->count() > 0) {
+        if ($messages->count() > 0) {
             foreach ($messages as $message) {
                 $allMessages .= Chatify::messageCard(
                     Chatify::fetchMessage($message->id)
@@ -198,13 +198,13 @@ class MessagesController extends Controller
             }
             // send the response
             return Response::json([
-                'count' => $query->count(),
+                'count' => $messages->count(),
                 'messages' => $allMessages,
             ]);
         }
         // send the response
         return Response::json([
-            'count' => $query->count(),
+            'count' => $messages->count(),
             'messages' => '<p class="message-hint"><span>Dites «salut» et lancez la messagerie</span></p>',
         ]);
     }

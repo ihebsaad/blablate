@@ -7,6 +7,8 @@
  
 var messenger,
     auth_id = $('meta[name=url]').attr('data-user'),
+    current_salon = $('#salon').val(),
+    current_user = $('#current_user').val(),
     route = $('meta[name=route]').attr('content'),
     url = $('meta[name=url]').attr('content'),
     access_token = $('meta[name="csrf-token"]').attr('content'),
@@ -21,6 +23,21 @@ const messagesContainer = $('.messenger-messagingView .m-body'),
     messageInput = $('#message-form .m-send');
 // console.log(auth_id);
 
+
+
+function loadusers(salon)
+{
+    var url = $('meta[name=url]').attr('content');
+	        $.ajax({
+            url: "http://localhost/blablate/salons/users",
+            method: "get",
+            data: {salon: salon ,  _token: access_token},
+            success: function (data) {
+ 			 $('#salon-users').html(data);
+             }
+        });
+	
+}
 /**
  *-------------------------------------------------------------
  * Global Templates
@@ -358,8 +375,8 @@ function SalonIDinfo(id, type) {
             dataType: 'JSON',
             success: (data) => {
                 // avatar photo
-              ///  $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
-               /// $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
+                 $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
+                 $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
                 // Show shared and actions
                /// $('.messenger-infoView-btns .delete-conversation').show();
               ///  $('.messenger-infoView-shared').show();
@@ -368,8 +385,8 @@ function SalonIDinfo(id, type) {
                 // focus on messaging input
                 messageInput.focus();
                 // update info in view
-              ///  $('.messenger-infoView .info-name').html(data.fetch.name);
-             ///   $('.m-header-messaging .user-name').html(data.fetch.name);
+                  $('.messenger-infoView .info-name').html(data.fetch.name);
+                 $('.m-header-messaging .user-name').html(data.fetch.name);
                 // Star status
                 data.favorite > 0
                     ? $('.add-to-favorite').addClass('favorite')
@@ -455,6 +472,18 @@ function sendMessage() {
                     scrollBottom(messagesContainer);
                     // send contact item updates
                     sendContactItemUpdates(true);
+				//	MessageUpdates(true);
+
+				
+	 return channel.trigger('client-Messages', {
+        to_user: messenger.split('_')[1], // Messenger
+        type: messenger.split('_')[0], // type=user/salon
+        from_user: auth_id, // Me
+        updating: true,
+    });
+	
+	
+	
                 }
             },
             error: () => {
@@ -504,6 +533,34 @@ function fetchMessages(id, type) {
         });
     }
 }
+
+
+
+function reloadMessages(id, type,from_user) {
+	//alert('from user : '+from_user+'to user : '+id);
+	if( messenger.split('_')[1] == from_user ) { 
+         $.ajax({
+            url: url + '/fetchMessages',
+            method: 'POST',
+            data: { '_token': access_token, 'id': parseInt(id), 'type': type },
+            dataType: 'JSON',
+            success: (data) => {
+				 
+                messagesContainer.find('.messages').html(data.messages);
+                // scroll to bottom
+                scrollBottom(messagesContainer);
+  
+                makeSeen(true);
+            },
+            error: () => {
+                // remove loading bar
+                NProgress.done();
+                NProgress.remove();
+                console.error('Failed to fetch messages! check your server response.');
+            }
+        });
+		}
+ }
 
 /**
  *-------------------------------------------------------------
@@ -575,8 +632,9 @@ var channel = pusher.subscribe('private-chatify');
 
 // Listen to messages, and append if data received
 channel.bind('messaging', function (data) {
-    // console.info(data.from_id+' - '+data.to_id+'\n'+auth_id+' - '+messenger);
-    if (data.from_id == messenger.split('_')[1] && data.to_id == auth_id) {
+      console.info(data.from_id+' - '+data.to_id+'\n'+auth_id+' - '+messenger);
+    if (data.from_id == messenger.split('_')[1] && data.to_id == auth_id && messenger.split('_')[0]=='user') {
+		console.log(' Message personnel');
         // remove message hint
         $(".message-hint").remove();
         // append message
@@ -588,6 +646,19 @@ channel.bind('messaging', function (data) {
         // remove unseen counter for the user from the contacts list
         $('.messenger-list-item[data-contact=' + messenger.split('_')[1] + ']').find('tr>td>b').remove();
     }
+    if (data.from_id == messenger.split('_')[1] && data.salon == messenger.split('_')[1]   && messenger.split('_')[0]=='salon' ) {
+       		console.log(' Message Salon');
+	   // remove message hint
+        $(".message-hint").remove();
+        // append message
+        messagesContainer.find('.messages').append(data.message);
+        // scroll to bottom
+        scrollBottom(messagesContainer);
+        // trigger seen event
+        makeSeen(true);
+        // remove unseen counter for the user from the contacts list
+        $('.messenger-list-item[data-contact=' + messenger.split('_')[1] + ']').find('tr>td>b').remove();
+    }	
 });
 
 // listen to typing indicator
@@ -619,6 +690,21 @@ channel.bind('client-contactItem', function (data) {
         data.updating == true ? updateContatctItem(data.update_to)
             : console.error('[Contact Item updates] Updating failed!');
     }
+});
+
+
+// listen to contact item updates event
+channel.bind('client-Messages', function (data) {
+    if (data.to_user == current_user) {	
+        data.updating == true ? updateMessagesCard(data.to_user,data.type,data.from_user)
+            : console.error('[Contact Item updates] Updating Messages failed!');
+    }
+
+    if (data.to_user == messenger.split('_')[1]) {	
+        data.updating == true ? updateMessagesCard(data.to_user,data.type,data.from_user)
+            : console.error('[Contact Item updates] Updating Messages failed!');
+    }
+	
 });
 
 // -------------------------------------
@@ -689,6 +775,17 @@ function sendContactItemUpdates(status) {
     });
 }
 
+
+function MessageUpdates(status) {
+			console.log('destinataire : '+messenger.split('_')[1]);
+
+    return channel.trigger('client-Messages', {
+        to_user: messenger.split('_')[1], // Messenger
+        type: messenger.split('_')[0], // type=user/salon
+        from_user: auth_id, // Me
+        updating: status,
+    });
+}
 /**
  *-------------------------------------------------------------
  * Check internet connection using pusher states
@@ -782,6 +879,24 @@ function updateContatctItem(user_id) {
         });
     }
 }
+
+function updateMessagesCard(to_user,type,from_user) {
+	console.log('updateMessagesCard type: '+type+' for: '+to_user)
+	if(type=='user' && current_user == to_user )
+	{	
+ 		//IDinfo(for_user,type);
+		 reloadMessages(messenger.split('_')[1],type,from_user);
+		
+	}
+		if(type=='salon' && messenger.split('_')[1] == to_user )
+	{
+		alert('salon' +messenger.split('_')[1]+' - '+type);
+ 		//SalonIDinfo(for_user,type);
+		salonfetchMessages(messenger.split('_')[1], type);	
+	}
+	
+}
+
 
 /**
  *-------------------------------------------------------------
@@ -1037,8 +1152,9 @@ $(document).ready(function () {
         // listening for pusher:subscription_succeeded
         channel.bind('pusher:subscription_succeeded', function () {
             // On connection state change [Updating] and get [info & msgs]
-            IDinfo(messenger.split('_')[1], messenger.split('_')[0]);
-            SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+			var salon=parseInt($("#salon").val());
+           if(salon==0){ IDinfo(messenger.split('_')[1], messenger.split('_')[0]);}
+		   else{ SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);}
         });
     });
 
@@ -1329,4 +1445,80 @@ $(document).ready(function () {
             dark_mode = 'light';
         }
     });
+	
+	
+	// set salon value
+    $('.salons').click(function(){
+     var  messeng  = $(this).find('p[data-id]').attr('data-id');
+	 var salon= messeng.split('_')[1];
+   var url = $('meta[name=url]').attr('content');
+        var user = $('#iduser').val();
+         //if ( (val != '')) {
+      //  var _token = $('meta[name="csrf-token"]').attr('content');
+      //  var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: url +"/users/updating",
+            method: "POST",
+            data: {user: user , champ:'salon' ,val:salon, _token: access_token},
+            success: function (data) {
+    // alert(user);
+     //alert(salon);
+		 loadusers(salon);
+             }
+        });
+        // } else {
+
+        // }
+   });
+
+	//set salon = 0
+$('#salons').click(function(){
+  
+        var user = $('#id_user').val();
+  
+       // var _token = $('meta[name="csrf-token"]').attr('content');
+		   var url = $('meta[name=url]').attr('content');
+
+        $.ajax({
+            url: url +"/users/updating",
+            method: "POST",
+            data: {user: user , champ:'salon' ,val:0, _token: access_token},
+            success: function (data) {
+      		  $('.messenger-infoView').toggle();
+                $('.messenger-infoView-btns .delete-conversation').hide();
+                $('.messenger-infoView-shared').hide();
+             }
+        });
+        // } else {
+
+        // }
+   });
+
+	
+	 $('#personnes').click(function(){
+        var user = $('#id_user').val();
+         //if ( (val != '')) {
+     //   var _token = $('input[name="_token"]').val(); $('meta[name="csrf-token"]').attr('content')
+               var _token = $('meta[name="csrf-token"]').attr('content');
+   var url = $('meta[name=url]').attr('content');
+
+        $.ajax({
+            url: url +"/users/updating",
+            method: "POST",
+            data: {user: user , champ:'salon' ,val:0, _token: access_token},
+            success: function (data) {
+			$('#salon-users').html('');
+             }
+        });
+        // } else {
+
+        // }
+   });
+
+   
+   
+   
 });
+
+
+

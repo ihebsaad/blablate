@@ -1,5 +1,5 @@
 @include('Chatify::layouts.headLinks')
-<div class="messenger">
+<div class="messenger" >
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">
         {{-- Header and search bar --}}
@@ -115,25 +115,7 @@
 </div>
 <script>
 
-    $('#personnes').click(function(){
-        var user = $('#id_user').val();
-         //if ( (val != '')) {
-     //   var _token = $('input[name="_token"]').val(); $('meta[name="csrf-token"]').attr('content')
-               var _token = $('meta[name="csrf-token"]').attr('content');
-
-        $.ajax({
-            url: "{{ route('users.updating') }}",
-            method: "POST",
-            data: {user: user , champ:'salon' ,val:0, _token: _token},
-            success: function (data) {
-      
-             }
-        });
-        // } else {
-
-        // }
-   });
-
+   
 </script>
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
