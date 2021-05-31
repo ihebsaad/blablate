@@ -1463,7 +1463,9 @@ $(document).ready(function () {
             success: function (data) {
     // alert(user);
      //alert(salon);
+	  
 		 loadusers(salon);
+		 cssMediaQueries();
              }
         });
         // } else {
