@@ -1210,7 +1210,7 @@ $(document).ready(function () {
     });
 
     // click action for list item [salon]
-    $('body').on('click', '.salon-list', function () {
+    $('body').on('click', '.salon-list-item', function () {
         if ($(this).find('p[data-id]').attr('data-id') == "1") {
             $('.messenger-listView').hide();
         }
