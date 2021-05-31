@@ -1173,7 +1173,7 @@ $(document).ready(function () {
         $(this).addClass('m-list-active');
     });
     // set item active on click for salon
-	$('body').on('click', '.salon-list', function () {
+	$('body').on('click', '.salon-list-item', function () {
         $('.salon-list').removeClass('m-list-active');
         $(this).addClass('m-list-active');
 		
