@@ -1210,11 +1210,11 @@ $(document).ready(function () {
     });
 
     // click action for list item [salon]
-    $('body').on('click', '.salon-list-item', function () {
-        if ($(this).find('tr[data-action]').attr('data-action') == "1") {
+    $('body').on('click', '.salon-list', function () {
+        if ($(this).find('p[data-id]').attr('data-id') == "1") {
             $('.messenger-listView').hide();
         }
-        messenger = $(this).find('tr[data-id]').attr('data-id');
+        messenger = $(this).find('p[data-id]').attr('data-id');
         SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
 		$("#salon").val(messenger.split('_')[1]);
     });
