@@ -1211,7 +1211,7 @@ $(document).ready(function () {
 
     // click action for list item [salon]
     $('body').on('click', '.salon-list-item', function () {
-        if ($(this).find('p[data-id]').attr('data-id') == "1") {
+        if ($(this).find('tr[data-action]').attr('data-action') == "1") {
             $('.messenger-listView').hide();
         }
         messenger = $(this).find('p[data-id]').attr('data-id');
