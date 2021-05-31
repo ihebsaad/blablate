@@ -35,7 +35,7 @@
                 <tr> 
                     <td>{{$salon->id }}</td>
                       <td><a href="{{action('SalonsController@view', $salon['id'])}}" >	
-					  <?php if($salon['avatar'] !=''){?><img class="pull-right" src="storage/app/users-avatar/<?php echo $salon['avatar'];?>" style="max-width:80px"/><?php } else{?>
+					  <?php if($salon['avatar'] !=''){?><img class="pull-right" src="<?php echo asset('storage/app/users-avatar/'.$salon['avatar'])?>" style="max-width:80px"/><?php } else{?>
 				<img class="pull-right" src="storage/app/users-avatar/room.png" style="max-width:80px"/>
 				<?php }?>
 				 </a></td>

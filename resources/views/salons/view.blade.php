@@ -17,9 +17,9 @@
                     <input id="image" type="file" class="form-control" name="image"  accept="image/*"/>
                 </div>
 				 <div class="  col-md-6">
-
-				<?php if($salon['avatar'] !=''){?><img class="pull-right" src="../../storage/app/users-avatar/<?php echo $salon['avatar'];?>" style="max-width:150px"/><?php } else{?>
-				<img class="pull-right" src="../../storage/app/users-avatar/room.png" style="max-width:150px"/>
+ 
+				<?php if($salon['avatar'] !=''){?><img class="pull-right" src="<?php echo asset('storage/app/users-avatar/'.$salon['avatar'])?>" style="max-width:150px"/><?php } else{?>
+				<img class="pull-right" src="<?php echo asset('storage/app/users-avatar/room.png');?>" style="max-width:150px"/>
 				<?php }?>
                 </div>
 				
