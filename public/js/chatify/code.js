@@ -148,9 +148,7 @@ function activeStatusCircle() {
  */
 $(window).resize(function () {
     cssMediaQueries();
-	 if (window.matchMedia('(max-width: 980px)').matches) {
-		 $('.messenger-listView').show();
-	 }
+
 });
 function cssMediaQueries() {
     if (window.matchMedia('(min-width: 980px)').matches) {
@@ -1135,6 +1133,11 @@ function setActiveStatus(status, user_id) {
  *-------------------------------------------------------------
  */
 $(document).ready(function () {
+	
+   if (window.matchMedia('(max-width: 980px)').matches) {
+		 $('.messenger-listView').show();
+	 }
+	 
     // get contacts list
     getContacts();
 
