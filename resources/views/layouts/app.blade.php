@@ -35,6 +35,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
+ 	  <link rel="stylesheet" href="{{ URL::asset('public/css/default.css') }}">
+
 	
  	
 </head>

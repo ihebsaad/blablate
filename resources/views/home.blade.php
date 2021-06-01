@@ -48,7 +48,7 @@
                     <div class="col mr-2">
                       <div style="font-size:22px;margin-bottom:25px"  class="text-xs font-weight-bold text-success text-uppercase mb-1">Comptes</div>
                       <div class="  "><a  href="{{route('users')}}">Utilisateurs</a> </div>
-                      <div class="  "><a  href="#">Mon Profil</a> </div>
+                      <div class="  "><a  href="{{route('profile')}}">Mon Profil</a> </div>
                                          </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>

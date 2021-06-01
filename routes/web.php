@@ -26,6 +26,10 @@ Route::post('/users/updating','UsersController@updating')->name('users.updating'
 Route::get('/users','UsersController@index')->name('users');
 Route::get('/users/view/{id}', 'UsersController@view');
 Route::get('/users/destroy/{id}', 'UsersController@destroy');
+Route::get('/profile', 'UsersController@profile')->name('profile');
+Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
+
+
 
 Route::post('/salons/updating','SalonsController@updating')->name('salons.updating');
 Route::get('/salons','SalonsController@index')->name('salons');

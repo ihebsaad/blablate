@@ -71,9 +71,57 @@ class UsersController extends Controller
 	
 	}
 	
+		public function profile(  )
+	{
+        $user = auth()->user();
+
+        $user= User::where('id',$user->id)->first();
+        return view('users.profile',['id'=>$user->id,'user'=>$user]);
+ 	}
 	
-	
-	
+    public function updateuser(Request $request)
+    {
+        $id= $request->get('user');
+        $name= $request->get('name');
+        $age= $request->get('age');
+        $sexe= $request->get('sexe');
+        $tel= $request->get('tel');
+        $bio= $request->get('bio');
+        $password= $request->get('password');
+        $confirmation= $request->get('confirmation');
+         if($password !=''  && (strlen($password )>5) ){
+		
+		if($password == $confirmation )
+		{  $password= bcrypt(trim($request->get('password')));
+
+					
+		User::where('id', $id)->update(array(
+ 		'name' => $name,
+ 		'sexe' => $sexe,
+		'age' => $age,
+		'bio' => $bio,
+		'tel' => $tel,
+		'password' => $password,
+		
+		));
+		 }
+        }else{
+
+		 User::where('id', $id)->update(array(
+ 		'name' => $name,
+ 		'sexe' => $sexe,
+		'age' => $age,
+		'bio' => $bio,
+		'tel' => $tel,
+ 		
+		));
+		
+        }
+		
+	  return redirect('/profile')->with('success', ' modifié avec succès');
+
+ 
+    }	
 	
 	
 }
