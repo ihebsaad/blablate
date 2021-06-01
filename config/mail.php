@@ -133,7 +133,7 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 	
-	'gmail' => [
+/*	'gmail' => [
         'transport' => 'smtp',
         'host' => 'smtp.gmail.com',
         'port' => 465,
@@ -143,5 +143,5 @@ return [
     ],
 	
 	'default' => env('MAIL_MAILER', 'gmail'),
-
+*/
 ];
