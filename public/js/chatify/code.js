@@ -29,7 +29,8 @@ function loadusers(salon)
 {
     var url = $('meta[name=url]').attr('content');
 	        $.ajax({
-            url: "http://localhost/blablate/salons/users",
+            url: url+"/salons/users",
+           // url: "https://blablate.com/salons/users",
             method: "get",
             data: {salon: salon ,  _token: access_token},
             success: function (data) {
@@ -1495,7 +1496,10 @@ $('#salons').click(function(){
             method: "POST",
             data: {user: user , champ:'salon' ,val:0, _token: access_token},
             success: function (data) {
+				
+			   if (window.matchMedia('(min-width: 980px)').matches) {
       		  $('.messenger-infoView').toggle();
+			   }
                 $('.messenger-infoView-btns .delete-conversation').hide();
                 $('.messenger-infoView-shared').hide();
              }
