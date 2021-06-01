@@ -151,7 +151,7 @@ $(window).resize(function () {
 });
 function cssMediaQueries() {
     if (window.matchMedia('(min-width: 980px)').matches) {
-        $('.messenger-listView').removeAttr('style');
+       // $('.messenger-listView').removeAttr('style');
     }
     if (window.matchMedia('(max-width: 980px)').matches) {
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '1');
@@ -1215,8 +1215,7 @@ $(document).ready(function () {
             $('.messenger-listView').hide();
         }
         messenger = $(this).find('p[data-id]').attr('data-id');
-		alert(messenger);
-        SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+         SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
 		$("#salon").val(messenger.split('_')[1]);
     });
 	
