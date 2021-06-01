@@ -148,6 +148,9 @@ function activeStatusCircle() {
  */
 $(window).resize(function () {
     cssMediaQueries();
+	 if (window.matchMedia('(max-width: 980px)').matches) {
+		 $('.messenger-listView').show();
+	 }
 });
 function cssMediaQueries() {
     if (window.matchMedia('(min-width: 980px)').matches) {
@@ -155,7 +158,7 @@ function cssMediaQueries() {
 		
     }
     if (window.matchMedia('(max-width: 980px)').matches) {
-		 $('.messenger-listView').show();
+		// $('.messenger-listView').show();
         $('body').find('.messenger-list-item').find('tr[data-action]').attr('data-action', '1');
         $('body').find('.salon-list').find('tr[data-action]').attr('data-action', '1');
         $('body').find('.favorite-list-item').find('div').attr('data-action', '1');
