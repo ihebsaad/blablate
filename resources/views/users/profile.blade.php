@@ -27,15 +27,18 @@
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label>Pseudo</label>											
                                                 <input type="text" class="form-control form-control-user" id="username" name="username"  readonly value="{{ $user->username }}"   
-                                                       placeholder="Pseudo">
+                                                       placeholder="Pseudo"/>
                                        
 										
                                             </div>
                                              <div class="col-sm-6">
-											 	<label>Nom complet</label>
+											<!-- 	<label>Nom complet</label>
                                                 <input type="text" class="form-control form-control-user" id="name" name="name"  value="{{ $user->name }}"   
                                                        placeholder="Nom">
-
+															-->
+												<label>Adresse Email</label>											
+                                                <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
+                                                       placeholder="Adresse Email">	
 											 
 											     </div> 
 
@@ -71,9 +74,7 @@
                                                        placeholder="Téléphone Mobile">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-											<label>Adresse Email</label>											
-                                                <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
-                                                       placeholder="Adresse Email">											
+																
 											</div>
 											
 											

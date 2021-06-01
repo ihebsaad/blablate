@@ -15,7 +15,7 @@
         <tr id="headtable">
             <th>Image</th>
              <th>Pseudo</th>
-            <th>Nom</th>
+          <!--  <th>Nom</th>-->
             <th>Sexe</th>
             <th>Age</th>
             <th>Inscription</th>
@@ -29,7 +29,7 @@
                 <tr> 
                     <td> <img style="width:60px;" src="{{ asset('storage/app/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}"    /></td>
                       <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->username }}</a></td>
-                     <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->name }}</a></td>
+                   <!--  <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->name }}</a></td>-->
                      <td>{{$user->sexe}} </td>
                      <td>{{$user->age}} </td>
                      <td><?php echo date('d/m/Y H:i', strtotime($user->created_at)) ;?> </td>

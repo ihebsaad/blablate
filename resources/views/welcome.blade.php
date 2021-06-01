@@ -14,13 +14,13 @@
 
 <meta name="twitter:title" content="Blablate, site de chat français">
 <meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
-<meta name="twitter:image" content="{{ asset('storage/logos/bb.png') }}">
+<meta name="twitter:image" content="{{ asset('storage/logos/blabla.png') }}">
 <meta name="twitter:card" content="summary_large_image">
 
 
   <!-- Favicons -->
-  <link href="{{ asset('storage/logos/bb.png') }}"  rel="icon">
-  <link href="{{ asset('storage/logos/bb.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('storage/logos/fav.png') }}"  rel="icon">
+  <link href="{{ asset('storage/logos/fav.png') }}" rel="apple-touch-icon">
       <title>Blablate, site de chat français</title>
 
         <!-- Fonts -->
@@ -99,7 +99,7 @@
             <div class="content">
 			
                 <div class="title m-b-md">
-				 <img src="{{ asset('storage/logos/bb.png') }}"  width="150"/><br>
+				 <img src="{{ asset('storage/logos/blabla.png') }}"  width="150"/><br>
                     Blablate
                 </div>
 

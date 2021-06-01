@@ -1,3 +1,28 @@
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="Site de chat Français" name="description">
+  <meta content="tchat, chat en france,site de rencontres, site de discussions" name="keywords">
+
+ 
+<meta property="og:title"              content="Blablate, site de chat français" />
+<meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
+<meta property="og:image"              content="https://diminuer-mes-mensualites.fr/assets/img/clients/ros.jpg" />
+
+<meta name="twitter:title" content="Blablate, site de chat français">
+<meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
+<meta name="twitter:image" content="{{ asset('storage/logos/blabla.png') }}">
+<meta name="twitter:card" content="summary_large_image">
+
+
+  <!-- Favicons -->
+  <link href="{{ asset('storage/logos/fav.png') }}"  rel="icon">
+  <link href="{{ asset('storage/logos/fav.png') }}" rel="apple-touch-icon">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>Blablate, site de chat français</title>
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 {{-- Meta tags --}}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="route" content="{{ $route }}">

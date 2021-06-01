@@ -1,5 +1,5 @@
 {{-- user info and avatar --}}
-<div class="avatar av-l"  style="background-image: url('{{ asset('storage/logos/bb.png') }}');"></div>
+<div class="avatar av-l"  style="background-image: url('{{ asset('storage/logos/blabla.png') }}');"></div>
 <p class="info-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</p>
 <p class="ville" style="font-family:'Nunito';font-weight:bold"></p>
 <p class="bio" style="font-family:'Nunito';font-weight:normal;font-size:13px"></p><br>

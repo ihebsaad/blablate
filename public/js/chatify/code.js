@@ -387,6 +387,9 @@ function SalonIDinfo(id, type) {
                 // avatar photo
                  $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
                  $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
+				  $('.messenger-infoView .ville').html('');
+                $('.messenger-infoView .bio').html('');
+
                 // Show shared and actions
                /// $('.messenger-infoView-btns .delete-conversation').show();
               ///  $('.messenger-infoView-shared').show();
