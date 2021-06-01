@@ -132,5 +132,16 @@ return [
     */
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
+	
+	'gmail' => [
+        'transport' => 'smtp',
+        'host' => 'smtp.gmail.com',
+        'port' => 465,
+        'encryption' => 'ssl',
+        'username' => 'ihebs009@gmail.com',
+        'password' => 'eSolutions2020*',
+    ],
+	
+	'default' => env('MAIL_MAILER', 'gmail'),
 
 ];
