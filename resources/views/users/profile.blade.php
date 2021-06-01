@@ -93,12 +93,20 @@
 										 
                                         </div>
                                         </div>
-											<div class="form-group row">
+										 <div class="form-group row">
+
+                                            <div class="col-sm-6 mb-3 mb-sm-0">
+											<label>Ville</label>											
+                                                <input type="text" class="form-control form-control-user" name="ville"   value="{{ $user->ville }}"    style="width:100%"  autocomplete="off"
+                                                       id="ville" placeholder="Ville">   
+											</div>
+											
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label>Bibliographie</label>											
 											<textarea class="form-control form-control-user" name="bio" id="bio">{{$user->bio}}</textarea>
 											</div>
-											</div>
+											
+										</div>
 
                                         <div class="form-group row pl-20">
 
