@@ -29,8 +29,8 @@ function loadusers(salon)
 {
     var url = $('meta[name=url]').attr('content');
 	        $.ajax({
-            url: url+"/salons/users",
-           // url: "https://blablate.com/salons/users",
+         //   url: url+"/salons/users",
+             url: "https://blablate.com/salons/users",
             method: "get",
             data: {salon: salon ,  _token: access_token},
             success: function (data) {
@@ -894,7 +894,7 @@ function updateMessagesCard(to_user,type,from_user) {
 	}
 		if(type=='salon' && messenger.split('_')[1] == to_user )
 	{
-		alert('salon' +messenger.split('_')[1]+' - '+type);
+	//	alert('salon' +messenger.split('_')[1]+' - '+type);
  		//SalonIDinfo(for_user,type);
 		salonfetchMessages(messenger.split('_')[1], type);	
 	}
