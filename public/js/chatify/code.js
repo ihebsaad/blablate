@@ -27,10 +27,11 @@ const messagesContainer = $('.messenger-messagingView .m-body'),
 
 function loadusers(salon)
 {
-    var url = $('meta[name=url]').attr('content');
+    var  url = $('meta[name=app_url]').attr('content');
+
 	        $.ajax({
-         //   url: url+"/salons/users",
-             url: "https://blablate.com/salons/users",
+             url: url+"/salons/users",
+         //    url: "https://blablate.com/salons/users",
             method: "get",
             data: {salon: salon ,  _token: access_token},
             success: function (data) {
@@ -1507,10 +1508,11 @@ $('#salons').click(function(){
             success: function (data) {
 				
 			   if (window.matchMedia('(min-width: 980px)').matches) {
-      		  $('.messenger-infoView').toggle();
+      		  $('.messenger-infoView').toggle();  $('.show-infoSide').show();
 			   }
                 $('.messenger-infoView-btns .delete-conversation').hide();
                 $('.messenger-infoView-shared').hide();
+				$('.add-to-favorite').hide();
              }
         });
         // } else {
@@ -1532,6 +1534,7 @@ $('#salons').click(function(){
             data: {user: user , champ:'salon' ,val:0, _token: access_token},
             success: function (data) {
 			$('#salon-users').html('');
+			$('.add-to-favorite').show();
              }
         });
         // } else {

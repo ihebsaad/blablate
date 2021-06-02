@@ -19,6 +19,7 @@
   <link href="{{ asset('storage/logos/fav.png') }}" rel="apple-touch-icon">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="app_url" content="<?php echo env('APP_URL'); ?>">
 
     <title>Blablate, site de chat français</title>
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

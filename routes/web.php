@@ -41,6 +41,10 @@ Route::get('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/store/', 'SalonsController@store')->name('salons.store');
 
+Route::get('/payment', 'PaymentController@index');
+Route::post('/charge', 'PaymentController@charge');
+
+
 
 /*
 Route::post('/salonidInfo', 'MessagesController@salonidFetchData');

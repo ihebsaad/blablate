@@ -16,11 +16,21 @@
 
   					
 					
-		  <link  href="{{ asset('/public/css/sb-admin-2.min.css') }}"    rel="stylesheet">
+<link  href="{{ asset('/public/css/sb-admin-2.min.css') }}"    rel="stylesheet">
 			
 	<script src="{{ asset('/public/js/chatify/font.awesome.min.js') }}"></script>
 				
 
+<?php
+$type='';
+if (Auth::check()) {
+
+$user = auth()->user();
+ $iduser=$user->id;
+$type=$user->type;
+} 
+
+?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-6 col-md-6 mb-6"  style="margin-bottom:25px" >
               <div class="card border-left-primary shadow h-100 py-2">
@@ -46,8 +56,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div style="font-size:22px;margin-bottom:25px"  class="text-xs font-weight-bold text-success text-uppercase mb-1">Comptes</div>
-                      <div class="  "><a  href="{{route('users')}}">Utilisateurs</a> </div>
+                      <div style="font-size:22px;margin-bottom:25px"  class="text-xs font-weight-bold text-success text-uppercase mb-1">Compte</div>
+                   <?php if($type=='admin'){ ?>   <div class="  "><a  href="{{route('users')}}">Utilisateurs</a> </div><?php } ?>
                       <div class="  "><a  href="{{route('profile')}}">Mon Profil</a> </div>
                                          </div>
                     <div class="col-auto">
@@ -57,7 +67,7 @@
                 </div>
               </div>
             </div>
-  
+  <?php if($type=='admin'){ ?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
               <div class="card border-left-info shadow h-100 py-2">
@@ -80,7 +90,9 @@
               </div>
             </div>
 			
+  <?php } 
   
+  if($type=='admin'){ ?>
             <!-- Pending Requests Card Example -->
             <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
               <div class="card border-left-warning shadow h-100 py-2">
@@ -98,7 +110,7 @@
               </div>
             </div>
  
-								
+  <?php } ?>							
 					
 					
 					
