@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+﻿@extends('layouts.app') 
 
 
 
@@ -7,14 +7,14 @@
 @section('content')
 <div class="container">
 <style>
-#card-element{width:100%;padding-bottom:20px;}
+#card-element{width:100%;margin-bottom:20px;}
 </style>
 <form action="{{ url('charge') }}" method="post" id="payment-form">
     <div class=" " style="width:40%">
         <div class="row form-group"><input class="form-control" type="text" name="amount" placeholder="Montant" /></div>
         <div class="row form-group"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
         <div class="row form-group"><label for="card-element">
-        Carte de Cr�dit
+        Carte de Crédit
         </label>
 		</div>
 		<div class="row">
