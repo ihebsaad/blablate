@@ -67,7 +67,7 @@ $type=$user->type;
                 </div>
               </div>
             </div>
-  <?php if($type=='admin'){ ?>
+  <?php if($type=='admin'){   ?>
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
               <div class="card border-left-info shadow h-100 py-2">
