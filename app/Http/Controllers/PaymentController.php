@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Omnipay\Omnipay;
 
 class PaymentController extends Controller
 {
