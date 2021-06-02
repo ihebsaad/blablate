@@ -6,6 +6,9 @@
 <script src="https://js.stripe.com/v3/"></script>
 @section('content')
 <div class="container">
+<style>
+.card-element{width:100%;padding-bottom:20px;}
+</style>
 <form action="{{ url('charge') }}" method="post" id="payment-form">
     <div class=" " style="width:40%">
         <div class="row form-group"><input class="form-control" type="text" name="amount" placeholder="Montant" /></div>
@@ -28,7 +31,9 @@
 </div>
 
 <script>
+ //var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
  var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
+ 
 </script>
 <!--<script src="{{ asset('public/js/card.js') }}"></script>-->
 <script>
