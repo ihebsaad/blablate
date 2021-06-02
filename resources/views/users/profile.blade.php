@@ -74,7 +74,7 @@
                                                        placeholder="Téléphone Mobile">
                                             </div>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-																
+										  <?php if($user->tel_valide){?><span class="btn btn-danger"> Non vérifié</span><?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
 											</div>
 											
 											

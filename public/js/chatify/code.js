@@ -335,11 +335,11 @@ function IDinfo(id, type) {
                 // update info in view
 				var sexe=data.fetch.sexe;var color='';
 				if(sexe=='masculin'){color='#4167d5';}else{color='#ec3aa5';}
-                $('.messenger-infoView .info-name').html(data.fetch.name+' <small>('+data.fetch.age+' ans)</small>');
+                $('.messenger-infoView .info-name').html(data.fetch.username+' <small>('+data.fetch.age+' ans)</small>');
                 $('.messenger-infoView .ville').html(data.fetch.ville);
                 $('.messenger-infoView .bio').html(data.fetch.bio);
                 $('.messenger-infoView .info-name').css('color',color);
-                $('.m-header-messaging .user-name').html(data.fetch.name);
+                $('.m-header-messaging .user-name').html(data.fetch.username);
                // $('.m-header-messaging .user-name').css('color',color);
                 // Star status
                 data.favorite > 0
@@ -399,8 +399,8 @@ function SalonIDinfo(id, type) {
                 // focus on messaging input
                 messageInput.focus();
                 // update info in view
-                  $('.messenger-infoView .info-name').html(data.fetch.name);
-                 $('.m-header-messaging .user-name').html(data.fetch.name);
+                  $('.messenger-infoView .info-name').html(data.fetch.username);
+                 $('.m-header-messaging .user-name').html(data.fetch.username);
                 // Star status
                 data.favorite > 0
                     ? $('.add-to-favorite').addClass('favorite')

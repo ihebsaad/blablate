@@ -19,6 +19,7 @@
             <th>Sexe</th>
             <th>Age</th>
             <th>Inscription</th>
+            <th>Type</th>
             <th>Actions</th>
         </tr>
             
@@ -33,6 +34,7 @@
                      <td>{{$user->sexe}} </td>
                      <td>{{$user->age}} </td>
                      <td><?php echo date('d/m/Y H:i', strtotime($user->created_at)) ;?> </td>
+                     <td><?php  $type= $user->type; if($type=='admin'){ echo 'Admin';}else{echo 'inscrit';} ?>  </td>
 					 
                    <td> 
                 
@@ -40,9 +42,11 @@
                         <a   href="{{action('UsersController@view', $user['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
                             <span class="far fa-eye" ></span> Voir
                         </a>                  
- 					<a  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('UsersController@destroy', $user['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
+ 			<?php if($type!= 'admin'){ ?>
+					<a  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('UsersController@destroy', $user['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
                             <span class="fa fa-fw fa-trash-alt"></span> Supprimer
-                        </a>                 
+                        </a>
+						<?php } ?>               
                   </td>
                 </tr>
             @endforeach

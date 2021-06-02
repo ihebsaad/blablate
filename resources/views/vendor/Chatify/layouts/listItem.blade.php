@@ -57,7 +57,7 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }} 
+            {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->username }} 
         </td>
         
     </tr>

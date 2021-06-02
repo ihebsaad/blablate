@@ -12,8 +12,8 @@
           <div class="form-group">
 			<div class="row">
 			  <div class="col-lg-6">
-                <label for="name">Nom complet:</label>
-                <input id="name"   type="text" class="form-control" name="name"  value="{{ $user->name }}" />
+                <label for="username">Pseudo:</label>
+                <input id="username"   type="text" class="form-control" name="username"  value="{{ $user->username }}"  readonly/>
  			 </div>
 			 <div class="col-lg-6">
                     <label for="email">Adresse Email:</label>

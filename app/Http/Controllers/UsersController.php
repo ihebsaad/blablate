@@ -82,7 +82,7 @@ class UsersController extends Controller
     public function updateuser(Request $request)
     {
         $id= $request->get('user');
-        $name= $request->get('name');
+     //   $name= $request->get('name');
         $age= $request->get('age');
         $sexe= $request->get('sexe');
         $tel= $request->get('tel');
@@ -96,7 +96,7 @@ class UsersController extends Controller
 
 					
 		User::where('id', $id)->update(array(
- 		'name' => $name,
+ 		//'name' => $name,
  		'sexe' => $sexe,
 		'age' => $age,
 		'bio' => $bio,
@@ -108,7 +108,7 @@ class UsersController extends Controller
         }else{
 
 		 User::where('id', $id)->update(array(
- 		'name' => $name,
+ 		//'name' => $name,
  		'sexe' => $sexe,
 		'age' => $age,
 		'bio' => $bio,
