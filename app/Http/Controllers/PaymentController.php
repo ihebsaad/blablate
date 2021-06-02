@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Omnipay\Omnipay;
+use Omnipay;
+use Stripe;
 
 class PaymentController extends Controller
 {
