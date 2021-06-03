@@ -102,6 +102,7 @@ class MessagesController extends Controller
         if ($request['type'] == 'salon') {
             $fetch =  DB::table('salons')->where('id', $request['id'])->first();
         }
+		$avatar='';
 		if($fetch->avatar!=''){
 		$avatar=asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);			
 		}else{
