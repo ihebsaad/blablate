@@ -399,8 +399,8 @@ function SalonIDinfo(id, type) {
                 // focus on messaging input
                 messageInput.focus();
                 // update info in view
-                  $('.messenger-infoView .info-name').html(data.fetch.username);
-                 $('.m-header-messaging .user-name').html(data.fetch.username);
+                  $('.messenger-infoView .info-name').html(data.fetch.name);
+                 $('.m-header-messaging .user-name').html(data.fetch.name);
                 // Star status
                 data.favorite > 0
                     ? $('.add-to-favorite').addClass('favorite')
