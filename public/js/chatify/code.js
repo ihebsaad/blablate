@@ -386,6 +386,7 @@ function SalonIDinfo(id, type) {
             dataType: 'JSON',
             success: (data) => {
                 // avatar photo
+
                  $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
                  $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
 				  $('.messenger-infoView .ville').html('');
@@ -399,6 +400,7 @@ function SalonIDinfo(id, type) {
                 // focus on messaging input
                 messageInput.focus();
                 // update info in view
+				  $('.messenger-infoView .info-name').css('color',black);				
                   $('.messenger-infoView .info-name').html(data.fetch.name);
                  $('.m-header-messaging .user-name').html(data.fetch.name);
                 // Star status
