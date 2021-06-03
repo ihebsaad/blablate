@@ -112,7 +112,7 @@ class MessagesController extends Controller
         return Response::json([
             'favorite' => 0,
              'fetch' => $fetch,
-            'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+            'user_avatar' => $avatar,
          //   'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/room.png'),
         ]);
     }	
