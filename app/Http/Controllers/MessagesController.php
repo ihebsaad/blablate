@@ -102,6 +102,12 @@ class MessagesController extends Controller
         if ($request['type'] == 'salon') {
             $fetch =  DB::table('salons')->where('id', $request['id'])->first();
         }
+		if($fetch->avatar!=''){
+		$avatar=asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);			
+		}else{
+		 $avatar=asset('/storage/app/' . config('chatify.user_avatar.folder') . '/room.png');
+	
+		}
          // send the response
         return Response::json([
             'favorite' => 0,
