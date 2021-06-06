@@ -29,7 +29,13 @@ class UsersController extends Controller
 
       return view('users.index',  compact('users') ); 
      }
-	 
+    public function verify()
+    {
+		
+      return view('auth.verify'  ); 
+		
+	}
+	
 	 
 	     public static function  ChampById($champ,$id)
     {

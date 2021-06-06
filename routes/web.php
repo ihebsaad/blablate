@@ -15,12 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
  
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
+
+ Route::get('/verify', 'UsersController@verify');
+
 
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
 Route::get('/users','UsersController@index')->name('users');
