@@ -18,7 +18,10 @@
 			 <div class="col-lg-6">
                     <label for="email">Adresse Email:</label>
                <input id="email" autocomplete="off"  type="text" class="form-control" name="email" id="email" value="{{ $user->email }}"  />                 
-             </div>
+            
+			 <?php if($user->email_verified_at==null){?><span class="btn btn-danger"> Non vérifié</span><?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
+
+			</div>
           </div>
         </div> 
 		
