@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
 
- Route::get('/verify', 'UsersController@verify');
+ Route::get('/verify', 'UsersController@verify')->name('verify');
 
 
 Route::post('/users/updating','UsersController@updating')->name('users.updating');
