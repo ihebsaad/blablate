@@ -2,7 +2,8 @@
 @extends('layouts.app') 
  
 @section('content')
- 
+   <style>.btn{margin-top:15px;}</style>
+
 <div class="container">
 
      <input type="hidden" id="iduser" value="{{$user->id}}" name="id" />
@@ -47,7 +48,7 @@
 			<input id="tel"   type="text" class="form-control" name="tel"  id="tel" value="{{ $user->tel }}" />
           	 </div>
 			 <div class="col-lg-6">
-			 <?php if($user->tel_valide){?><span class="btn btn-danger"> Non vérifié</span><?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
+			 <?php if($user->tel_valide==0){?><span class="btn btn-danger"> Non vérifié</span><?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
           	 </div>
           	 </div>
           	 </div>
