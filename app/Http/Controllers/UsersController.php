@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use DB;
 
 class UsersController extends Controller
 {
@@ -70,11 +71,15 @@ class UsersController extends Controller
 	
 	}
 	
-    public function destroy($id)
+    public  function destroy($id)
     {
+		// suppresion des mesages
+	 	DB::table('messages')->where('from_id',$id)->delete();
+
         $user = User::find($id);
          $user->delete();	
-	
+	        return redirect('/users')->with('success', '  Supprimé ');
+
 	}
 	
 		public function profile(  )
