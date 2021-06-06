@@ -41,7 +41,7 @@
 												<label>Adresse Email</label>											
                                                 <input type="email" class="form-control form-control-user" id="email" name="email"  readonly value="{{ $user->email }}"
                                                        placeholder="Adresse Email">	
-			 <?php if($user->email_verified_at==null){?><span class="btn btn-danger"> Non vérifié</span> <a href="{{ route('verify') }}"> vérfier</a><?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
+			 <?php if($user->email_verified_at==null){?><span class="btn btn-danger"> Non vérifié</span> <a style="margin:10px 10px" href="{{ route('verify') }}"> vérfier</a> <?php }else{?><span class="btn btn-success"> Vérifié</span><?php } ?>
 											 
 											     </div> 
 
