@@ -20,6 +20,7 @@
             <th>Age</th>
             <th>Inscription</th>
             <th>Type</th>
+            <th>Expiration</th>
             <th>Actions</th>
         </tr>
             
@@ -36,6 +37,7 @@
                      <td><?php echo date('d/m/Y H:i', strtotime($user->created_at)) ;?> </td>
                      <td><?php  $type= $user->type; if($type=='admin'){ echo 'Admin';}else{echo 'inscrit';} ?>  </td>
 					 
+                   <td><?php if($user->expire!=''){ echo date('d/m/Y H:i', strtotime(  $user->expire)) ;}else{ echo '<span class="btn btn-danger">Non abonné</span>';}?></td> 
                    <td> 
                 
 

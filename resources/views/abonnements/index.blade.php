@@ -26,7 +26,7 @@
                 <tr> 
                        <td><?php echo UsersController::ChampById('username',$abonnement->user);?>      </td>
                       <td><?php echo date('d/m/Y H:i', strtotime($abonnement->created_at)) ;?> </td>
-                      <td><?php echo date('d/m/Y H:i', strtotime(  UsersController::ChampById('expire',$abonnement->user))) ;?> </td>
+                      <td><?php echo date('d/m/Y H:i', strtotime( $abonnement->expire)) ;?> </td>
  					 
                    <td> 
                         

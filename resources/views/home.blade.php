@@ -203,6 +203,7 @@ function stripeTokenHandler(token) {
                       <div style="font-size:22px;margin-bottom:25px"  class="text-xs font-weight-bold text-success text-uppercase mb-1">Compte</div>
                    <?php if($type=='admin'){ ?>   <div class="  "><a  href="{{route('users')}}">Utilisateurs</a> </div><?php } ?>
                       <div class="  "><a  href="{{route('profile')}}">Mon Profil</a> </div>
+                      <div class="  "><a  href="{{route('logout')}}">Déconnexion</a> </div>
                                          </div>
                     <div class="col-auto">
                       <i class="fas fa-users fa-2x text-gray-300"></i>
