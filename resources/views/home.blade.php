@@ -54,7 +54,8 @@ $type=$user->type;
 <?php 		 $user = auth()->user();
 ?>
 <form action="{{ url('charge') }}" method="post" id="payment-form">
-    <div class=" " style="width:40%">
+    <div class=" " style="width:60%">
+	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/stripe.png') }}"    />
         <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
         <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
         <div class="row form-group"><label for="card-element">
