@@ -47,6 +47,8 @@ Route::get('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/store/', 'SalonsController@store')->name('salons.store');
 
+Route::get('/abonnements', 'PaymentController@abonnements')->name('abonnements');
+
 Route::get('/payment', 'PaymentController@index');
 Route::post('/charge', 'PaymentController@charge');
 

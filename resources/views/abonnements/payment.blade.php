@@ -1,7 +1,9 @@
 ﻿@extends('layouts.app') 
 
 
-
+ <?php use App\Http\Controllers\UsersController;
+ ?>
+ 
 <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
 <script src="https://js.stripe.com/v3/"></script>
 @section('content')
@@ -9,10 +11,12 @@
 <style>
 #card-element{width:100%;margin-bottom:20px;}
 </style>
+<?php 		 $user = auth()->user();
+?>
 <form action="{{ url('charge') }}" method="post" id="payment-form">
     <div class=" " style="width:40%">
-        <div class="row form-group"><input class="form-control" type="text" name="amount" placeholder="Montant" /></div>
-        <div class="row form-group"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
+        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="890" /></div>
+        <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
         <div class="row form-group"><label for="card-element">
         Carte de Crédit
         </label>
@@ -25,7 +29,7 @@
         <!-- Used to display form errors. -->
         <div id="card-errors" role="alert"></div>
     </div>
-    <button class="btn btn-lg btn-success">Submit Payment</button>
+    <button class="btn btn-lg btn-success">S'abonner</button>
     {{ csrf_field() }}
 </form>
 </div>
