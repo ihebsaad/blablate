@@ -17,10 +17,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/chat', 'MessagesController@index')->name(config('chatify.path'))->middleware('verified');
+//Route::get('/chat', 'MessagesController@index')->name(config('chatify.path'))->middleware('verified');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
  
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
