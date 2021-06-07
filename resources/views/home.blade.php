@@ -35,13 +35,7 @@ $type=$user->type;
 	
 	?>
 	
-    <div class="row justify-content-center">
-   
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+  
 
   					
 					
@@ -52,7 +46,7 @@ $type=$user->type;
 
 
 
- <div class="col-xl-12 col-md-12 mb-12"   style="margin-bottom:25px" >
+ <div class="col-xl-10 col-md-10 mb-10"   style="margin-bottom:25px" >
 	
 <style>
 #card-element{width:100%;margin-bottom:20px;}
@@ -61,7 +55,7 @@ $type=$user->type;
 ?>
 <form action="{{ url('charge') }}" method="post" id="payment-form">
     <div class=" " style="width:40%">
-        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="890" /></div>
+        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
         <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
         <div class="row form-group"><label for="card-element">
         Carte de Crédit
@@ -89,7 +83,15 @@ $type=$user->type;
     {{ csrf_field() }}
 </form>
 </div>
+<div class="clearfix"></div>
 
+  <div class="row justify-content-center">
+   
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 <script>
  //var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
  var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
@@ -173,7 +175,7 @@ function stripeTokenHandler(token) {
 	
 	</div>
    <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-6 col-md-6 mb-6"  style="margin-bottom:25px" >
+            <div class="col-xl-6 col-md-6 mb-6"  style="margin-bottom:25px;float:left" >
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -192,7 +194,7 @@ function stripeTokenHandler(token) {
  
  
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
+            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px;float:left" >
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -210,7 +212,7 @@ function stripeTokenHandler(token) {
             </div>
   <?php if($type=='admin'){   ?>
             <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
+            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px;float:left" >
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
@@ -235,7 +237,7 @@ function stripeTokenHandler(token) {
   
   if($type=='admin'){ ?>
             <!-- Pending Requests Card Example -->
-            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px" >
+            <div class="col-xl-6 col-md-6 mb-6"   style="margin-bottom:25px;float:left" >
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
