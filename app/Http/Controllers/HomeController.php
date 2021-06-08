@@ -79,7 +79,7 @@ class HomeController extends Controller
 
 			});
 			
-		  return back()->with('success', ' Message envoyé avec succès');
+		  return redirect('/contact')->with('success', ' Message envoyé avec succès');
 	
 	  
 	}

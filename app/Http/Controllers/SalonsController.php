@@ -49,6 +49,7 @@ class SalonsController extends Controller
 	  	  $userid=Auth::user()->id;
 	  	  $user=User::where('id',$userid)->first();
           $par= $user->username;
+          $type= $user->type;
 		  
 		 $name='';
 		if($request->file('image')!=null)
@@ -69,9 +70,14 @@ class SalonsController extends Controller
         ]);
 
         $salon->save();
+		if($type=='admin'){
+			return redirect('/salons')->with('success', ' ajouté avec succès');
+		}else{
+			return redirect('/chat')->with('success', ' ajouté avec succès');
+		}
+		
        // return redirect('/salons')->with('success', ' ajouté avec succès');
-	   	 return back()->with('success', ' ajouté avec succès');
-
+ 
 
     }
 	
