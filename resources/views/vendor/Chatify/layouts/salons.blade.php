@@ -2,31 +2,25 @@
 //use DB;
 use App\Http\Controllers\SalonsController;
 
-  $salons=DB::table('salons')->get()
-/*
-  if (Auth::check()) {
-
-$cuser = auth()->user();
- $iduser=$cuser->id;
-$type=$cuser->type;
-$statut=$cuser->statut;
-$statut=$cuser->expire;
-
- $now=date('Y-m-d- H:i');
+  $salons=DB::table('salons')->get();
+  
+ 
+$statut=Auth::user()->statut;
+$expire=Auth::user()->expire;
+$now=date('Y-m-d- H:i');
 if($expire > $now ){
 	$abonne=true;
 }else{
 	$abonne=false;
+
 }
-
-} 
-
+  
  if($abonne){ ?>
-   <span class="salons-btn" ><i class="fas fa-person-booth"></i>créer un salon</span>
+   <center><span style="margin:20px 20px 20px 20px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon</span></center>
 
  <?php } 
  
- */
+  
  ?>
   
 {{-- -------------------- Saved Messages -------------------- --}}

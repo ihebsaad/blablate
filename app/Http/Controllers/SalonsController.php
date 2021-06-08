@@ -46,8 +46,10 @@ class SalonsController extends Controller
 	
     public function store(Request $request)
     {
-	  	  $par=Auth::user()->username;
-
+	  	  $userid=Auth::user()->id;
+	  	  $user=User::where('id',$userid)->first();
+          $par= $user->username;
+		  
 		 $name='';
 		if($request->file('image')!=null)
 		{$image=$request->file('image');
