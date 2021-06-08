@@ -47,10 +47,10 @@ class HomeController extends Controller
 	  $contenu= $request->get('contenu');
 
 		$message='';
-		$message.='Nouveau Message de contact sur le site<br>';
-		$message.='<b>Emetteur:</b>'.$email.'<br>';
+		$message.='Nouveau Message de contact sur le site<br><br>';
+		$message.='<b>Emetteur:</b><br>'.$email.'<br>';
 		$message.='<b>Message:</b> <br>'.$contenu.'<br><br>';
- 		$message.='<a href="https://blablate.com/">Blablate</a>';
+ 		$message.='<a href="https://blablate.com/">Blablate.com</a>';
  		
 		$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
 		//$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
