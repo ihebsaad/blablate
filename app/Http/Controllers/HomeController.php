@@ -78,6 +78,9 @@ class HomeController extends Controller
                     ->setFrom([$from => $fromname]);         
 
 			});
+			
+		  return back()->with('success', ' Message envoyé avec succès');
+	
 	  
 	}
 	
