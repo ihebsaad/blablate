@@ -34,12 +34,11 @@
             @endforeach
             </tbody>
         </table>
-</div>		
- @endsection
+</div>	
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 
-
- 
 <!-- Datatables -->
 <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="//cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
@@ -59,11 +58,41 @@
                     "targets": 'no-sort',
                     "orderable": false,
                 } ]
-               
+                 ,
+                "language":
+                    {
+                        "decimal":        "",
+                        "emptyTable":     "Pas de données",
+                        "info":           "affichage de  _START_ à _END_ de _TOTAL_ entrées",
+                        "infoEmpty":      "affichage 0 à 0 de 0 entrées",
+                        "infoFiltered":   "(Filtrer de _MAX_ total d`entrées)",
+                        "infoPostFix":    "",
+                        "thousands":      ",",
+                        "lengthMenu":     "affichage de _MENU_ entrées",
+                        "loadingRecords": "chargement...",
+                        "processing":     "chargement ...",
+                        "search":         "Recherche:",
+                        "zeroRecords":    "Pas de résultats",
+                        "paginate": {
+                            "first":      "Premier",
+                            "last":       "Dernier",
+                            "next":       "Suivant",
+                            "previous":   "Précédent"
+                        },
+                        "aria": {
+                            "sortAscending":  ": activer pour un tri ascendant",
+                            "sortDescending": ": activer pour un tri descendant"
+                        }
+                    }              
 
             });
  });
 	 
 </script>
+	
+ @endsection
+
+
+ 
 
   
