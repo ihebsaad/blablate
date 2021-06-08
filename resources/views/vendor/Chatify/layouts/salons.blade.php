@@ -16,7 +16,7 @@ if($expire > $now ){
 }
   
  if($abonne){ ?>
-   <center><span style="margin:20px 20px 20px 20px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon</span></center>
+   <center><span style="margin:10px 10px 10px 10px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon</span></center>
 
  <?php } 
  

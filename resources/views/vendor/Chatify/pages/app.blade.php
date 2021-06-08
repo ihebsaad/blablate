@@ -48,7 +48,7 @@ if($expire > $now ){
            <div class="@if($route == 'user') show @endif messenger-tab app-scroll" data-view="users">
 
                {{-- Favorites --}}
-               <p class="messenger-title">Favoris</p>
+               <p style='margin-top:15px' class="messenger-title">Favoris</p>
                 <div class="messenger-favorites app-scroll-thin"></div>
 
                {{-- Saved Messages --}}
