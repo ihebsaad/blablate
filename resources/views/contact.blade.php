@@ -136,7 +136,7 @@
              </div>	
 				<div class="form-group ">
                     <label for="contenu">Contenu:</label>
-                         <textarea style="min-height: 200px;"  id="contenu" type="text"  class="form-control" placeholder="Votre Question/Suggestion .." name="contenu" required  ></textarea>
+                         <textarea style="min-height: 150px;"  id="contenu" type="text"  class="form-control" placeholder="Votre Question/Suggestion .." name="contenu" required  ></textarea>
  				</div>
  
           <div class="form-group ">
