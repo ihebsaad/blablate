@@ -86,12 +86,12 @@
                                         <div class="form-group row">
                          
                                        <div class="col-sm-6 mb-3 mb-sm-0">
-											<label>Mot de passe</label>											
+											<label>Mot de passe ( au moins 6 caractères)</label>											
                                                 <input type="password" class="form-control form-control-user" name="password"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
                                                        id="password" placeholder="Mot de passe">
  										 </div>
 										<div class="col-sm-6 mb-3 mb-sm-0">
-										<label>Confirmation</label>											
+										<label>Confirmation de mot de passe</label>											
                                                 <input type="password" class="form-control form-control-user" name="confirmation"   pattern=".{6,30}"    style="width:100%"  autocomplete="off"
                                                        id="confirmation" placeholder="Confirmation">
 										 
