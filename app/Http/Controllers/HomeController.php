@@ -53,7 +53,7 @@ class HomeController extends Controller
  		$message.='<a href="https://blablate.com/">Blablate.com</a>';
  		
 		$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
-		//$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
+		 $this->sendMail('armand.proservices@gmail.com',$sujet,$message);
 		   return redirect('/contact')->with('success', ' Message envoyé avec succès');
 
 	}
@@ -80,8 +80,7 @@ class HomeController extends Controller
 
 			});
 			
-		  return redirect('/contact')->with('success', ' Message envoyé avec succès');
-	
+ 	
 	  
 	}
 	
