@@ -13,7 +13,11 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
+
+Route::get('/rgbd', 'HomeController@rgbd')->name('rgbd')->middleware('guest');
+Route::get('/contact', 'HomeController@contact')->name('contact')->middleware('guest');
+
 
 Auth::routes(['verify' => true]);
 

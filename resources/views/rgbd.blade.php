@@ -58,7 +58,7 @@
             }
 
             .content {
-                text-align: center;
+              /*  text-align: center;*/
             }
 
             .title {
@@ -78,6 +78,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+			h2{
+				text-transform:uppercase;
+			}
         </style>
     </head>
     <body>
@@ -98,15 +101,28 @@
 
             <div class="content">
 			
-                <div class="title m-b-md">
-				 <img src="{{ asset('storage/logos/blabla.png') }}"  width="150"/><br>
-                    Blablate
-                </div>
+  <a href="{{route('welcome')}}"> <img src="{{ asset('storage/logos/blabla.png') }}"  width="80"/></a><br>
 
-					<div class="links">
-                    <a href="{{ route('rgbd') }}">RGBD</a>
-                    <a href="{{ route('contact') }}">Contact</a>
-					</a>
+<h2>Blablate : SIMPLE ET EFFICACE</h2>
+<p>Blablate est un site de rencontres français pro et sympa. Chaque jour, des centaines de français et françaises se retrouvent sur Blablate pour discuter, échanger et faire de nouvelles rencontres.</p>
+<p>Blablate est rapide, simple d'utilisation et surtout très efficace pour développer son réseau d'amis. </p>
+
+<h2>DISCRÉTION ASSURÉE - VIE PRIVÉE RESPECTÉE</h2>
+ 
+<p>Blablate est un service de chat entièrement anonyme, il ne demande pas des infos privées (nom réel, adresse, famille, job ..) et garde les discussion privées en secret.</p>
+ 
+<h2>Modération</h2>
+<p> Blablate a le droit de bloquer temporairement ou supprimer des utilisateurs selon leurs comportement ou les demandes des autres membres (violence,racisme..)
+
+<h2>Avantages Abonnés</h2>
+	<ul>
+		<li>Accès illimité sur le site</li>
+		<li>Création de salons privés</li>
+		<li>Envoi des emails aux membres</li>
+		<li>Envoi des images</li>
+		<li>Utilisation des Emojis</li>
+	</ul>
+ 
             </div>
         </div>
     </body>

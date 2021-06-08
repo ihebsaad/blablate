@@ -58,7 +58,7 @@
             }
 
             .content {
-                text-align: center;
+              /*  text-align: center;*/
             }
 
             .title {
@@ -78,6 +78,9 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+			h2{
+				text-transform:uppercase;
+			}
         </style>
     </head>
     <body>
@@ -98,15 +101,8 @@
 
             <div class="content">
 			
-                <div class="title m-b-md">
-				 <img src="{{ asset('storage/logos/blabla.png') }}"  width="150"/><br>
-                    Blablate
-                </div>
-
-					<div class="links">
-                    <a href="{{ route('rgbd') }}">RGBD</a>
-                    <a href="{{ route('contact') }}">Contact</a>
-					</a>
+  <a href="{{route('welcome')}}"> <img src="{{ asset('storage/logos/blabla.png') }}"  width="80"/></a><br>
+ 
             </div>
         </div>
     </body>
