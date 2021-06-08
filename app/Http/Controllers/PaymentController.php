@@ -93,7 +93,7 @@ class PaymentController extends Controller
  		 
 		 // Email 
 		$message='Bonjour,<br>';
-		$message.='Nouvel abonnement sur le site';
+		$message.='Nouvel abonnement sur le site<br>';
  		$message.='<b>Client :</b>  '.$user->username.'<br>'; 
  		$message.='<b>Expiration :</b>  '.$datee.'<br>'; 
 		$message.='<b><a href="https://blablate.com/" > blablate.com </a></b>';	
