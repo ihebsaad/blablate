@@ -3,7 +3,7 @@
 use App\Http\Controllers\SalonsController;
 
   $salons=DB::table('salons')->get()
-
+/*
   if (Auth::check()) {
 
 $cuser = auth()->user();
@@ -24,7 +24,10 @@ if($expire > $now ){
  if($abonne){ ?>
    <span class="salons-btn" ><i class="fas fa-person-booth"></i>créer un salon</span>
 
- <?php }?>
+ <?php } 
+ 
+ */
+ ?>
   
 {{-- -------------------- Saved Messages -------------------- --}}
 @if($get == 'saved')
