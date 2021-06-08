@@ -103,6 +103,24 @@
             <div class="content">
 			
   <a href="{{route('welcome')}}"> <img src="{{ asset('storage/logos/blabla.png') }}"  width="80"/></a><br><br>
+    @if ($errors->any())
+             <div class="alert alert-danger">
+                 <ul>
+                     @foreach ($errors->all() as $error)
+                         <li>{{ $error }}</li>
+                     @endforeach
+                 </ul>
+             </div><br />
+         @endif
+
+    @if (!empty( Session::get('success') ))
+        <div class="alert alert-success">
+
+        {{ Session::get('success') }}
+        </div>
+
+    @endif
+	
  <h2>Envoyer un message</h2>
          <form method="post" action="{{ route('sendmessage') }}"  enctype="multipart/form-data">
 			  {{ csrf_field() }}
