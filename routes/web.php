@@ -15,8 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/rgbd', 'HomeController@rgbd')->name('rgbd')->middleware('guest');
-Route::get('/contact', 'HomeController@contact')->name('contact')->middleware('guest');
+Route::get('/rgbd', 'HomeController@rgbd')->name('rgbd');
+Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::get('/sendmessage', 'HomeController@sendmessage')->name('sendmessage');
 
 
 Auth::routes(['verify' => true]);

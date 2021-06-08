@@ -6,11 +6,12 @@
 
 <meta content="Sit de chat Français" name="description">
   <meta content="tchat, chat en france,site de rencontres, site de discussions" name="keywords">
+     <link href="{{ asset('/public/css/app.css') }}" rel="stylesheet">
 
  
 <meta property="og:title"              content="Blablate, site de chat français" />
 <meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
-<meta property="og:image"              content="https://diminuer-mes-mensualites.fr/assets/img/clients/ros.jpg" />
+<meta property="og:image"              content="{{ asset('storage/logos/blabla.png') }}" />
 
 <meta name="twitter:title" content="Blablate, site de chat français">
 <meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
@@ -101,8 +102,31 @@
 
             <div class="content">
 			
-  <a href="{{route('welcome')}}"> <img src="{{ asset('storage/logos/blabla.png') }}"  width="80"/></a><br>
+  <a href="{{route('welcome')}}"> <img src="{{ asset('storage/logos/blabla.png') }}"  width="80"/></a><br><br>
+ <h2>Envoyer un message</h2>
+         <form method="post" action="{{ route('sendmessage') }}"  enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		 
+	 		 <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" class="form-control" name="email"  required/>
+             </div>	
+  
+			 <div class="form-group">
+                    <label for="sujet">Sujet:</label>
+                    <input id="sujet" type="text" class="form-control" name="sujet"  required/>
+             </div>	
+				<div class="form-group ">
+                    <label for="contenu">Contenu:</label>
+                         <textarea style="min-height: 200px;"  id="contenu" type="text"  class="form-control" placeholder="Contenu ici" name="contenu" required  ></textarea>
+ 				</div>
  
+          <div class="form-group ">
+      <button  type="submit"  class="btn btn-primary">Envoyer</button>
+  			 </div>
+
+             </form>
+			
             </div>
         </div>
     </body>

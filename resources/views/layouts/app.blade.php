@@ -9,7 +9,7 @@
  
 <meta property="og:title"              content="Blablate, site de chat français" />
 <meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
-<meta property="og:image"              content="https://diminuer-mes-mensualites.fr/assets/img/clients/ros.jpg" />
+<meta property="og:image"              content="{{ asset('storage/logos/blabla.png') }}" />
 
 <meta name="twitter:title" content="Blablate, site de chat français">
 <meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
