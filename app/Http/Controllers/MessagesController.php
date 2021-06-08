@@ -29,7 +29,7 @@ class MessagesController extends Controller
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
-                'name' => Auth::user()->name
+                'name' => Auth::user()->username
             ]
         ]);
         // check if user authorized
@@ -150,6 +150,10 @@ class MessagesController extends Controller
      */
     public function send(Request $request)
     {
+		// check user banned
+		$statut=Auth::user()->statut;
+		if($statut < 2){
+			
         // default variables
         $error_msg = $attachment = $attachment_title = null;
 
@@ -210,6 +214,10 @@ class MessagesController extends Controller
             'message' => Chatify::messageCard(@$messageData),
             'tempID' => $request['temporaryMsgId'],
         ]);
+		
+		} // statut
+		
+		
     }
 
     /**

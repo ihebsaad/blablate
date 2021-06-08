@@ -25,6 +25,7 @@
             <th>Description</th>
             <th>Type</th> 
             <th>Création</th> 
+            <th>Par</th> 
             <th>Actions</th>
         </tr>
             
@@ -44,7 +45,8 @@
                      <td> {{$salon->description }} </td>
                      <td>{{$salon->type}} </td>
                       <td><?php echo date('d/m/Y H:i', strtotime($salon->created_at)) ;?> </td>
-					 
+					  <td>{{$salon->par}} </td>
+
                    <td>  
                         <a   href="{{action('SalonsController@view', $salon['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
                             <span class="far fa-eye" ></span> Voir

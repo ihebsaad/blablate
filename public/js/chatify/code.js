@@ -400,7 +400,7 @@ function SalonIDinfo(id, type) {
                 // focus on messaging input
                 messageInput.focus();
                 // update info in view
-				  $('.messenger-infoView .info-name').css('color',black);				
+				  $('.messenger-infoView .info-name').css('color','black');				
                   $('.messenger-infoView .info-name').html(data.fetch.name);
                  $('.m-header-messaging .user-name').html(data.fetch.name);
                 // Star status
@@ -1400,6 +1400,21 @@ $(document).ready(function () {
 
         });
     });	
+
+    $('.salons-btn').on('click', function () {
+        app_modal({
+            name: 'salons',
+        });
+    });
+	
+    $('.salons-close').on('click', function () {
+        app_modal({
+            name: 'salons',
+			show: false,
+
+        });
+    });	
+
 	
     $('.emoji').on('click', function () {
 	var emojis =  $(this).html();
@@ -1410,7 +1425,9 @@ $(document).ready(function () {
 			show: false,
 
         });
-    });		
+    });	
+
+ 
     // on submit settings' form
     $('#updateAvatar').on('submit', (e) => {
         e.preventDefault();
@@ -1468,7 +1485,28 @@ $(document).ready(function () {
         }
     });
 	
+	/*
+		// set salon value
+    $('.msg').click(function(){
+     var  id  = $(this).find('[data-id]').attr('data-id');
+    var url = $('meta[name=url]').attr('content');
+        alert(id);
+        $.ajax({
+            url: url +"/deletemsg",
+            method: "POST",
+            data: {id: id  , _token: access_token},
+            success: function (data) {
+		 $('#msg-'+id).css('display','none')	;	
+	   
+             }
+        });
+        // } else {
+
+        // }
+   });
+
 	
+	*/
 	// set salon value
     $('.salons').click(function(){
      var  messeng  = $(this).find('p[data-id]').attr('data-id');

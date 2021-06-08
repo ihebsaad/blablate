@@ -14,10 +14,7 @@
           
     <form method="post" action="{{ route('salons.store') }}"  enctype="multipart/form-data">
 			  {{ csrf_field() }}
-   				
-		 
- 
-          
+   				 
        <div class="form-group">
 			<div class="row">
 			  <div class="col-lg-6">
@@ -33,8 +30,8 @@
            <div class="form-group">
 			<div class="row">
 			  <div class="col-lg-6">
-                <label for="name">Nom :</label>
-                <input id="name"   type="text" class="form-control" name="name"  value="" />
+                <label for="name">Nom* :</label>
+                <input id="name"   type="text" class="form-control" name="name"  value="" required />
  			 </div>
 			 <div class="col-lg-6">
                    

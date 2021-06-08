@@ -37,7 +37,7 @@
                      <td><?php echo date('d/m/Y H:i', strtotime($user->created_at)) ;?> </td>
                      <td><?php  $type= $user->type; if($type=='admin'){ echo 'Admin';}else{echo 'inscrit';} ?>  </td>
 					 
-                   <td><?php if($user->expire!=''){ echo 'expire le ' date('d/m/Y H:i', strtotime(  $user->expire)) ;}else{ echo '<span class="btn btn-danger">Non abonné</span>';}?></td> 
+                   <td><?php if($user->expire!=''){ echo 'expire le '. date('d/m/Y H:i', strtotime(  $user->expire)) ;}else{ echo '<span class="btn btn-danger">Non abonné</span>';}?></td> 
                    <td> 
                 
 
@@ -45,9 +45,23 @@
                             <span class="far fa-eye" ></span> Voir
                         </a>                  
  			<?php if($type!= 'admin'){ ?>
-					<a  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('UsersController@destroy', $user['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
+			
+				  <?php if($user->statut < 2 ){ ?>
+				    <a  onclick="return confirm('Bloquer, Êtes-vous sûrs ?')"  href="{{action('UsersController@bloquer', $user['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Bloquer" >
+                            <span class="fas fa-fw fa-user-slash"></span> Bloquer
+                        </a>
+					<?php }else{ ?> 
+
+				    <a  onclick="return confirm('Débloquer, Êtes-vous sûrs ?')"  href="{{action('UsersController@debloquer', $user['id'])}}" class="btn btn-success btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Débloquer" >
+                            <span class="fas fa-fw fa-user-check"></span> Débloquer
+                        </a>
+					<?php } ?> 					
+					<a  onclick="return confirm('Supprimer, Êtes-vous sûrs ?')"  href="{{action('UsersController@destroy', $user['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
                             <span class="fa fa-fw fa-trash-alt"></span> Supprimer
                         </a>
+						
+						
+						
 						<?php } ?>               
                   </td>
                 </tr>

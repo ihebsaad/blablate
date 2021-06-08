@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -25,10 +26,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-
+	  $type=Auth::user()->type;
+	  if($type=='admin'){
        $users = User::get();
 
       return view('users.index',  compact('users') ); 
+	  }
      }
     public function verify()
     {
@@ -50,6 +53,7 @@ class UsersController extends Controller
 	
 	    public function updating(Request $request)
     {
+		
         $id= $request->get('user');
         $champ= strval($request->get('champ'));
         if($champ=='password'){
@@ -66,13 +70,43 @@ class UsersController extends Controller
 	
     public function view($id)
     {
+	  $type=Auth::user()->type;
+	  if($type=='admin'){		
         $user = User::find($id);
       return view('users.view',  compact('user') ); 
 	
+		}
 	}
+	
+	
+    public  function bloquer($id)
+    {
+  	  $type=Auth::user()->type;
+	  if($type=='admin'){
+      		User::where('id', $id)->update(array(
+  		'statut' => 2,
+		));
+	        return redirect('/users')->with('success', '  bloqué ');
+
+		}	
+	}	
+	
+    public  function debloquer($id)
+    {
+  	  $type=Auth::user()->type;
+	  if($type=='admin'){
+      		User::where('id', $id)->update(array(
+  		'statut' => 0,
+		));
+	        return redirect('/users')->with('success', '  debloqué ');
+
+			}	
+	}	
 	
     public  function destroy($id)
     {
+	  $type=Auth::user()->type;
+	  if($type=='admin'){		
 		// suppresion des mesages
 	 	DB::table('messages')->where('from_id',$id)->delete();
 
@@ -80,6 +114,7 @@ class UsersController extends Controller
          $user->delete();	
 	        return redirect('/users')->with('success', '  Supprimé ');
 
+			}
 	}
 	
 		public function profile(  )
@@ -89,7 +124,21 @@ class UsersController extends Controller
         $user= User::where('id',$user->id)->first();
         return view('users.profile',['id'=>$user->id,'user'=>$user]);
  	}
-	
+	 
+   /* public function deletemsg(Request $request)
+    {    
+	$id= $request->get('id'); 				
+	 DB::table('messages')->where('id', $id)->delete();
+	}
+	*/
+    public  function deletemsg($id)
+    {
+		// suppresion des mesages
+	 	DB::table('messages')->where('id',$id)->delete();
+	   return redirect('/chat')->with('success', '  Supprimé ');
+
+	}
+		
     public function updateuser(Request $request)
     {
         $id= $request->get('user');

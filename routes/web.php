@@ -32,8 +32,11 @@ Route::post('/users/updating','UsersController@updating')->name('users.updating'
 Route::get('/users','UsersController@index')->name('users');
 Route::get('/users/view/{id}', 'UsersController@view');
 Route::get('/users/destroy/{id}', 'UsersController@destroy');
+Route::get('/users/bloquer/{id}', 'UsersController@bloquer');
+Route::get('/users/debloquer/{id}', 'UsersController@debloquer');
 Route::get('/profile', 'UsersController@profile')->name('profile');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
+Route::get('/users/deletemsg/{id}','UsersController@deletemsg')->name('deletemsg');
 
 
 

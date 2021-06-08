@@ -72,7 +72,7 @@ class PaymentController extends Controller
 			// calcul expiration
 		 $format = "Y-m-d H:i:s";
 		 if($user->expire==''){
- 		 $datee = (new \DateTime())->modify('+31 days')->format($format);	
+ 		 $datee = (new \DateTime())->modify('+30 days')->format($format);	
 		}else{
 			
 		  $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $user->expire);
@@ -89,6 +89,17 @@ class PaymentController extends Controller
              ]);	
 		 
 		 $abonnement->save();
+		 
+ 		 
+		 // Email 
+		$message='Bonjour,<br>';
+		$message.='Nouvel abonnement sur le site';
+ 		$message.='<b>Client :</b>  '.$user->username.'<br>'; 
+ 		$message.='<b>Expiration :</b>  '.$datee.'<br>'; 
+		$message.='<b><a href="https://blablate.com/" > blablate.com </a></b>';	
+		
+ 	    $this->sendMail('armand.proservices@gmail.com','Abonnement sur le site',$message)	;
+ 	    $this->sendMail('ihebsaad@gmail.com','Abonnement sur le site',$message)	;
  
  		User::where('id',$userid)->update(array('expire' => $datee ));
 
@@ -101,4 +112,38 @@ class PaymentController extends Controller
         }
 		
 	}
+	
+	
+		public function sendMail($to,$sujet,$contenu){
+
+		$swiftTransport =  new \Swift_SmtpTransport( \Config::get('mail.host'), \Config::get('mail.port'), \Config::get('mail.encryption'));
+        $swiftTransport->setUsername(\Config::get('mail.username')); //adresse email
+        $swiftTransport->setPassword(\Config::get('mail.password')); // mot de passe email
+
+        $swiftMailer = new Swift_Mailer($swiftTransport);
+		Mail::setSwiftMailer($swiftMailer);
+		$from=\Config::get('mail.from.address') ;
+		$fromname=\Config::get('mail.from.name') ;
+		
+		Mail::send([], [], function ($message) use ($to,$sujet, $contenu,$from,$fromname   ) {
+         $message
+                 ->to($to)
+                    ->subject($sujet)
+                       ->setBody($contenu, 'text/html')
+                    ->setFrom([$from => $fromname]);         
+
+			});
+	  
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

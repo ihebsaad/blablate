@@ -9,7 +9,9 @@ if (Auth::check()) {
 $user = auth()->user();
  $iduser=$user->id;
 $type=$user->type;
+$expire=$user->expire;
 } 
+$now=date('Y-m-d- H:i');
 
 ?>
  <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
@@ -17,7 +19,7 @@ $type=$user->type;
 
 <div class="container">
 
-	<?php if($user->expire!=''){
+	<?php  if($expire > $now ){
 	?>
 	 <h2 style="float:right" class="btn btn-success">Abonné jusqu'à <i><?php  echo date('d/m/Y H:i', strtotime( $user->expire ));?></i></h2> 
 	<?php
@@ -47,13 +49,20 @@ $type=$user->type;
 
 
  <div class="col-xl-10 col-md-10 mb-10"   style="margin-bottom:25px" >
-	
+	<h2>Avantages de l'abonnement Blablate:</h2>
+	<ul>
+		<li>Accès illimité sur le site</li>
+		<li>Création de salons</li>
+		<li>Envoi des emails aux membres</li>
+		<li>Envoi des images</li>
+		<li>Utilisation des Emojis</li>
+	</ul>
 <style>
 #card-element{width:100%;margin-bottom:20px;}
 </style>
 <?php 		 $user = auth()->user();
 ?>
-<form action="{{ url('charge') }}" method="post" id="payment-form">
+<form action="{{ url('charge') }}" method="post" id="payment-form" style="">
     <div class=" " style="width:60%">
 	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/stripe.png') }}"    />
         <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
@@ -72,13 +81,13 @@ $type=$user->type;
     </div>
 	<?php if($abonne)
 	{ ?>
-    <button class="btn btn-lg btn-success">Prolonger mon abonnement</button>
+    <button class="btn btn-lg btn-success">Prolonger mon abonnement (8.90 €)</button>
 		
 	<?php
 	}else
 	{
 		?>
-    <button class="btn btn-lg btn-success">S'abonner</button>
+    <button class="btn btn-lg btn-success">S'abonner (8.90 €)</button>
 		
 	<?php } ?>
     {{ csrf_field() }}

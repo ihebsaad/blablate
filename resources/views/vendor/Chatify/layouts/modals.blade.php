@@ -78,7 +78,7 @@
   </div>
   
   
- {{-- ----------------------   Modal ---------------------- --}}
+ {{-- ----------------------  Emojis Modal ---------------------- --}}
   <div class="app-modal" data-name="emojis">
       <div class="app-modal-container">
           <div class="app-modal-card" data-name="emojis" data-modal='0'>
@@ -104,3 +104,70 @@
   </div>
   
     
+	
+ {{-- ----------------------  Salons Modal ---------------------- --}}
+  <div class="app-modal" data-name="salons">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="salons" data-modal='0'>
+                  <div class="app-modal-header">créer un salon</div>
+                  <div class="app-modal-body">	
+	
+    <form method="post" action="{{ route('salons.store') }}"  enctype="multipart/form-data">
+			  {{ csrf_field() }}
+   				 
+       <div class="form-group">
+			<div class="row">
+			  <div class="col-lg-6">
+                <label for="image">Image :</label>
+                    <input id="image" type="file" class="form-control" name="image"  accept="image/*"/>
+ 			 </div>
+			 <div class="col-lg-6">
+                   
+             </div>
+          </div>
+        </div> 
+		
+           <div class="form-group">
+			<div class="row">
+			  <div class="col-lg-6">
+                <label for="name">Nom *:</label>
+                <input id="name"   type="text" class="form-control" name="name"  value="" required />
+ 			 </div>
+			 <div class="col-lg-6">
+                   
+             </div>
+          </div>
+        </div> 
+		
+	     <div class="form-group">
+			<div class="row">
+			<div class="col-lg-6">	
+			<label for="description">Description:</label>
+				<textarea class="form-control" name="description" id="description"></textarea>
+			 </div>
+			 <div class="col-lg-6">
+           	 </div>
+          	 </div>
+          </div>  
+				 
+        <input type="hidden"name="type" value="vip"/>
+
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-6">
+				<button  type="submit"  class="btn btn-primary">Créer Salon</button>
+			</div>
+			<div class="col-lg-6">
+			</div>
+			</div>
+			</div>
+			
+			</form>	
+
+                  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel salons-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>			

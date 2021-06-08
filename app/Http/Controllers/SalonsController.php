@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Salon;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class SalonsController extends Controller
 {
@@ -45,7 +46,8 @@ class SalonsController extends Controller
 	
     public function store(Request $request)
     {
- 
+	  	  $par=Auth::user()->username;
+
 		 $name='';
 		if($request->file('image')!=null)
 		{$image=$request->file('image');
@@ -60,11 +62,14 @@ class SalonsController extends Controller
              'avatar' =>  $name ,
              'name' =>trim( $request->get('name')),
              'description' => trim($request->get('description')),
-             'type' => trim($request->get('type')) 
+             'type' => trim($request->get('type')) ,
+             'par' => $par 
         ]);
 
         $salon->save();
-        return redirect('/salons')->with('success', ' ajouté avec succès');
+       // return redirect('/salons')->with('success', ' ajouté avec succès');
+	   	 return back()->with('success', ' ajouté avec succès');
+
 
     }
 	

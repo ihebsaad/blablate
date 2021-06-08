@@ -1,11 +1,30 @@
 @include('Chatify::layouts.headLinks')
 <div class="messenger" >
     {{-- ----------------------Users/Groups lists side---------------------- --}}
+<?php  if (Auth::check()) {
+
+$user = auth()->user();
+ $iduser=$user->id;
+$type=$user->type;
+$statut=$user->statut;
+
+$expire=Auth::user()->expire;
+$now=date('Y-m-d- H:i');
+if($expire > $now ){
+	$abonne=true;
+}else{
+	$abonne=false;
+}
+
+} 
+
+
+?>
     <div class="messenger-listView">
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES - <?php echo Auth::user()->username ;?></span> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle"> <?php echo Auth::user()->username ;?></span><?php if($statut==2){echo '<span style="margin-left:30px" class="btn btn-danger">Bloqué</span>';}  if($abonne==2){echo '<span style="margin-left:30px" class="btn btn-success">Abonné</span>';}else{echo '<span style="margin-left:30px" class="btn btn-danger">Non Abonné</span>';} ?> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#"><i class="fas fa-cog settings-btn"></i></a>
