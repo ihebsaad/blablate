@@ -32,7 +32,7 @@ if($expire > $now ){
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Recherche" />
+            <input type="text" class="messenger-search" placeholder="Recherche par pseudo ou ville" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
                 <a id="personnes" href="#" @if($route == 'user') class="active-tab" @endif data-view="users">

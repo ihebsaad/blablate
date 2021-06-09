@@ -18,6 +18,7 @@
           <!--  <th>Nom</th>-->
             <th>Sexe</th>
             <th>Age</th>
+            <th>Ville</th>
             <th>Inscription</th>
             <th>Type</th>
             <th>Abonnement</th>
@@ -34,6 +35,7 @@
                    <!--  <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->name }}</a></td>-->
                      <td>{{$user->sexe}} </td>
                      <td>{{$user->age}} </td>
+                     <td>{{$user->ville}} </td>
                      <td><?php echo date('d/m/Y H:i', strtotime($user->created_at)) ;?> </td>
                      <td><?php  $type= $user->type; if($type=='admin'){ echo 'Admin';}else{echo 'inscrit';} ?>  </td>
 					 

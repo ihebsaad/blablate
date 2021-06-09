@@ -338,6 +338,8 @@ function IDinfo(id, type) {
                 $('.messenger-infoView .info-name').html(data.fetch.username+' <small>('+data.fetch.age+' ans)</small>');
                 $('.messenger-infoView .ville').html(data.fetch.ville);
                 $('.messenger-infoView .bio').html(data.fetch.bio);
+                $('#send-email').css('display','block');
+                $('#user-email').val( $('#iduser').val()  ) ;
                 $('.messenger-infoView .info-name').css('color',color);
                 $('.m-header-messaging .user-name').html(data.fetch.username);
                // $('.m-header-messaging .user-name').css('color',color);
@@ -391,6 +393,8 @@ function SalonIDinfo(id, type) {
                  $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
 				  $('.messenger-infoView .ville').html('');
                 $('.messenger-infoView .bio').html('');
+				 $('#send-email').css('display','none');
+				 $('#user-email').val(0);
 
                 // Show shared and actions
                /// $('.messenger-infoView-btns .delete-conversation').show();
@@ -1416,6 +1420,22 @@ $(document).ready(function () {
     });	
 
 	
+  $('.email-btn').on('click', function () {
+        app_modal({
+            name: 'email',
+        });
+    });
+	
+    $('.email-close').on('click', function () {
+        app_modal({
+            name: 'email',
+			show: false,
+
+        });
+    });	
+	
+	
+	
     $('.emoji').on('click', function () {
 	var emojis =  $(this).html();
 	$('.m-send').val($('.m-send').val()+' '+emojis );
@@ -1526,6 +1546,7 @@ $(document).ready(function () {
 	  
 		 loadusers(salon);
 		 cssMediaQueries();
+		 $('#send-email').css('display','none');
              }
         });
         // } else {
@@ -1553,6 +1574,7 @@ $('#salons').click(function(){
                 $('.messenger-infoView-btns .delete-conversation').hide();
                 $('.messenger-infoView-shared').hide();
 				$('.add-to-favorite').hide();
+				$('#send-email').css('display','none');
              }
         });
         // } else {

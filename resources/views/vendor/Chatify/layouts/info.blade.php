@@ -18,7 +18,7 @@
     list-style: none;
 }
 </style>
-
+<center><button id='send-email'   class="email-btn btn btn-info" style="color:white"><i class="fa fa-envelope"></i>  Envoyer un email</button></center>
 <div class="messenger-infoView-btns">
     {{-- <a href="#" class="default"><i class="fas fa-camera"></i>par défault</a> --}}
     <a href="#" class="danger delete-conversation"><i class="fas fa-trash-alt"></i> Supprimer la conversation</a>

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
  use Swift_Mailer;
  use Mail;
- 
+ use App\User;
+use Illuminate\Support\Facades\Auth;
+
  
 class HomeController extends Controller
 {
@@ -39,6 +41,30 @@ class HomeController extends Controller
     {
         return view('rgbd');
     }	
+	
+	
+	
+		public function sendemail(Request $request)
+	{
+	  $userid= $request->get('user-email');
+ 	  $content= $request->get('content');
+	  
+	  	$id=Auth::user()->id;
+        $emetteur = User::find($id);
+		
+        $destinataire = User::find($userid);
+
+		$message='';
+		$message.='<br>Message de '.$emetteur->username.' sur le site Blablate.com<br><br>';
+ 		$message.='<b>Message:</b> <br>'.$content.'<br><br>';
+ 		$message.='<a href="https://blablate.com/">Blablate.com</a>';
+ 		
+		$this->sendMail($destinataire->email,'Message de '.$emetteur->username.' sur Blablate',$message);
+		$this->sendMail('ihebsaad@gmail.com','Message de '.$emetteur->username.' sur Blablate',$message);
+  		 
+		return redirect('/chat')->with('success', ' Message envoyé avec succès');
+
+	}
 	
 	public function sendmessage(Request $request)
 	{

@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::get('/rgbd', 'HomeController@rgbd')->name('rgbd');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::post('/sendmessage', 'HomeController@sendmessage')->name('sendmessage');
+Route::post('/sendemail', 'HomeController@sendemail')->name('sendemail');
 
 
 Auth::routes(['verify' => true]);

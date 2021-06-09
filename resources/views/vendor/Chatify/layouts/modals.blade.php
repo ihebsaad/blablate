@@ -109,44 +109,42 @@
   <div class="app-modal" data-name="salons">
       <div class="app-modal-container">
           <div class="app-modal-card" data-name="salons" data-modal='0'>
-                  <div class="app-modal-header">créer un salon</div>
+                  <div class="app-modal-header"><b>Créer un salon</b></div>
                   <div class="app-modal-body">	
 	
     <form method="post" action="{{ route('salons.store') }}"  enctype="multipart/form-data">
 			  {{ csrf_field() }}
    				 
-       <div class="form-group">
+       <div class="form-group" style="margin-top:20px">
 			<div class="row">
-			  <div class="col-lg-6">
+			  <div class="col-lg-12">
                 <label for="image">Image :</label>
                     <input id="image" type="file" class="form-control" name="image"  accept="image/*"/>
  			 </div>
-			 <div class="col-lg-6">
-                   
-             </div>
+			
+			
           </div>
         </div> 
 		
            <div class="form-group">
 			<div class="row">
-			  <div class="col-lg-6">
+			  <div class="col-lg-12">
                 <label for="name">Nom *:</label>
                 <input id="name"   type="text" class="form-control" name="name"  value="" required />
  			 </div>
-			 <div class="col-lg-6">
-                   
-             </div>
+			
+			
           </div>
         </div> 
 		
 	     <div class="form-group">
 			<div class="row">
-			<div class="col-lg-6">	
+			<div class="col-lg-12">	
 			<label for="description">Description:</label>
 				<textarea class="form-control" name="description" id="description"></textarea>
 			 </div>
-			 <div class="col-lg-6">
-           	 </div>
+			
+			
           	 </div>
           </div>  
 				 
@@ -154,11 +152,10 @@
 
 		   <div class="form-group">
 			<div class="row">
-			<div class="col-lg-6">
+			<div class="col-lg-12">
 				<button  type="submit"  class="btn btn-primary">Créer Salon</button>
 			</div>
-			<div class="col-lg-6">
-			</div>
+			 
 			</div>
 			</div>
 			
@@ -171,3 +168,44 @@
            </div>
       </div>
   </div>			
+  
+  
+   {{-- ----------------------  Send Message Modal ---------------------- --}}
+  <div class="app-modal" data-name="email">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="email" data-modal='0'>
+                  <div class="app-modal-header"><B>Envoyer un email</B></div>
+                  <div class="app-modal-body">
+         <form  method="post" action="{{ route('sendemail') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		 <input type="hidden" id="user-email" name="user-email" > 
+		 
+	 	   <div class="form-group" style="margin-top:20px">
+			<div class="row">
+			<div class="col-lg-12">	
+			<label for="content">Message:</label>
+				<textarea class="form-control" name="content" id="content"></textarea>
+			 </div>
+		 
+          	 </div>
+          </div>  
+		  
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="submit"  class="btn btn-primary">Envoyer</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>		
+			
+				  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel email-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>	 
