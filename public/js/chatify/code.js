@@ -343,7 +343,7 @@ function IDinfo(id, type) {
 					$('.abonne').html('');
 				}
                  $('#send-email').css('display','block');
-                $('#user-email').val( $('#iduser').val()  ) ;
+                $('#user-email').val( messenger.split('_')[1] ) ;
                 $('.messenger-infoView .info-name').css('color',color);
                 $('.m-header-messaging .user-name').html(data.fetch.username);
                // $('.m-header-messaging .user-name').css('color',color);
