@@ -78,15 +78,26 @@ class MessagesController extends Controller
         // Favorite
         $favorite = Chatify::inFavorite($request['id']);
 
+		$abonne=false;
         // User data
         if ($request['type'] == 'user') {
             $fetch = User::where('id', $request['id'])->first();
+			
+			$expire=$fetch->expire;
+			$now=date('Y-m-d- H:i');
+			if($expire > $now ){
+			$abonne=true;
+			} 
+			
         }
+		
+
 
         // send the response
         return Response::json([
             'favorite' => $favorite,
             'fetch' => $fetch,
+            'abonne' => $abonne,
             'user_avatar' => asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
         ]);
     }

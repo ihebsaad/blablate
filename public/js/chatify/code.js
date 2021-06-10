@@ -337,8 +337,12 @@ function IDinfo(id, type) {
 				if(sexe=='masculin'){color='#4167d5';}else{color='#ec3aa5';}
                 $('.messenger-infoView .info-name').html(data.fetch.username+' <small>('+data.fetch.age+' ans)</small>');
                 $('.messenger-infoView .ville').html(data.fetch.ville);
-                $('.messenger-infoView .bio').html(data.fetch.bio);
-                $('#send-email').css('display','block');
+                 if(data.abonne==true){
+					$('.abonne').html('<i class="fas fa-crown"></i>');
+				}else{
+					$('.abonne').html('');
+				}
+                 $('#send-email').css('display','block');
                 $('#user-email').val( $('#iduser').val()  ) ;
                 $('.messenger-infoView .info-name').css('color',color);
                 $('.m-header-messaging .user-name').html(data.fetch.username);
@@ -392,6 +396,7 @@ function SalonIDinfo(id, type) {
                  $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
                  $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
 				  $('.messenger-infoView .ville').html('');
+				  $('.abonne').html('');
                 $('.messenger-infoView .bio').html('');
 				 $('#send-email').css('display','none');
 				 $('#user-email').val(0);

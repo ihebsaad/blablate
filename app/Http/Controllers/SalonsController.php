@@ -154,13 +154,23 @@ class SalonsController extends Controller
 	  $id = $request->get('salon');
 	  $users = User::where('salon',$id)->where('active_status',1)->get();
 
-	  $data='';
+	  $data='';$now=date('Y-m-d- H:i');
 	  $data.='<ul class="list-users">';
 	  foreach($users as $user){
+		  
 		if($user->sexe=='masculin'){$color='#4167d5';}else{$color='#ec3aa5';}
-		$data.='<li><span style="color:'.$color.'">'.$user->username.' ('.$user->age.')</span></li>';
- 	  }
-	  $data.='</ul>';
+ 		 
+		 $expire=$user->expire;
+			
+			if($expire > $now )
+			{
+			 $data.='<li><span style="color:#f9b12b;margin:15px 15px 15px 15px;" ><i class="fas fa-crown"></i></span><span style="color:'.$color.'">'.$user->username.' ('.$user->age.')</span></li>';
+			}else
+			{
+			$data.='<li><span style="color:'.$color.'">'.$user->username.' ('.$user->age.')</span></li>';
+			}
+		}
+		$data.='</ul>';
 	  return $data;
 	}
 	
