@@ -21,14 +21,14 @@ $now=date('Y-m-d- H:i');
 
 	<?php  if($expire > $now ){
 	?>
-	 <h2 style="float:right" class="btn btn-success">Abonné jusqu'à <i><?php  echo date('d/m/Y H:i', strtotime( $user->expire ));?></i></h2> 
+	 <h2 style="float:right" readonly class="btn btn-success">Abonné jusqu'à <i><?php  echo date('d/m/Y H:i', strtotime( $user->expire ));?></i></h2> 
 	<?php
 	$abonne=true;
 	}
 	else
 	{
 	?>	
-	 <h2 style="float:right" class="btn btn-danger">Non Abonné</h2> 
+	 <h2 style="float:right" readonly class="btn btn-danger">Non Abonné</h2> 
 	
 	<?php
 	$abonne=false;
@@ -63,7 +63,7 @@ $now=date('Y-m-d- H:i');
 <?php 		 $user = auth()->user();
 ?>
 <form action="{{ url('charge') }}" method="post" id="payment-form" style="">
-    <div class=" " style="width:60%">
+    <div class="formpayment " style="">
 	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/stripe.png') }}"    />
         <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
         <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
@@ -267,7 +267,28 @@ function stripeTokenHandler(token) {
   <?php } ?>							
 					
 					
-					
+<style>	
+@media (min-width: 1281px) {
+  
+.formpayment
+{width:60%;}
+  
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+.formpayment
+{width:60%;}  
+}
+
+
+				
+</style>					
 					
                 </div>
             </div>
