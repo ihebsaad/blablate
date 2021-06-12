@@ -61,6 +61,8 @@ $type=$user->type;
         </div>
     </div>
     @endif
+		<?php if($user->type=='admin' && $from_id== $user->id){ ?><a   style="float:right;color:black;margin-right:5px;margin-bottom:5px;" href="{{action('UsersController@deletemsg', $id)}}"><i class="fa fa-trash"></i></a><?php } ?>
+
 @endif
 
   
