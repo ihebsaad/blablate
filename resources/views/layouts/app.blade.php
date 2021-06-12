@@ -25,12 +25,10 @@
     <meta name="app_url" content="<?php echo env('APP_URL'); ?>">
 
     <title>Blablate, site de chat français</title>
-	
-	    <script src="{{ asset('/public/js/app.js') }}" defer></script> 
-
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
     <!-- Scripts -->
+    <script src="{{ asset('/public/js/app.js') }}" ></script> 
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
