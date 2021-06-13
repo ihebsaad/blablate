@@ -51,9 +51,9 @@
                         <a   href="{{action('SalonsController@view', $salon['id'])}}"  class="btn btn-md btn-success"  role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Valider" >
                             <span class="far fa-eye" ></span> Voir
                         </a>                  
- 			<?php	if($salon->type !='public'){ ?>	<a  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('SalonsController@destroy', $salon['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
+ 			<?php	/*if($salon->type !='public'){*/ ?>	<a  onclick="return confirm('Êtes-vous sûrs ?')"  href="{{action('SalonsController@destroy', $salon['id'])}}" class="btn btn-danger btn-sm btn-responsive " role="button" data-toggle="tooltip" data-tooltip="tooltip" data-placement="bottom" data-original-title="Supprimer" >
                             <span class="fa fa-fw fa-trash-alt"></span> Supprimer
-                        </a>  <?php } ?>               
+                        </a>  <?php /* } */ ?>               
                   </td>
                 </tr>
             @endforeach
