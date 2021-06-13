@@ -133,17 +133,7 @@ if($expire > $now ){
     </div>
 </div>
 
-   <?php/// if(isset($salonid)){  
- /// echo 'LESALON :'.$salonid.'<br><br><br>'; 
- ?>
-	<script> 
-    //  $('#p [data-id="salon_27"]').trigger('click');
- 	///  salonfetchMessages(<?php echo intval($salonid);?>, 'salon');
-	 
-	</script>
-	<?php/// }else{
-	///	echo 'WTF';
-	///}  ?>
+
  
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
