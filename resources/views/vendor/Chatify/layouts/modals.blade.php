@@ -112,14 +112,14 @@
                   <div class="app-modal-header"><b>Créer un salon</b></div>
                   <div class="app-modal-body">	
 	
-    <form method="post" action="{{ route('salons.store') }}"  enctype="multipart/form-data">
+    <form method="post"    enctype="multipart/form-data">
 			  {{ csrf_field() }}
    				 
        <div class="form-group" style="margin-top:20px">
 			<div class="row">
 			  <div class="col-lg-12">
                 <label for="image">Image :</label>
-                    <input id="image" type="file" class="form-control" name="image"  accept="image/*"/>
+                    <input id="salon_img" type="file" class="form-control" name="image"  accept="image/*"/>
  			 </div>
 			
 			
@@ -130,7 +130,7 @@
 			<div class="row">
 			  <div class="col-lg-12">
                 <label for="name">Nom *:</label>
-                <input id="name"   type="text" class="form-control" name="name"  value="" required />
+                <input id="salon_nom"   type="text" class="form-control" name="name"  value="" required />
  			 </div>
 			
 			
@@ -141,19 +141,19 @@
 			<div class="row">
 			<div class="col-lg-12">	
 			<label for="description">Description:</label>
-				<textarea class="form-control" name="description" id="description"></textarea>
+				<textarea class="form-control" name="description" id="salon_desc"></textarea>
 			 </div>
 			
 			
           	 </div>
           </div>  
 				 
-        <input type="hidden"name="type" value="vip"/>
+        <input type="hidden"name="type" id="salon_type" value="vip"/>
 
 		   <div class="form-group">
 			<div class="row">
 			<div class="col-lg-12">
-				<button  type="submit"  class="btn btn-primary">Créer Salon</button>
+				<button  type="button"  onclick="addsalon()" class="btn btn-primary">Créer Salon</button>
 			</div>
 			 
 			</div>

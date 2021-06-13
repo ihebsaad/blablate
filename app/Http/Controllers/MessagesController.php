@@ -57,6 +57,7 @@ class MessagesController extends Controller
             ? 'user'
             : \Request::route()->getName();
 
+ 			
         // prepare id
         return view('Chatify::pages.app', [
             'id' => ($id == null) ? 0 : $route . '_' . $id,
@@ -67,6 +68,23 @@ class MessagesController extends Controller
     }
 
 
+	
+    public function chat($route,$salonid)
+    {
+     $id=0;
+	 set('salonid',$salonid);
+         // prepare id
+        return view('Chatify::pages.app', [
+            'id' => ($id == null) ? 0 : $route . '_' . $id,
+            'route' => $route,
+            'salonid' => $salonid,
+            'messengerColor' => Auth::user()->messenger_color,
+            'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
+        ]);
+    }	
+	
+	
+	
     /**
      * Fetch data by id for (user/group)
      *
@@ -108,12 +126,13 @@ class MessagesController extends Controller
     {
         // Favorite
       //  $favorite = Chatify::inFavorite($request['id']);
-		$fatch='';
+		$fetch='';
         // User data
         if ($request['type'] == 'salon') {
             $fetch =  DB::table('salons')->where('id', $request['id'])->first();
         }
 		$avatar='';
+		
 		if($fetch->avatar!=''){
 		$avatar=asset('/storage/app/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar);			
 		}else{

@@ -36,7 +36,7 @@ $type=$user->type;
     </div>
     @endif
     @endif
-	<?php if($user->type=='admin'){ ?><a   style="margin-left:5px;margin-bottom:5px;" href="{{action('UsersController@deletemsg', $id)}}"><i class="fa fa-trash"></i></a><?php } ?>
+	<?php if($user->type=='admin'){ ?><a onclick="deleting({{$id}})" class='delete-msg' data-id='{{$id}}'   style="margin-left:5px;margin-bottom:5px;" ><i class="fa fa-trash"></i></a><?php } ?>
 @endif
 
 {{-- -------------------- Sender card (owner) -------------------- --}}
@@ -61,8 +61,27 @@ $type=$user->type;
         </div>
     </div>
     @endif
-		<?php if($user->type=='admin' && $from_id== $user->id){ ?><a   style="float:right;color:black;margin-right:5px;margin-bottom:5px;" href="{{action('UsersController@deletemsg', $id)}}"><i class="fa fa-trash"></i></a><?php } ?>
+		<?php if($user->type=='admin' && $from_id== $user->id){ ?><a onclick="deleting({{$id}})" class='delete-msg' id="msg-{{$id}}" data-id='{{$id}}' style="float:right;color:red;margin-right:5px;margin-bottom:5px;"  ><i class="fa fa-trash"></i></a><?php } ?>
 
 @endif
 
+  <script>
   
+  /* 	   
+ function deleting(id)
+ { 
+   var _token = $('meta[name="csrf-token"]').attr('content');
+   var url = $('meta[name=url]').attr('content');
+
+          $.ajax({
+            url:  "{{route('deletemessage')}}",
+            method: "POST",
+            data: {id: id , _token: access_token},
+            success: function (data) {
+			  alert('success');
+             }
+        })
+		
+   }  
+   */
+  </script>

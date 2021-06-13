@@ -14,9 +14,9 @@ if($expire > $now ){
 	$abonne=false;
 
 }
-  
+
  if($abonne){ ?>
-   <center><span style="margin:10px 10px 10px 10px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon</span></center>
+   <center><span style="margin:10px 10px 10px 10px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon  </span></center>
 
  <?php } 
  
@@ -35,7 +35,7 @@ if($expire > $now ){
 ?>
 
 
-        <tr data-action="<?php echo $salon->id;?>" class="salon-list-item salons" style="width:100%">
+        <tr data-action="<?php echo $salon->id;?>" class="salon-list-item salons  <?php if(isset($salonid)){ if ($salonid==$salon->id){ echo 'm-list-active';  } }?>" style="width:100%">
             {{-- Avatar side --}}
             <td style="padding:5px !important;">
             <div class="avatar av-m" style="background-color: <?php echo $bg;?>; text-align: center;">
@@ -44,7 +44,7 @@ if($expire > $now ){
             </td>
             {{-- center side --}}
             <td>
-                <p data-id="salon_<?php echo $salon->id;?>"><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
+                <p    data-id="salon_<?php echo $salon->id;?>"><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
              <!--   <span>messages enregistrés</span>-->
             </td>
         </tr>
@@ -56,7 +56,9 @@ if($expire > $now ){
 
 ?>
 
-     
+
+	
+	
     </table>
 @endif
 <input id="iduser" type="hidden" value="<?php echo Auth::user()->id ;?>">

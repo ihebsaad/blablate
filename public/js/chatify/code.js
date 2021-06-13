@@ -1149,6 +1149,65 @@ function setActiveStatus(status, user_id) {
 
 
 
+
+
+  	   
+ function deleting(id)
+ { 
+   var _token = $('meta[name="csrf-token"]').attr('content');
+   var url = $('meta[name=app_url]').attr('content');
+  // var url = 'http://localhost/blablate/';
+
+          $.ajax({
+            url: url +"/deletemessage",
+            method: "POST",
+            data: {id: id , _token: access_token},
+            success: function (data) {
+				
+	if(messenger.split('_')[1]!='salon' )
+	{	
+ 		// reloadMessages(messenger.split('_')[1],'user',messenger.split('_')[1]);
+ 		 fetchMessages(messenger.split('_')[1],messenger.split('_')[0])
+ 
+	}
+	else
+ 	{
+  		salonfetchMessages(messenger.split('_')[1], 'salon');	
+	}
+
+			}
+        });
+		
+   }  
+   
+   
+   
+   
+ function addsalon( )
+ { 
+   var _token = $('meta[name="csrf-token"]').attr('content');
+  // var url = $('meta[name=app_url]').attr('content');
+    var url = 'http://localhost/blablate/';
+   var name = $('#salon_nom').val();
+   var description = $('#salon_desc').val();
+   var image = $('#salon_img').val();
+   var type = $('#salon_type').val();
+
+          $.ajax({
+            url: url +"/salons/store",
+            method: "POST",
+            data: {name: name,description: description,image: image, type: type,ajax:1, _token: access_token},
+            success: function (data) {
+			//alert(data);
+			 window.location.href = data;
+			 
+			}
+        });
+		
+   }  
+   
+   
+   
 /**
  *-------------------------------------------------------------
  * On DOM ready
@@ -1610,6 +1669,7 @@ $('#salons').click(function(){
    });
 
    
+   	 
    
    
 });

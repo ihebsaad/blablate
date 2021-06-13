@@ -125,12 +125,14 @@ class UsersController extends Controller
         return view('users.profile',['id'=>$user->id,'user'=>$user]);
  	}
 	 
-   /* public function deletemsg(Request $request)
+     public function deletemessage(Request $request)
     {    
 	$id= $request->get('id'); 				
 	 DB::table('messages')->where('id', $id)->delete();
 	}
-	*/
+	
+	
+	
     public  function deletemsg($id)
     {
 		// suppresion des mesages

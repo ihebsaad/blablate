@@ -27,17 +27,17 @@ if($expire > $now ){
                 <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle"> <?php echo Auth::user()->username ;?></span><?php if($statut==2){echo '<span style="margin-left:30px" class="btn btn-danger">Bloqué</span>';}  if($abonne==2){echo '<span style="margin-left:30px" class="btn btn-success">Abonné</span>';}else{echo '<span style="margin-left:30px" class="btn btn-danger">Non Abonné</span>';} ?> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>
-                    <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
+                    <a href="javascript:void(0)"><i class="fas fa-cog settings-btn"></i></a>
+                    <a href="javascript:void(0)" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>
             {{-- Search input --}}
             <input type="text" class="messenger-search" placeholder="Recherche par pseudo ou ville" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
-                <a id="personnes" href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
+                <a id="personnes" href="javascript:void(0)" @if($route == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> Personnes</a>
-                <a id="salons" href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
+                <a id="salons" href="javascript:void(0)" @if($route == 'group') class="active-tab" @endif data-view="groups">
                     <span class="fas fa-users" ></span> Salons</a>
             </div>
         </div>
@@ -83,16 +83,16 @@ if($expire > $now ){
             <nav>
                 {{-- header back button, avatar and user name --}}
                 <div style="display: inline-flex;">
-                    <a href="#" class="show-listView"><i class="fas fa-arrow-left"></i></a>
+                    <a href="javascript:void(0)" class="show-listView"><i class="fas fa-arrow-left"></i></a>
                     <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
                     </div>
-                    <a href="#" class="user-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</a>
+                    <a href="javascript:void(0)" class="user-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</a>
                 </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
+                    <a href="javascript:void(0)" class="add-to-favorite"><i class="fas fa-star"></i></a>
                     <a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
-                    <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    <a href="javascript:void(0)" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
                 </nav>
             </nav>
         </div>
@@ -127,14 +127,18 @@ if($expire > $now ){
     <div class="messenger-infoView app-scroll">
         {{-- nav actions --}}
         <nav>
-            <a href="#"><i class="fas fa-times"></i></a>
+            <a href="javascript:void(0)"><i class="fas fa-times"></i></a>
         </nav>
         {!! view('Chatify::layouts.info')->render() !!}
     </div>
 </div>
-<script>
 
-   
-</script>
+ 
+	<script> 
+    //  $('#p[data-id="salon_27"]').trigger('click');
+ 	 
+	</script>
+ 
+ 
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')

@@ -43,6 +43,7 @@ Route::get('/users/debloquer/{id}', 'UsersController@debloquer');
 Route::get('/profile', 'UsersController@profile')->name('profile');
 Route::post('/updateuser','UsersController@updateuser')->name('updateuser');
 Route::get('/users/deletemsg/{id}','UsersController@deletemsg')->name('deletemsg');
+Route::post('/deletemessage','UsersController@deletemessage')->name('deletemessage');
 
 
 
@@ -55,7 +56,11 @@ Route::get('/salons/create', 'SalonsController@create')->name('salons.create');
 Route::get('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/edit', 'SalonsController@edit')->name('salons.edit');
 Route::post('/salons/store/', 'SalonsController@store')->name('salons.store');
+ 
+ Route::get('/emails/envoimail/{id}/{type}/{prest}','EmailController@envoimail')->name('emails.envoimail');
 
+Route::get('/chat/{route}/{salonid}','MessagesController@chat');
+ 
 Route::get('/abonnements', 'PaymentController@abonnements')->name('abonnements');
 
 Route::get('/payment', 'PaymentController@index');

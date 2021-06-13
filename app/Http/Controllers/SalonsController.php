@@ -51,6 +51,8 @@ class SalonsController extends Controller
           $par= $user->username;
           $type= $user->type;
 		  
+		 $ajax= $request->get('ajax');
+		  
 		 $name='';
 		if($request->file('image')!=null)
 		{$image=$request->file('image');
@@ -69,11 +71,13 @@ class SalonsController extends Controller
              'par' => $par 
         ]);
 
+		
         $salon->save();
-		if($type=='admin'){
-			return redirect('/salons')->with('success', ' ajouté avec succès');
+		if($ajax==1){
+		//	return $salon->id;
+			return 'http://localhost/blablate/chat/group/'.$salon->id  ;
 		}else{
-			return redirect('/chat')->with('success', ' ajouté avec succès');
+			return redirect('/salons')->with('success', ' ajouté avec succès');
 		}
 		
        // return redirect('/salons')->with('success', ' ajouté avec succès');
