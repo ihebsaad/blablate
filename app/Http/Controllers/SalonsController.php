@@ -149,7 +149,8 @@ class SalonsController extends Controller
     {
         $Salon = Salon::find($id);
         $Salon->delete();	
-	
+		        return redirect('/salons')->with('success', '  Supprimé ');
+
 	}
 	
 	
