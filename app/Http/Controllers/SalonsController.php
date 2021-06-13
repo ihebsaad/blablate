@@ -75,7 +75,7 @@ class SalonsController extends Controller
         $salon->save();
 		if($ajax==1){
 		//	return $salon->id;
-			return 'http://localhost/blablate/chat/group/'.$salon->id  ;
+			return '/chat/group/'.$salon->id  ;
 		}else{
 			return redirect('/salons')->with('success', ' ajouté avec succès');
 		}

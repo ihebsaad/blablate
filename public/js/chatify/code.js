@@ -1199,7 +1199,7 @@ function setActiveStatus(status, user_id) {
             data: {name: name,description: description,image: image, type: type,ajax:1, _token: access_token},
             success: function (data) {
 			//alert(data);
-			 window.location.href = data;
+			 window.location.href = url +data;
 			 
 			}
         });
