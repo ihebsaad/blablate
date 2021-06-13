@@ -1200,6 +1200,7 @@ function setActiveStatus(status, user_id) {
             success: function (data) {
 			//alert(data);
 			 window.location.href = url +data;
+			 scrollBottom($('.salon-list'));
 			 
 			}
         });
