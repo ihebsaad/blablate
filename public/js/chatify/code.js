@@ -1186,8 +1186,8 @@ function setActiveStatus(status, user_id) {
  function addsalon( )
  { 
    var _token = $('meta[name="csrf-token"]').attr('content');
-  // var url = $('meta[name=app_url]').attr('content');
-    var url = 'http://localhost/blablate/';
+   var url = $('meta[name=app_url]').attr('content');
+  //  var url = 'http://localhost/blablate/';
    var name = $('#salon_nom').val();
    var description = $('#salon_desc').val();
    var image = $('#salon_img').val();
