@@ -1247,8 +1247,9 @@ if (index !== -1)
 		 // $('p').find('[data-id=salon_'+hash+']').trigger('click');
 		//  messenger='salon_'+hash;
 		//  $('.salon-list-item').find('p[data-id="salon_'+hash+'"]').trigger('click'); 
-		 $('#sender-button').prop("disabled",true); 
-		 scrollBottom($('.salon-list'));  
+		 //$('#sender-button').prop("disabled",true); 
+		 document.getElementById("sender-button").disabled = true;
+		 scrollBottom($('.messenger-listView'));  
  	} 
 }
 
