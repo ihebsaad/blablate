@@ -18,7 +18,7 @@ if($expire > $now ){
  <?php if($abonne){?>      <label><span class="fas fa-paperclip"></span><input disabled='disabled' type="file" class="upload-attachment" name="file" accept="image/*, .txt, .rar, .zip" /></label><?php } ?>
  <?php if($abonne){?>      <label class="emojis-btn"><span class="fas fa-smile"></span>  </label><?php } ?>
         <textarea readonly='readonly' name="message" class="m-send app-scroll" placeholder="Tapez un message.."></textarea>
-   <button disabled='disabled'><span class="fas fa-paper-plane"></span></button> 
+   <button id='sender-button' disabled='disabled'><span class="fas fa-paper-plane"></span></button> 
     </form>
 	<?php } ?>
 </div>
