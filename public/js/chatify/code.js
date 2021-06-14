@@ -1246,7 +1246,7 @@ if (index !== -1)
 		  SalonIDinfo(hash,'salon');
 		 // $('p').find('[data-id=salon_'+hash+']').trigger('click');
 		//  messenger='salon_'+hash;
-		  $('.salon-list-item').find('p[data-id="salon_'+hash'"]').trigger('click'); 
+		  $('.salon-list-item').find('p[data-id="salon_'+hash+'"]').trigger('click'); 
  	} 
 }
 
