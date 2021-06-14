@@ -1187,7 +1187,7 @@ function setActiveStatus(status, user_id) {
  { 
    var _token = $('meta[name="csrf-token"]').attr('content');
    var url = $('meta[name=app_url]').attr('content');
-  //  var url = 'http://localhost/blablate/';
+    // var url = 'http://localhost/blablate';
    var name = $('#salon_nom').val();
    var description = $('#salon_desc').val();
    var image = $('#salon_img').val();
@@ -1234,6 +1234,20 @@ $(document).ready(function () {
 
     // make message input autosize.
     autosize($('.m-send'));
+	
+	
+	var myurl = window.location.href;
+ var index = myurl.indexOf("group/");
+if (index !== -1)
+{
+    var hash = myurl.substring(index + 6);
+	console.log('HASH '+hash);
+     if(hash.length >0){
+		  SalonIDinfo(hash,'salon');
+		// $('p').find('[data-id=salon_'+hash+']').trigger('click');
+ 	} 
+}
+
 
     // check if pusher has access to the channel [Internet status]
     pusher.connection.bind('state_change', function (states) {
@@ -1243,8 +1257,10 @@ $(document).ready(function () {
         channel.bind('pusher:subscription_succeeded', function () {
             // On connection state change [Updating] and get [info & msgs]
 			var salon=parseInt($("#salon").val());
-           if(salon==0){ IDinfo(messenger.split('_')[1], messenger.split('_')[0]);}
-		   else{ SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);}
+        ////   if(salon==0){ IDinfo(messenger.split('_')[1], messenger.split('_')[0]);}
+		 ////  else{ 
+		   ////SalonIDinfo(messenger.split('_')[1], messenger.split('_')[0]);
+		  //// }
         });
     });
 

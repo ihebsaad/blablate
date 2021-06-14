@@ -72,7 +72,7 @@ class MessagesController extends Controller
     public function chat($route,$salonid)
     {
      $id=0;
-	 set('salonid',$salonid);
+	 
          // prepare id
         return view('Chatify::pages.app', [
             'id' => ($id == null) ? 0 : $route . '_' . $id,

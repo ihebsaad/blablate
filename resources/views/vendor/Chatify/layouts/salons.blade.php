@@ -62,6 +62,4 @@ if($expire > $now ){
     </table>
 @endif
 <input id="iduser" type="hidden" value="<?php echo Auth::user()->id ;?>">
-<script>
-
-</script>
+ 

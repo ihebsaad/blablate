@@ -133,7 +133,6 @@ if($expire > $now ){
     </div>
 </div>
 
-
  
 @include('Chatify::layouts.modals')
 @include('Chatify::layouts.footerLinks')
