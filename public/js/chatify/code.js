@@ -1244,8 +1244,9 @@ if (index !== -1)
 	console.log('HASH '+hash);
      if(hash.length >0){
 		  SalonIDinfo(hash,'salon');
-		  $('p').find('[data-id=salon_'+hash+']').trigger('click');
-		  messenger='salon_'+hash;
+		 // $('p').find('[data-id=salon_'+hash+']').trigger('click');
+		//  messenger='salon_'+hash;
+		  $('.salon-list-item').find('p[data-id="salon_'+hash'"]').trigger('click'); 
  	} 
 }
 
