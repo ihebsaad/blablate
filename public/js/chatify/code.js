@@ -1235,8 +1235,8 @@ $(document).ready(function () {
     // make message input autosize.
     autosize($('.m-send'));
 	
-	
-	var myurl = window.location.href;
+/*	
+ var myurl = window.location.href;
  var index = myurl.indexOf("group/");
 if (index !== -1)
 {
@@ -1244,15 +1244,12 @@ if (index !== -1)
 	console.log('HASH '+hash);
      if(hash.length >0){
 		  SalonIDinfo(hash,'salon');
-		 // $('p').find('[data-id=salon_'+hash+']').trigger('click');
-		//  messenger='salon_'+hash;
-		//  $('.salon-list-item').find('p[data-id="salon_'+hash+'"]').trigger('click'); 
-		 //$('#sender-button').prop("disabled",true); 
+  
 		 document.getElementById("sender-button").disabled = true;
 		 scrollBottom($('.messenger-listView'));  
  	} 
 }
-
+*/
 
     // check if pusher has access to the channel [Internet status]
     pusher.connection.bind('state_change', function (states) {
