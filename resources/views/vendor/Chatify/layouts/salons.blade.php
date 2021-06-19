@@ -2,18 +2,28 @@
 //use DB;
 use App\Http\Controllers\SalonsController;
 
-  $salons=DB::table('salons')->get();
-  
- 
-$statut=Auth::user()->statut;
+$user = auth()->user();
+ $iduser=$user->id;
+$type=$user->type;
+
+ $statut=Auth::user()->statut;
 $expire=Auth::user()->expire;
 $now=date('Y-m-d- H:i');
 if($expire > $now ){
 	$abonne=true;
 }else{
 	$abonne=false;
-
 }
+
+if( $abonne|| $type=='admin'){
+	 $salons=DB::table('salons')->orderBy('type')->get();
+}else{
+ $salons=DB::table('salons')->where('type','public')->get();	
+}
+ 
+  
+ 
+
 
  if($abonne){ ?>
    <center><span style="margin:10px 10px 10px 10px" class="btn btn-success salons-btn" ><i class="fa-lg fas fa-person-booth"></i>  créer un salon  </span></center>
