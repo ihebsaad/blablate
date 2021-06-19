@@ -83,4 +83,13 @@ class LoginController extends Controller
  
     } //end function
 
+	
+	
+	 public function refresh()
+    {
+         return captcha_img('math');
+    }
+	
+	
+	
 }

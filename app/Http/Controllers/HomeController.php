@@ -68,6 +68,14 @@ class HomeController extends Controller
 	
 	public function sendmessage(Request $request)
 	{
+		
+ $request->validate([
+    'email' => 'required',
+    'sujet' => 'required',
+    'contenu' => 'required',
+	'captcha'=>'required|captcha'
+]);
+
 	  $email= $request->get('email');
 	  $sujet= $request->get('sujet');
 	  $contenu= $request->get('contenu');

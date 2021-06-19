@@ -104,6 +104,42 @@
                             </div>
                         </div>
 
+						 <div class="form-group row">
+                            <label for="captcha" class="col-md-4 col-form-label text-md-right">Captcha</label>
+								 
+                            <div class="col-md-6">
+								 <div class="captcha">
+									<span>{!! captcha_img('math') !!}</span>
+									<button type="button" class="btn btn-success  btn-refresh">Actualiser</button>
+								</div>
+								
+                                <br><input id="captcha" type="text" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}" name="captcha" required placeholder="Enter the captcha" >
+
+                                @if ($errors->has('captcha'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('captcha') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+<script   src="https://code.jquery.com/jquery-3.5.1.js"  ></script>
+<script>
+$(function () {
+
+			$('.btn-refresh').click(function(){
+ 	var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{ route('refresh') }}",
+            method: "GET",
+            success: function (data) {
+ 			$('.captcha span').html(data);
+            }
+        });
+   });
+});
+	
+</script>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
