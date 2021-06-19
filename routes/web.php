@@ -25,6 +25,8 @@ Auth::routes(['verify' => true]);
 
 //Route::get('/chat', 'MessagesController@index')->name(config('chatify.path'))->middleware('verified');
 
+Route::get('/refresh', 'Auth\LoginController@refresh')->name('refresh');
+
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
  
