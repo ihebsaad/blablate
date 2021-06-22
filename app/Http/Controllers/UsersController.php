@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Signale;
 use DB;
 use Illuminate\Support\Facades\Auth;
 
@@ -184,6 +185,27 @@ class UsersController extends Controller
 
  
     }	
+	
+	
+    public function signaler(Request $request)
+	{
+		  $parid=Auth::user()->id;
+	  	 // $user=User::where('id',$parid)->first();
+      	  $userid= $request->get('user-signale');
+
+	  $signales=Signale::where('par',$parid)->where('user',$userid)->count();
+	  if( $signales==0){
+        $signale = new Signale([
+             'user' =>  $userid ,
+             'par' => $parid 
+        ]);
+      
+	  $signale->save();
+
+		}
+	}
+	
+	
 	
 	
 }

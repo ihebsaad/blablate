@@ -109,7 +109,7 @@
 
 <h2>DISCRÉTION ASSURÉE - VIE PRIVÉE RESPECTÉE</h2>
  
-<p>Blablate est un service de chat entièrement anonyme, il ne demande pas des infos privées (nom réel, adresse, famille, job ..) et garde les discussion privées en secret.</p>
+<p>Blablate est un service de chat entièrement anonyme, il ne demande pas des infos privées (identité, adresse, famille, job ..) et garde les discussion privées en secret.</p>
  
 <h2>Modération</h2>
 <p> Blablate a le droit de bloquer temporairement ou supprimer des utilisateurs selon leurs comportement ou les demandes des autres membres (violence,racisme..)

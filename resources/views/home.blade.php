@@ -52,10 +52,10 @@ $now=date('Y-m-d- H:i');
 	<h2>Avantages de l'abonnement Blablate:</h2>
 	<ul>
 		<li>Accès illimité sur le site</li>
-		<li>Création de salons privés</li>
+		<li>Création et accès aux salons privés</li>
 		<li>Envoi des emails aux membres</li>
 		<li>Envoi des images</li>
-		<li>Utilisation des Emojis</li>
+		<li>Utilisation des Emojis ...</li>
 	</ul>
 <style>
 #card-element{width:100%;margin-bottom:20px;}
