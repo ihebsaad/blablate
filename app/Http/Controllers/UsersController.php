@@ -191,7 +191,8 @@ class UsersController extends Controller
 	{
 		  $parid=Auth::user()->id;
 	  	 // $user=User::where('id',$parid)->first();
-      	  $userid= $request->get('user-signale');
+      	//  $userid= $request->get('user-signal');
+      	  $userid= $request->get('user');
 
 	  $signales=Signale::where('par',$parid)->where('user',$userid)->count();
 	  if( $signales==0){

@@ -209,3 +209,73 @@
            </div>
       </div>
   </div>	 
+  
+  
+  
+    
+   {{-- ----------------------  Gift Modal ---------------------- --}}
+  <div class="app-modal" data-name="gift">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="gift" data-modal='0'>
+                  <div class="app-modal-header"><B>Envoyer un Cadeau</B></div>
+                  <div class="app-modal-body">
+         <form  method="post" action="{{ route('sendemail') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		 <input type="hidden" id="user-gift" name="user-gift" > 
+		 
+ 
+		  
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="submit"  class="btn btn-primary">Envoyer</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>		
+			
+				  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel gift-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>	 
+  
+  
+  
+      
+   {{-- ----------------------  Signal Modal ---------------------- --}}
+  <div class="app-modal" data-name="signal">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="signal" data-modal='0'>
+                  <div class="app-modal-header"><B>Signaler</B></div>
+                  <div class="app-modal-body">
+         <form  method="post" action="{{ route('signaler') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		 <input type="hidden" id="user-signal" name="user-signal" > 
+		 
+			<br><br>Voulez vous vraiment Signaler cet utilisateur ?<br><br>
+		  
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="button"  id="signaluser" class="btn btn-primary">Signaler</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>		
+			
+				  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel signal-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>	 

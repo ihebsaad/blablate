@@ -28,10 +28,10 @@
             </thead>
             <tbody>
             @foreach($users as $user)
-
+				<?php $signals= \App\Signale::where('user',$user->id)->count(); ?>
                 <tr> 
                     <td> <img style="width:60px;" src="{{ asset('storage/app/'.config('chatify.user_avatar.folder').'/'.$user->avatar) }}"    /></td>
-                      <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->username }}</a></td>
+                      <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->username }} </a><br>(<?php echo $signals; ?>) signals</td>
                    <!--  <td><a href="{{action('UsersController@view', $user['id'])}}" >{{$user->name }}</a></td>-->
                      <td>{{$user->sexe}} </td>
                      <td>{{$user->age}} </td>

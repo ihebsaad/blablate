@@ -343,7 +343,11 @@ function IDinfo(id, type) {
 					$('.abonne').html('');
 				}
                  $('#send-email').css('display','block');
+                 $('#send-gift').css('display','block');
+                 $('#signaler').css('display','block');
                 $('#user-email').val( messenger.split('_')[1] ) ;
+                $('#user-gift').val( messenger.split('_')[1] ) ;
+                $('#user-signal').val( messenger.split('_')[1] ) ;
                 $('.messenger-infoView .info-name').css('color',color);
                 $('.m-header-messaging .user-name').html(data.fetch.username);
                // $('.m-header-messaging .user-name').css('color',color);
@@ -399,7 +403,11 @@ function SalonIDinfo(id, type) {
 				  $('.abonne').html('');
                 $('.messenger-infoView .bio').html('');
 				 $('#send-email').css('display','none');
+				 $('#send-gift').css('display','none');
+				 $('#siagnaler').css('display','none');
 				 $('#user-email').val(0);
+				 $('#user-gift').val(0);
+				 $('#user-signal').val(0);
 
                 // Show shared and actions
                /// $('.messenger-infoView-btns .delete-conversation').show();
@@ -1517,7 +1525,33 @@ if (index !== -1)
         });
     });	
 	
+  $('.gift-btn').on('click', function () {
+        app_modal({
+            name: 'gift',
+        });
+    });
 	
+    $('.gift-close').on('click', function () {
+        app_modal({
+            name: 'gift',
+			show: false,
+
+        });
+    });	
+
+  $('.signal-btn').on('click', function () {
+        app_modal({
+            name: 'signal',
+        });
+    });
+	
+    $('.signal-close').on('click', function () {
+        app_modal({
+            name: 'signal',
+			show: false,
+
+        });
+    });		
 	
     $('.emoji').on('click', function () {
 	var emojis =  $(this).html();
@@ -1630,6 +1664,8 @@ if (index !== -1)
 		 loadusers(salon);
 		 cssMediaQueries();
 		 $('#send-email').css('display','none');
+		 $('#send-gift').css('display','none');
+		 $('#signaler').css('display','none');
              }
         });
         // } else {
@@ -1658,6 +1694,8 @@ $('#salons').click(function(){
                 $('.messenger-infoView-shared').hide();
 				$('.add-to-favorite').hide();
 				$('#send-email').css('display','none');
+				$('#send-gift').css('display','none');
+				$('#signaler').css('display','none');
              }
         });
         // } else {
@@ -1688,7 +1726,25 @@ $('#salons').click(function(){
    });
 
    
-   	 
+  $('#signaluser').click(function(){
+   var user = $('#id_user').val();
+   var _token = $('meta[name="csrf-token"]').attr('content');
+    var url = $('meta[name=url]').attr('content');
+ 
+   var user = $('#user-signal').val();
+ 
+        $.ajax({
+             url: url +"/signaler",
+
+            method: "POST",
+            data: {user: user  , _token: access_token},
+            success: function (data) {
+			alert('action enregistrée, merci !')
+             }
+        });
+ 
+   });
+   
    
    
 });
