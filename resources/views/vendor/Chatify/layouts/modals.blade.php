@@ -88,7 +88,8 @@
 	 <style>
 .emoji{float:left; margin-left:10px;cursor:pointer;font-size:32px;}
 </style>
-<div class="emoji">😀</div> <div class="emoji">😁</div> <div class="emoji">😂</div> <div class="emoji">😃</div> <div class="emoji">😄</div> <div class="emoji">😅</div> <div class="emoji">😆</div> <div class="emoji">😇</div> <div class="emoji">😈</div> <div class="emoji">😉</div> <div class="emoji">😊</div> <div class="emoji">😋</div> <div class="emoji">😌</div> <div class="emoji">😍</div> <div class="emoji">😎</div> <div class="emoji">😏</div>
+<div class="emoji">😀</div> <div class="emoji">😁</div> <div class="emoji">😂</div> <div class="emoji">😃</div> <div class="emoji">😄</div> <div class="emoji">😅</div> <div class="emoji">😆</div> <div class="emoji">😇</div>
+<div class="emoji">😈</div> <div class="emoji">😉</div> <div class="emoji">😊</div> <div class="emoji">😋</div> <div class="emoji">😌</div> <div class="emoji">😍</div> <div class="emoji">😎</div> <div class="emoji">😏</div>
 <div class="emoji">😐</div> <div class="emoji">😑</div> <div class="emoji">😒</div> <div class="emoji">😓</div> <div class="emoji">😔</div> <div class="emoji">😕</div> <div class="emoji">😖</div> <div class="emoji">😗</div> 
 <div class="emoji">😘</div> <div class="emoji">😙</div> <div class="emoji">😚</div> <div class="emoji">😛</div> <div class="emoji">😜</div> <div class="emoji">😝</div> <div class="emoji">😞</div> <div class="emoji">😟</div>
 <div class="emoji">😠</div> <div class="emoji">😡</div> <div class="emoji">😢</div> <div class="emoji">😣</div> <div class="emoji">😤</div> <div class="emoji">😥</div> <div class="emoji">😦</div> <div class="emoji">😧</div>
@@ -103,7 +104,56 @@
       </div>
   </div>
   
-    
+ 
+
+ {{-- ----------------------  Emojis Modal ---------------------- --}}
+  <div class="app-modal" data-name="myemojis">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="myemojis" data-modal='0'>
+                  <div class="app-modal-header">Mon Emojis</div>
+                  <div class="app-modal-body">
+     
+	 <style>
+.myemoji{float:left; margin-left:10px;margin-bottom:5px;cursor:pointer;font-size:32px;}
+</style>
+ 
+<div class="myemoji">❤️</div> <div class="myemoji">💕</div> <div class="myemoji">💔</div> <div class="myemoji">💛</div> <div class="myemoji">💚</div> <div class="myemoji">💙</div> <div class="myemoji">💋</div> <div class="myemoji">👫</div><div class="clearfix"></div>
+<div class="myemoji">👸</div> <div class="myemoji">👪</div> <div class="myemoji">💑</div> <div class="myemoji">👱</div> <div class="myemoji">👦</div> <div class="myemoji">👧</div> <div class="myemoji">👰</div> <div class="myemoji">💍</div><div class="clearfix"></div>
+<div class="myemoji">👑</div> <div class="myemoji">👒</div> <div class="myemoji">💄</div> <div class="myemoji">💼</div> <div class="myemoji">🎓</div> <div class="myemoji">💩</div> <div class="myemoji">🎨</div> <div class="myemoji">🎬</div><div class="clearfix"></div>
+<div class="myemoji">👔</div> <div class="myemoji">🎮</div> <div class="myemoji">‍🎨</div> <div class="myemoji">🎾</div> <div class="myemoji">🎱</div> <div class="myemoji">⚽️</div> <div class="myemoji">🏀</div> <div class="myemoji">♟</div><div class="clearfix"></div>
+<div class="myemoji">👨</div> <div class="myemoji">‍💼</div> <div class="myemoji">🍹</div> <div class="myemoji">🍝</div> <div class="myemoji">🍰</div> <div class="myemoji">💐 </div> <div class="myemoji">🎣</div> <div class="myemoji">🎤</div><div class="clearfix"></div>
+<div class="myemoji">🎂</div> <div class="myemoji">👅</div> <div class="myemoji">👀</div> <div class="myemoji">🌼</div> <div class="myemoji">🍜</div> <div class="myemoji">🌷</div> <div class="myemoji">🎧</div> <div class="myemoji">🎭</div><div class="clearfix"></div>
+<div class="myemoji">😈</div> <div class="myemoji">👿</div> <div class="myemoji">👺</div> <div class="myemoji">🎃</div> <div class="myemoji">👹</div> <div class="myemoji">💀</div> <div class="myemoji">🌺</div> <div class="myemoji">🎲</div><div class="clearfix"></div>
+<div style="border:1px solid grey;width:40px;height:40px;" class="myemoji empty"></div>
+ <div class="myemoji">👻</div> <div class="myemoji">🌻</div> <div class="myemoji">👽</div> <div class="myemoji">🌾</div> <div class="myemoji">💐</div> <div class="myemoji">👾</div> <div class="myemoji">☠️</div><div class="clearfix"></div>
+
+
+<div class="clearfix"></div>
+       <form  method="post" action="{{ route('setprefixe') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		<input type="hidden" id="input-emojis" name="prefixe" />
+
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="submit"  class="btn btn-primary">Insérer</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>	
+		
+                  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel myemojis-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>
+
+  
 	
  {{-- ----------------------  Salons Modal ---------------------- --}}
   <div class="app-modal" data-name="salons">

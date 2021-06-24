@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('/rgbd', 'HomeController@rgbd')->name('rgbd');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/setprefixe', 'HomeController@setprefixe')->name('setprefixe');
 Route::post('/sendmessage', 'HomeController@sendmessage')->name('sendmessage');
 Route::post('/sendemail', 'HomeController@sendemail')->name('sendemail');
 
@@ -35,7 +36,7 @@ $this->get('logout', 'Auth\LoginController@logout')->name('logout');
 
  Route::get('/verify', 'UsersController@verify')->name('verify');
 
- Route::post('/signaler','UsersController@signaler')->name('signaler');
+ Route::post('/signaler','HomeController@signaler')->name('signaler');
 
  
 

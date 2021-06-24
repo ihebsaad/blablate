@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
  use Swift_Mailer;
  use Mail;
  use App\User;
+ use App\Signale;
 use Illuminate\Support\Facades\Auth;
 
  
@@ -66,6 +67,52 @@ class HomeController extends Controller
 
 	}
 	
+	
+		
+		public function setprefixe(Request $request)
+	{
+	  $prefixe= $request->get('prefixe');
+ 	  $id=Auth::user()->id;
+	  User::where('id', $id)->update(array('prefixe' => $prefixe));
+
+	  return redirect('/chat')->with('success', ' Enregistré avec succès');
+
+			
+	}
+	
+	
+	
+	    public function signaler(Request $request)
+	{
+		  $parid=Auth::user()->id;
+	  	  $user=User::where('id',$parid)->first();
+      	//  $userid= $request->get('user-signal');
+      	  $userid= $request->get('user');
+		  
+	  	  $user_sign=User::where('id',$userid)->first();
+
+	  $signales=Signale::where('par',$parid)->where('user',$userid)->count();
+	  if( $signales==0){
+        $signale = new Signale([
+             'user' =>  $userid ,
+             'par' => $parid 
+        ]);
+      
+	  $signale->save();
+ 
+	  // envoi de mail
+		$this->sendMail('ihebsaad@gmail.com','Utilisateur Signalé','  L\'utilisateur <b>'.$user_sign->username.'</b> est signalé par <b>'.$user->username.'</b>');
+		$this->sendMail('armand.proservices@gmail.com','Utilisateur Signalé','  L\'utilisateur <b>'.$user_sign->username.'</b> est signalé par <b>'.$user->username.'</b>');
+		$this->sendMail(trim($user_sign->email),'Utilisateur Signalé',' Vous êtes signalés par <b>'.$user->username.'</b>');
+
+		}
+	}
+	
+	
+	  
+	  
+	  
+	  
 	public function sendmessage(Request $request)
 	{
 		

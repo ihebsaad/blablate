@@ -187,24 +187,7 @@ class UsersController extends Controller
     }	
 	
 	
-    public function signaler(Request $request)
-	{
-		  $parid=Auth::user()->id;
-	  	 // $user=User::where('id',$parid)->first();
-      	//  $userid= $request->get('user-signal');
-      	  $userid= $request->get('user');
 
-	  $signales=Signale::where('par',$parid)->where('user',$userid)->count();
-	  if( $signales==0){
-        $signale = new Signale([
-             'user' =>  $userid ,
-             'par' => $parid 
-        ]);
-      
-	  $signale->save();
-
-		}
-	}
 	
 	
 	

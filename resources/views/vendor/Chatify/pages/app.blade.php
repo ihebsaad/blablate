@@ -24,11 +24,15 @@ if($expire > $now ){
         {{-- Header and search bar --}}
         <div class="m-header">
             <nav>
-                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle"> <?php echo Auth::user()->username ;?></span><?php if($statut==2){echo '<span style="margin-left:30px" class="btn btn-danger">Bloqué</span>';}  if($abonne==2){echo '<span style="margin-left:30px" class="btn btn-success">Abonné</span>';}else{echo '<span style="margin-left:30px" class="btn btn-danger">Non Abonné</span>';} ?> </a>
+                <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle"> <?php echo Auth::user()->prefixe .' '. Auth::user()->username ;?></span><?php if($statut==2){echo '<span style="margin-left:30px" class="btn btn-danger">Bloqué</span>';}  if($abonne==2){echo '<span style="margin-left:30px" class="btn btn-success">Abonné</span>';}else{echo '<span style="margin-left:30px" class="btn btn-danger">Non Abonné</span>';} ?> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
+<?php  if($abonne && $statut < 2){ ?>
+<a href="javascript:void(0)" class=" myemojis-btn"><i class="fas fa-smile"></i></a> 
+<?php   } ?>				
                     <a href="javascript:void(0)"><i class="fas fa-cog settings-btn"></i></a>
                     <a href="javascript:void(0)" class="listView-x"><i class="fas fa-times"></i></a>
+
                 </nav>
             </nav>
             {{-- Search input --}}

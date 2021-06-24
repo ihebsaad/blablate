@@ -1496,6 +1496,23 @@ if (index !== -1)
         });
     });	
 
+
+	    // Settings button action to show settings modal
+    $('.myemojis-btn').on('click', function () {
+        app_modal({
+            name: 'myemojis',
+        });
+    });
+	
+    $('.myemojis-close').on('click', function () {
+        app_modal({
+            name: 'myemojis',
+			show: false,
+
+        });
+    });
+	
+	
     $('.salons-btn').on('click', function () {
         app_modal({
             name: 'salons',
@@ -1553,15 +1570,13 @@ if (index !== -1)
         });
     });		
 	
-    $('.emoji').on('click', function () {
-	var emojis =  $(this).html();
-	$('.m-send').val($('.m-send').val()+' '+emojis );
-	       
-		   app_modal({
-            name: 'emojis',
-			show: false,
-
-        });
+    $('.myemoji').on('click', function () {
+	var myemojis =  $(this).html();
+	 $('.myemoji').css('border','none');
+	 $('.empty').css('border','1px solid grey');
+	 $(this).css('border','2px solid red');
+	$('#input-emojis').val(myemojis );
+ 
     });	
 
  
