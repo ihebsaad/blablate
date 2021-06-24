@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('rgbd','contact','sendmessage');
+        $this->middleware('auth')->except('rgbd','contact','sendmessage','signaler');
     }
 
     /**
