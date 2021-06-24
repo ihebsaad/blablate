@@ -1663,7 +1663,7 @@ if (index !== -1)
     $('.salons').click(function(){
      var  messeng  = $(this).find('p[data-id]').attr('data-id');
 	 var salon= messeng.split('_')[1];
-   var url = $('meta[name=url]').attr('content');
+   var url = $('meta[name=app_url]').attr('content');
         var user = $('#iduser').val();
          //if ( (val != '')) {
       //  var _token = $('meta[name="csrf-token"]').attr('content');
@@ -1694,7 +1694,7 @@ $('#salons').click(function(){
         var user = $('#id_user').val();
   
        // var _token = $('meta[name="csrf-token"]').attr('content');
-		   var url = $('meta[name=url]').attr('content');
+		   var url = $('meta[name=app_url]').attr('content');
 
         $.ajax({
             url: url +"/users/updating",
@@ -1724,7 +1724,7 @@ $('#salons').click(function(){
          //if ( (val != '')) {
      //   var _token = $('input[name="_token"]').val(); $('meta[name="csrf-token"]').attr('content')
                var _token = $('meta[name="csrf-token"]').attr('content');
-   var url = $('meta[name=url]').attr('content');
+   var url = $('meta[name=app_url]').attr('content');
 
         $.ajax({
             url: url +"/users/updating",
@@ -1744,7 +1744,7 @@ $('#salons').click(function(){
   $('#signaluser').click(function(){
    var user = $('#id_user').val();
    var _token = $('meta[name="csrf-token"]').attr('content');
-    var url = $('meta[name=url]').attr('content');
+    var url = $('meta[name=app_url]').attr('content');
  
    var user = $('#user-signal').val();
  
