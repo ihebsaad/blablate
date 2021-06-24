@@ -169,7 +169,7 @@ class SalonsController extends Controller
 			
 			if($expire > $now )
 			{
-			 $data.='<li><span style="color:#f9b12b;margin-right:5px;" ><i class="fas fa-crown"></i></span><span style="color:'.$color.'">'.$user->username.' ('.$user->age.')</span></li>';
+			 $data.='<li><span style="color:#f9b12b;margin-right:5px;" ><i class="fas fa-crown"></i></span><span style="color:'.$color.'">'.$user->prefixe.' '.$user->username.' ('.$user->age.')</span></li>';
 			}else
 			{
 			$data.='<li><span style="color:'.$color.'">'.$user->prefixe.' '.$user->username.' ('.$user->age.')</span></li>';
