@@ -1754,7 +1754,13 @@ $('#salons').click(function(){
             method: "POST",
             data: {user: user  , _token: access_token},
             success: function (data) {
-			alert('action enregistrée, merci !')
+			alert('action enregistrée, merci !');
+		 app_modal({
+            name: 'signal',
+			show: false,
+
+        });
+		
              }
         });
  
