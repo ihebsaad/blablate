@@ -98,9 +98,11 @@ class PaymentController extends Controller
 		 $datee =  $newdate;			
 		}else{
 			// abonnement terminé
-		 // $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $now);
-			$newdate = (new \DateTime())->format($format);	
-		 $newdate = $newdate->addDays(30);
+		    $format = "Y-m-d H:i:s";
+		 $today = (new \DateTime())->format($format);
+		 $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $today);
+
+ 		 $newdate = $newdate->addDays(30);
 		 $datee =  $newdate;
 		}
 		}	
@@ -129,12 +131,18 @@ class PaymentController extends Controller
 			 if($userGift!=null){
 	            $messageID = mt_rand(9, 999999999) + time();
 
+		/*  jouter created at or send email
 		DB::table('messages')->insert(
-    ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate'] 
-		);
+    ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'Abonnement blablate'] 
+		); */
+		
+		return redirect('/chat')->with('success', '  paiement effectué ');
+	 
+			 }else{
+			  return redirect('/home')->with('success', '  paiement effectué ');
+	 
 			 }
-		  return redirect('/home')->with('success', '  paiement effectué ');
-
+ 
             } else {
                 // payment failed: display message to customer
                 return $response->getMessage();
