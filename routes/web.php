@@ -37,6 +37,7 @@ $this->get('logout', 'Auth\LoginController@logout')->name('logout');
  Route::get('/verify', 'UsersController@verify')->name('verify');
 
  Route::post('/signaler','HomeController@signaler')->name('signaler');
+ Route::post('/bloqueruser','HomeController@bloqueruser')->name('bloqueruser');
 
  
 

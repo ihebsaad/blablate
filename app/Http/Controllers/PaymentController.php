@@ -61,11 +61,13 @@ class PaymentController extends Controller
 		$sender = auth()->user();
 			$senderid= $sender['id'];
 		$email=$sender['email'];
+		$cadeau='(Cadeau de '.$sender['username'].')';
  		 }else{
 		 $cuser = auth()->user();
 			$userid= $cuser['id'];
 			$user=User::find($userid);		
 		$email=	 $request->input('email');
+		$cadeau='';
 		 }
 
 
@@ -119,7 +121,7 @@ class PaymentController extends Controller
 		 // Email 
 		$message='Bonjour,<br>';
 		$message.='Nouvel abonnement sur le site<br>';
- 		$message.='<b>Client :</b>  '.$user->username.'<br>'; 
+ 		$message.='<b>Client :</b>  '.$user->username.' '.$cadeau.' <br>'; 
  		$message.='<b>Expiration :</b>  '.$datee.'<br>'; 
 		$message.='<b><a href="https://blablate.com/" > blablate.com </a></b>';	
 		
@@ -136,10 +138,10 @@ class PaymentController extends Controller
     ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate offert','created_at'=>date('Y-m-d H:i:s')] 
 		);  
 		
-		return redirect('/chat')->with('success', '  paiement effectué ');
+		return redirect('/chat')->with('success', '  Cadeau envoyé ! ');
 	 
 			 }else{
-			  return redirect('/home')->with('success', '  paiement effectué ');
+			  return redirect('/home')->with('success', '  Abonnement effectué !');
 	 
 			 }
  

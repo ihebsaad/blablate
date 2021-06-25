@@ -11,6 +11,7 @@ use App\Http\Models\Favorite;
 use App\Facades\ChatifyMessenger as Chatify;
 use App\User;
 use App\Salon;
+use App\Bloc;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use DB;
@@ -184,6 +185,18 @@ class MessagesController extends Controller
 		$statut=Auth::user()->statut;
 		if($statut < 2){
 			
+			$blocs=0;
+		// check if user bloqued	
+		   $type=$request['type'];
+           $from_id = Auth::user()->id;
+           $to_id =$request['id'];	
+		   if($type=='user'){
+			  $blocs1=Bloc::where('par',$from_id)->where('user',$to_id)->count();
+			  $blocs2=Bloc::where('par',$to_id)->where('user',$from_id)->count();
+			  $blocs= $blocs1+$blocs2;
+		   }
+		   if ($blocs==0)
+		   {
         // default variables
         $error_msg = $attachment = $attachment_title = null;
 
@@ -245,6 +258,7 @@ class MessagesController extends Controller
             'tempID' => $request['temporaryMsgId'],
         ]);
 		
+		} // blocs
 		} // statut
 		
 		

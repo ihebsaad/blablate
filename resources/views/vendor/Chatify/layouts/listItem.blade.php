@@ -15,8 +15,21 @@
         </td>
         {{-- center side --}}
         <td>
+			<?php
+			// vérifier si utilisateur bloqué
+			$mon_id=Auth::user()->id;
+			  $blocs1=\App\Bloc::where('par',$mon_id)->where('user',$user->id)->count();
+			  $blocs2=\App\Bloc::where('par',$user->id)->where('user',$mon_id)->count();
+			  $blocs= $blocs1+$blocs2; 
+			  if($blocs>0){
+			  $suffixe='[Bloqué]';
+			  }
+			  else{
+				  $suffixe='';				  
+			  }
+			  ?>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->prefixe.' '.$user->username }} 
+            {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->prefixe.' '.$user->username.' '.$suffixe }} 
         <?php if(isset($lastMessage)){?>    <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             {{-- Last Message user indicator --}}

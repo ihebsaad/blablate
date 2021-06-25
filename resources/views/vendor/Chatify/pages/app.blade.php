@@ -90,7 +90,7 @@ if($expire > $now ){
                     <a href="javascript:void(0)" class="show-listView"><i class="fas fa-arrow-left"></i></a>
                     <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
                     </div>
-                    <a href="javascript:void(0)" class="user-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</a>
+                    <a href="javascript:void(0)" class="user-name" style="font-family:'Nunito';margin-right:50px;">{{ config('chatify.name') }}</a>
                
   @if ($errors->any())
              <div class="alert alert-danger">

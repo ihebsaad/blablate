@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
  use Mail;
  use App\User;
  use App\Signale;
+ use App\Bloc;
 use Illuminate\Support\Facades\Auth;
 
  
@@ -110,8 +111,28 @@ class HomeController extends Controller
 	
 	
 	  
-	  
-	  
+		public function bloqueruser(Request $request)
+	{
+		
+		$parid=Auth::user()->id;
+	  	  $Par=User::where('id',$parid)->first();
+      	//  $userid= $request->get('user-signal');
+      	  $userid= $request->get('user');
+ 
+ 
+ 	  $blocs=Bloc::where('par',$parid)->where('user',$userid)->count();
+	  if( $blocs==0){
+        $bloc = new Bloc([
+             'user' =>  $userid ,
+             'par' => $parid 
+        ]);
+      
+	  $bloc->save();
+	  }
+	    return redirect('/chat')->with('success', 'Utilisateur Bloqué avec succès');
+
+	}  
+	
 	  
 	public function sendmessage(Request $request)
 	{

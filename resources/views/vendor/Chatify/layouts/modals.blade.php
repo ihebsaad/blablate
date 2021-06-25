@@ -440,7 +440,41 @@ function stripeTokenHandler(token) {
   
   
   
- 
+  
+   {{-- ----------------------  Bloc Modal ---------------------- --}}
+  <div class="app-modal" data-name="bloc">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="bloc" data-modal='0'>
+                  <div class="app-modal-header"><B>Bloquer</B></div>
+                  <div class="app-modal-body">
+         <form  method="post" action="{{ route('bloqueruser') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+		 <input type="hidden" id="user-bloc" name="user" > 
+		 
+			<br><br>Voulez vous vraiment Bloquer cet utilisateur ?<br><br>
+		  
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="submit"  id="blocuser" class="btn btn-primary">Bloquer</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>		
+			
+				  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel bloc-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>	 
+  
+  
+  
 
 	
 	
