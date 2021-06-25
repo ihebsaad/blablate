@@ -89,7 +89,7 @@ class PaymentController extends Controller
  		 $datee = (new \DateTime())->modify('+30 days')->format($format);	
 		}else{
 			
-			$now=date('Y-m-d- H:i');
+			$now=date('Y-m-d- H:i:s');
 			// abonnement non terminé
 			if($user->expire >= $now){
 		  $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $user->expire);
