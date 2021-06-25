@@ -65,7 +65,7 @@ class PaymentController extends Controller
 		 $cuser = auth()->user();
 			$userid= $cuser['id'];
 			$user=User::find($userid);		
-		$email=	 $request->input('email'):	
+		$email=	 $request->input('email');
 		 }
 
 
