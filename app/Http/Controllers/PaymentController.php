@@ -131,10 +131,10 @@ class PaymentController extends Controller
 			 if($userGift!=null){
 	            $messageID = mt_rand(9, 999999999) + time();
 
-		/*  jouter created at or send email
+		  // jouter created at or send email
 		DB::table('messages')->insert(
-    ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'Abonnement blablate'] 
-		); */
+    ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate offert','created_at'=>date('Y-m-d H:i:s')] 
+		);  
 		
 		return redirect('/chat')->with('success', '  paiement effectué ');
 	 

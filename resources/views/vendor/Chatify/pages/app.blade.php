@@ -91,7 +91,25 @@ if($expire > $now ){
                     <div class="avatar av-s header-avatar" style="margin: 0px 10px; margin-top: -5px; margin-bottom: -5px;">
                     </div>
                     <a href="javascript:void(0)" class="user-name" style="font-family:'Nunito'">{{ config('chatify.name') }}</a>
-                </div>
+               
+  @if ($errors->any())
+             <div class="alert alert-danger">
+                 <ul>
+                     @foreach ($errors->all() as $error)
+                         <li>{{ $error }}</li>
+                     @endforeach
+                 </ul>
+             </div><br />
+         @endif
+
+    @if (!empty( Session::get('success') ))
+        <div class="alert alert-success">
+        {{ Session::get('success') }}
+        </div>
+
+    @endif				   
+			   
+			   </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="javascript:void(0)" class="add-to-favorite"><i class="fas fa-star"></i></a>
