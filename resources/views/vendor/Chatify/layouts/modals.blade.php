@@ -269,23 +269,130 @@
           <div class="app-modal-card" data-name="gift" data-modal='0'>
                   <div class="app-modal-header"><B>Envoyer un Cadeau</B></div>
                   <div class="app-modal-body">
-         <form  method="post" action="{{ route('sendemail') }}"   enctype="multipart/form-data">
-			  {{ csrf_field() }}
-		 <input type="hidden" id="user-gift" name="user-gift" > 
-		 
+
+ <link rel="stylesheet" href="{{ asset('public/css/style.css') }}" />
+<script src="https://js.stripe.com/v3/"></script>
+
+<style>
+#card-element{width:100%;margin-bottom:20px;}
+</style>
+<?php 		 $user = auth()->user();
+?>
+<form action="{{ url('charge') }}" method="post" id="payment-form" style="">
+	  <input type="hidden" id="user-gift" name="usergift" > 
+<br>
+    <div class="formpayment " style="">
+	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/cards.png') }}"    />
+        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
+         <div class="row form-group"><label for="card-element">
+        Carte de Crédit
+        </label>
+		</div>
+		<div class="row">
+        <div id="card-element">
+        <!-- A Stripe Element will be inserted here. -->
+        </div>
+		</div>
+        <!-- Used to display form errors. -->
+        <div id="card-errors" role="alert"></div>
+    </div>
  
-		  
-		  
-		   <div class="form-group">
-			<div class="row">
-			<div class="col-lg-12">
-				<button  type="submit"  class="btn btn-primary">Envoyer</button>
-			</div>
-		 
-			</div>
-			</div>
+    <button class="btn btn-lg btn-success">Envoyer cadeaux (8.90 €)</button>
 		
-		</form>		
+	 
+    {{ csrf_field() }}
+</form>
+</div>
+<div class="clearfix"></div>
+
+  <div class="row justify-content-center">
+   
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+<script>
+ //var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
+ var publishable_key = '{{ env('STRIPE_PUBLISHABLE_KEY') }}';
+ 
+</script>
+<!--<script src="{{ asset('public/js/card.js') }}"></script>-->
+<script>
+// Create a Stripe client.
+var stripe = Stripe(publishable_key);
+  
+// Create an instance of Elements.
+var elements = stripe.elements();
+  
+// Custom styling can be passed to options when creating an Element.
+// (Note that this demo uses a wider set of styles than the guide below.)
+var style = {
+    base: {
+        color: '#32325d',
+        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        '::placeholder': {
+            color: '#aab7c4'
+        }
+    },
+    invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a'
+    }
+};
+  
+// Create an instance of the card Element.
+var card = elements.create('card', {style: style});
+  
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
+  
+// Handle real-time validation errors from the card Element.
+card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+        displayError.textContent = event.error.message;
+    } else {
+        displayError.textContent = '';
+    }
+});
+  
+// Handle form submission.
+var form = document.getElementById('payment-form');
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+  
+    stripe.createToken(card).then(function(result) {
+        if (result.error) {
+            // Inform the user if there was an error.
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+        } else {
+            // Send the token to your server.
+            stripeTokenHandler(result.token);
+        }
+    });
+});
+  
+// Submit the form with the token ID.
+function stripeTokenHandler(token) {
+    // Insert the token ID into the form so it gets submitted to the server
+    var form = document.getElementById('payment-form');
+    var hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+  
+    // Submit the form
+    form.submit();
+}
+</script>
+
+
+				  
 			
 				  </div>
                   <div class="app-modal-footer">
@@ -333,12 +440,24 @@
   
   
   
-  
+ 
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+ 
   
  <style> 
- 
- 
- 
+  
  
  /* 
   ##Device = Desktops
@@ -420,3 +539,10 @@
  
  
  </style> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

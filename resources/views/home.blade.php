@@ -64,7 +64,7 @@ $now=date('Y-m-d- H:i');
 ?>
 <form action="{{ url('charge') }}" method="post" id="payment-form" style="">
     <div class="formpayment " style="">
-	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/stripe.png') }}"    />
+	<img style="width:200px;float:right;margin-right:50px" src="{{ asset('storage/logos/cards.png') }}"    />
         <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
         <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
         <div class="row form-group"><label for="card-element">

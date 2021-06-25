@@ -9,7 +9,7 @@ use App\User;
 use App\Payment;
 use App\Abonnement;
 use Carbon\Carbon;
-
+Use DB;
 
  use Illuminate\Support\Facades\Auth;
 
@@ -65,10 +65,19 @@ class PaymentController extends Controller
                     $payment->payment_status = $arr_payment_data['status'];
                     $payment->save();
                 }
-			
+				
+		  $userGift= $request->get('usergift');
+		 if($userGift!=null){
+			 $userid=$userGift;
+			$user=User::find($userGift);
+		$sender = auth()->user();
+			$senderid= $sender['id'];			
+		 }else{
 		 $cuser = auth()->user();
 			$userid= $cuser['id'];
-			$user=User::find($userid);
+			$user=User::find($userid);			 
+		 }
+
 			// calcul expiration
 		 $format = "Y-m-d H:i:s";
 		 if($user->expire==''){
@@ -103,6 +112,12 @@ class PaymentController extends Controller
  
  		User::where('id',$userid)->update(array('expire' => $datee ));
 
+			 if($userGift!=null){
+	
+		DB::table('messages')->insert(
+    ['type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate'] 
+		);
+			 }
 		  return redirect('/home')->with('success', '  paiement effectué ');
 
             } else {

@@ -32,7 +32,7 @@ if($expire > $now ){
 </style>
 <?php if($abonne && $statut < 2){ ?>
 <center><button id='send-email'   class="email-btn btn btn-info" style="color:white;margin-bottom:15px"><i class="fa fa-envelope"></i>  Envoyer un email</button></center>
-<center><button id='send-gift' disabled  class="gift-btn btn btn-success" style="color:white;margin-bottom:15px"><i class="fa fa-gift"></i> Offrir un cadeau</button></center>
+<center><button id='send-gift'    class="gift-btn btn btn-success" style="color:white;margin-bottom:15px"><i class="fa fa-gift"></i> Offrir un cadeau</button></center>
 <center><button id='signaler'    class="signal-btn btn btn-danger" style="color:white;margin-bottom:15px"><i class="fas fa-exclamation-triangle"></i>  Signaler</button></center>
 <?php } ?>
 <div class="messenger-infoView-btns">
