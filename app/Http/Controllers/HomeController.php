@@ -118,8 +118,15 @@ class HomeController extends Controller
 	  	  $Par=User::where('id',$parid)->first();
       	//  $userid= $request->get('user-signal');
       	  $userid= $request->get('user');
- 
- 
+ 	  	  $User=User::where('id',$userid)->first();
+		 $now=date('Y-m-d H:i:s');
+		if($User->protection > $now){
+		
+ 		 return  back()->withErrors([ 'Utilisateur Protégé !']);
+
+
+		}else{
+		
  	  $blocs=Bloc::where('par',$parid)->where('user',$userid)->count();
 	  if( $blocs==0){
         $bloc = new Bloc([
@@ -130,9 +137,42 @@ class HomeController extends Controller
 	  $bloc->save();
 	  }
 	    return redirect('/chat')->with('success', 'Utilisateur Bloqué avec succès');
+		
+		}
 
 	}  
 	
+	  
+	  
+		public function protection(Request $request)
+	{
+		
+		$id=Auth::user()->id;
+	  	$User=User::where('id',$id)->first();
+      	$protection=$User->protection;
+      	$date=substr($protection, 0, 10) ; 
+		$today=date('Y-m-d');
+		//$now=date('Y-m-d H:i:s');
+		
+		// vérifier si protection activée aujourd hui
+		if($date!=$today)
+		{			 
+		 $format = "Y-m-d H:i:s";
+  		 $datep = (new \DateTime())->modify('+1 hour')->format($format);
+		 User::where('id',$id)->update(array('protection' => $datep));
+			
+		return redirect('/chat')->with('success', 'Protection activée !');
+		}
+		else
+		{
+		//return redirect('/chat')->with('danger', 'Protection deja activée pour ce jour !');	
+		return  back()->withErrors([ 'Protection deja activée pour ce jour !']);
+
+		}
+		
+
+	}  	  
+	  
 	  
 	public function sendmessage(Request $request)
 	{

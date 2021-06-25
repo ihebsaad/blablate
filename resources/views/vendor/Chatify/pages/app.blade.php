@@ -29,6 +29,7 @@ if($expire > $now ){
                 <nav class="m-header-right">
 <?php  if($abonne && $statut < 2){ ?>
 <a href="javascript:void(0)" class=" myemojis-btn"><i class="fas fa-smile"></i></a> 
+<a href="javascript:void(0)" class=" protection-btn"><i class="fas fa-trophy"></i></a> 
 <?php   } ?>				
                     <a href="javascript:void(0)"><i class="fas fa-cog settings-btn"></i></a>
                     <a href="javascript:void(0)" class="listView-x"><i class="fas fa-times"></i></a>

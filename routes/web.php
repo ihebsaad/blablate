@@ -38,6 +38,7 @@ $this->get('logout', 'Auth\LoginController@logout')->name('logout');
 
  Route::post('/signaler','HomeController@signaler')->name('signaler');
  Route::post('/bloqueruser','HomeController@bloqueruser')->name('bloqueruser');
+ Route::post('/protection','HomeController@protection')->name('protection');
 
  
 

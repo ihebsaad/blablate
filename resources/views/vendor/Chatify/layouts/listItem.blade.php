@@ -22,11 +22,17 @@
 			  $blocs2=\App\Bloc::where('par',$user->id)->where('user',$mon_id)->count();
 			  $blocs= $blocs1+$blocs2; 
 			  if($blocs>0){
-			  $suffixe='[Bloqué]';
+			  $suffixe='[🚫 Bloqué]';
 			  }
 			  else{
 				  $suffixe='';				  
 			  }
+			  // Protection
+			  $now=date('Y-m-d H:i:s');
+			  if($user->protection>$now){
+				$suffixe.=' [ 👑 Protégé]';  
+			  }
+			  
 			  ?>
         <p data-id="{{ $type.'_'.$user->id }}">
             {{ strlen($user->username) > 12 ? trim(substr($user->username,0,12)).'..' : $user->prefixe.' '.$user->username.' '.$suffixe }} 

@@ -1571,7 +1571,24 @@ if (index !== -1)
 			show: false,
 
         });
-    });		
+    });	
+
+
+
+  $('.protection-btn').on('click', function () {
+        app_modal({
+            name: 'protection',
+        });
+    });
+	
+    $('.protection-close').on('click', function () {
+        app_modal({
+            name: 'protection',
+			show: false,
+
+        });
+    });	
+	
 
  $('.bloc-btn').on('click', function () {
         app_modal({

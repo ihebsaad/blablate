@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Omnipay\Omnipay;
 use Omnipay\Stripe;
 use App\User;
+use App\Bloc;
 use App\Payment;
 use App\Abonnement;
 use Carbon\Carbon;
@@ -128,7 +129,10 @@ class PaymentController extends Controller
  	    $this->sendMail('armand.proservices@gmail.com','Abonnement sur le site',$message)	;
  	    $this->sendMail('ihebsaad@gmail.com','Abonnement sur le site',$message)	;
  
- 		User::where('id',$userid)->update(array('expire' => $datee ));
+		
+ 		User::where('id',$userid)->update(array('expire' => $datee ,'statut'=>0 ));
+		// supprimer les blocs
+		Bloc::where('user',$userid)->delete();
 
 			 if($userGift!=null){
 	            $messageID = mt_rand(9, 999999999) + time();

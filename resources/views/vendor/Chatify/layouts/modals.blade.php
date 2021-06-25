@@ -404,6 +404,42 @@ function stripeTokenHandler(token) {
   
   
   
+  
+  
+    {{-- ----------------------  protection Modal ---------------------- --}}
+  <div class="app-modal" data-name="protection">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="protection" data-modal='0'>
+                  <div class="app-modal-header"><B>Protection</B></div>
+                  <div class="app-modal-body">
+         <form  method="post" action="{{ route('protection') }}"   enctype="multipart/form-data">
+			  {{ csrf_field() }}
+ 		 
+			<br><br>Voulez vous vraiment activer la protection Anti Bloquage<br> (1 heure, 1 fois par jour) ?<br><br>
+		  
+		  
+		   <div class="form-group">
+			<div class="row">
+			<div class="col-lg-12">
+				<button  type="submit"  id="" class="btn btn-primary">Activer</button>
+			</div>
+		 
+			</div>
+			</div>
+		
+		</form>		
+			
+				  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel protection-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>	 
+  
+  
+  
+  
       
    {{-- ----------------------  Signal Modal ---------------------- --}}
   <div class="app-modal" data-name="signal">
