@@ -98,8 +98,8 @@ class PaymentController extends Controller
 		 $datee =  $newdate;			
 		}else{
 			// abonnement terminé
-		  $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $now);
-			
+		 // $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $now);
+			$newdate = (new \DateTime())->format($format);	
 		 $newdate = $newdate->addDays(30);
 		 $datee =  $newdate;
 		}
