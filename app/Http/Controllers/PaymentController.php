@@ -52,32 +52,37 @@ class PaymentController extends Controller
                 $arr_payment_data = $response->getData();
                  
                 $isPaymentExist = Payment::where('payment_id', $arr_payment_data['id'])->first();
-				
+			
+			// cadeau ou paiement normal			
+		$userGift= $request->get('usergift');
+		 if($userGift!=null){
+			 $userid=$userGift;
+			$user=User::find($userGift);
+		$sender = auth()->user();
+			$senderid= $sender['id'];
+		$email=$sender['email'];
+ 		 }else{
+		 $cuser = auth()->user();
+			$userid= $cuser['id'];
+			$user=User::find($userid);		
+		$email=	 $request->input('email'):	
+		 }
+
+
 				
           
                 if(!$isPaymentExist)
                 {
                     $payment = new Payment;
                     $payment->payment_id = $arr_payment_data['id'];
-                    $payment->payer_email = $request->input('email');
+                    $payment->payer_email = $email;
                     $payment->amount = $arr_payment_data['amount']/100;
                     $payment->currency = env('STRIPE_CURRENCY');
                     $payment->payment_status = $arr_payment_data['status'];
                     $payment->save();
                 }
 				
-		  $userGift= $request->get('usergift');
-		 if($userGift!=null){
-			 $userid=$userGift;
-			$user=User::find($userGift);
-		$sender = auth()->user();
-			$senderid= $sender['id'];			
-		 }else{
-		 $cuser = auth()->user();
-			$userid= $cuser['id'];
-			$user=User::find($userid);			 
-		 }
-
+		 
 			// calcul expiration
 		 $format = "Y-m-d H:i:s";
 		 if($user->expire==''){
