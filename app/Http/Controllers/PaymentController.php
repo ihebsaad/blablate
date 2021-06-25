@@ -118,9 +118,10 @@ class PaymentController extends Controller
  		User::where('id',$userid)->update(array('expire' => $datee ));
 
 			 if($userGift!=null){
-	
+	            $messageID = mt_rand(9, 999999999) + time();
+
 		DB::table('messages')->insert(
-    ['type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate'] 
+    ['id' => $messageID ,'type' => 'user' ,'from_id' => $senderid , 'to_id' => $userid,'body'=>'🎁 Abonnement blablate'] 
 		);
 			 }
 		  return redirect('/home')->with('success', '  paiement effectué ');
