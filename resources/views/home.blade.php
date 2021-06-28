@@ -51,14 +51,15 @@ $now=date('Y-m-d- H:i');
 
 
  <div class="col-xl-10 col-md-10 mb-10"   style="margin-bottom:25px" >
-	<h2>Abonnement Blablate Premium:</h2>
+	<h4>Abonnement Blablate Premium:</h4>
 	<ul>
  		<li>Création et accès aux salons privés</li>
 		<li>Envoi des emails aux membres</li>
  		<li>Utilisation des Emojis ...</li>
 	</ul>
-	<h2>Abonnement Blablate Diamond : avantages de Premium + </h2>
+	<h4>Abonnement Blablate Diamond:</h4>
 	 <ul>
+ 		<li>Avantages Premium</li>
  		<li>Insertion d'un emoji devant votre pseudo</li>
 		<li>Devenir inbanissable pendant une heure </li>
  	</ul>
