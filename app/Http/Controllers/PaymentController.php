@@ -136,7 +136,7 @@ class PaymentController extends Controller
  	    $this->sendMail('ihebsaad@gmail.com','Abonnement sur le site',$message)	;
  
 		
- 		User::where('id',$userid)->update(array('expire' => $datee ,'statut'=>0 ,'abonnement'=>#39EGn4Eb#));
+ 		User::where('id',$userid)->update(array('expire' => $datee ,'statut'=>0 ,'abonnement'=> $typeabn));
 		// supprimer les blocs
 		Bloc::where('user',$userid)->delete();
 
