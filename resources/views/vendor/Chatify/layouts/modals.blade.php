@@ -303,7 +303,7 @@
         <div id="card-errors" role="alert"></div>
     </div>
  
-    <button class="btn btn-lg btn-success">Envoyer cadeaux (8.90 €)</button>
+    <button class="btn btn-lg btn-success">Envoyer un cadeaux </button>
 		
 	 
     {{ csrf_field() }}

@@ -94,6 +94,7 @@ class PaymentController extends Controller
 			// calcul expiration
 		 $format = "Y-m-d H:i:s";
 		 if($user->expire==''){
+			 // jamais abonné
  		 $datee = (new \DateTime())->modify('+30 days')->format($format);	
 		}else{
 			
@@ -103,7 +104,8 @@ class PaymentController extends Controller
 		  $newdate = Carbon::createFromFormat('Y-m-d H:i:s', $user->expire);
 			
 		 $newdate = $newdate->addDays(30);
-		 $datee =  $newdate;			
+		 $datee =  $newdate;
+		 if($user->abonnement==2){$typeabn=2; }
 		}else{
 			// abonnement terminé
 		    $format = "Y-m-d H:i:s";
