@@ -5,6 +5,8 @@
 
 $user = auth()->user();
  $iduser=$user->id;
+  $abonnement=$user->abonnement;
+
 $type=$user->type;
 $statut=$user->statut;
 
@@ -27,7 +29,7 @@ if($expire > $now ){
                 <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle"> <?php echo Auth::user()->prefixe .' '. Auth::user()->username ;?></span><?php if($statut==2){echo '<span style="margin-left:30px" class="btn btn-danger">Bloqué</span>';}  if($abonne==2){echo '<span style="margin-left:30px" class="btn btn-success">Abonné</span>';}else{echo '<span style="margin-left:30px" class="btn btn-danger">Non Abonné</span>';} ?> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-<?php  if($abonne && $statut < 2){ ?>
+<?php  if($abonne && $statut < 2  &&  $abonnement==2 ){ ?>
 <a href="javascript:void(0)" class=" myemojis-btn"><i class="fas fa-smile"></i></a> 
 <a href="javascript:void(0)" class=" protection-btn"><i class="fas fa-trophy"></i></a> 
 <?php   } ?>				

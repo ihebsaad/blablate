@@ -41,9 +41,14 @@ class PaymentController extends Controller
             $gateway->setApiKey(env('STRIPE_SECRET_KEY'));
           
             $token = $request->input('stripeToken');
-          
+          $amount= $request->input('amount');
+		  if($amount=='5.90')
+		  { $typeabn=1; }
+		  else
+		  { $typeabn=2; }
+		  
             $response = $gateway->purchase([
-                'amount' => $request->input('amount'),
+                'amount' => $amount,
                 'currency' => env('STRIPE_CURRENCY'),
                 'token' => $token,
             ])->send();
@@ -114,6 +119,7 @@ class PaymentController extends Controller
               'user' => $userid,
               'details' =>  'id_payment: '.$arr_payment_data['id'],
               'expire' => $datee  ,
+              'type' =>  $typeabn  ,
              ]);	
 		 
 		 $abonnement->save();
@@ -130,7 +136,7 @@ class PaymentController extends Controller
  	    $this->sendMail('ihebsaad@gmail.com','Abonnement sur le site',$message)	;
  
 		
- 		User::where('id',$userid)->update(array('expire' => $datee ,'statut'=>0 ));
+ 		User::where('id',$userid)->update(array('expire' => $datee ,'statut'=>0 ,'abonnement'=>#39EGn4Eb#));
 		// supprimer les blocs
 		Bloc::where('user',$userid)->delete();
 

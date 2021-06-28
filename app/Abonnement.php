@@ -8,6 +8,6 @@ class Abonnement extends Authenticatable
 {
    
     protected $fillable = [
-   'user',  'details','abonnement','expire'   ];
+   'user',  'details','abonnement','expire' ,'type'  ];
  
 }

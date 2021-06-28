@@ -17,18 +17,20 @@
             <th>Utilisateur</th>
              <th>Création</th>
             <th>Expiration</th>
+            <th>Type</th>
          </tr>
             
             </thead>
             <tbody>
             @foreach($abonnements as $abonnement)
-
+<?php $typeabn=''; $type = $abonnement->type; if($type==1){$typeabn='Premium';} if($type==2){$typeabn='Diamond';}?>
                 <tr> 
                        <td><?php echo UsersController::ChampById('username',$abonnement->user);?>      </td>
                       <td><?php echo date('d/m/Y H:i', strtotime($abonnement->created_at)) ;?> </td>
                       <td><?php echo date('d/m/Y H:i', strtotime( $abonnement->expire)) ;?> </td>
+                      <td><?php echo $typeabn ;?> </td>
  					 
-                   <td> 
+                     
                         
                 </tr>
             @endforeach

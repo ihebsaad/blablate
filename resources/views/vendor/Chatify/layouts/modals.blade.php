@@ -283,7 +283,13 @@
 <br>
     <div class="formpayment " style="">
 	<img style="width:100px;float:right;margin-right:50px" src="{{ asset('storage/logos/cards.png') }}"    />
-        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
+        <div class="row form-group">
+		<!--<input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" />-->
+				<select name="amount" required >
+				<option value="7.90">Diamond (7.90 €)</option>
+				<option value="5.90">Premium (5.90 €)</option>
+				</select>
+		</div>
          <div class="row form-group"><label for="card-element">
         Carte de Crédit
         </label>

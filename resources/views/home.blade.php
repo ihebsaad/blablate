@@ -8,6 +8,8 @@ if (Auth::check()) {
 
 $user = auth()->user();
  $iduser=$user->id;
+ $abonnement=$user->abonnement;
+ 
 $type=$user->type;
 $expire=$user->expire;
 } 
@@ -49,14 +51,18 @@ $now=date('Y-m-d- H:i');
 
 
  <div class="col-xl-10 col-md-10 mb-10"   style="margin-bottom:25px" >
-	<h2>Avantages de l'abonnement Blablate:</h2>
+	<h2>Abonnement Blablate Premium:</h2>
 	<ul>
-		<li>Accès illimité sur le site</li>
-		<li>Création et accès aux salons privés</li>
+ 		<li>Création et accès aux salons privés</li>
 		<li>Envoi des emails aux membres</li>
-		<li>Envoi des images</li>
-		<li>Utilisation des Emojis ...</li>
+ 		<li>Utilisation des Emojis ...</li>
 	</ul>
+	<h2>Abonnement Blablate Diamond : avantages de Premium + </h2>
+	 <ul>
+ 		<li>Insertion d'un emoji devant votre pseudo</li>
+		<li>Devenir inbanissable pendant une heure </li>
+ 	</ul>
+	
 <style>
 #card-element{width:100%;margin-bottom:20px;}
 </style>
@@ -66,7 +72,26 @@ $now=date('Y-m-d- H:i');
     <div class="formpayment " style="">
 	<img style="width:200px;float:right;margin-right:50px" src="{{ asset('storage/logos/cards.png') }}"    />
 	<div class="clearfix"></div>
-        <div class="row form-group"><input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" /></div>
+        <div class="row form-group">
+		<select name="amount" required >
+		<?php if($abonne)
+	{ 
+		if($abonnement==1){ ?>
+		<option value="5.90">Premium (5.90 €)</option>
+	<?php	}else{  ?>
+		<option value="7.90">Diamond (7.90 €)</option>
+	<?php	}
+	}else{ ?>
+		
+ 	 	<option value="7.90">Diamond (7.90 €)</option>
+		<option value="5.90">Premium (5.90 €)</option>
+		
+<?php	}
+?>
+
+		</select>
+		<!--<input class="form-control" type="hidden" name="amount" placeholder="Montant" value="8.90" />-->
+		</div>
         <div class="row form-group"><input class="form-control" type="hidden" name="email" placeholder="Email" value="<?php echo UsersController::ChampById('email',$user['id'])?>" /></div>
         <div class="row form-group"><label for="card-element">
         Carte de Crédit
@@ -82,13 +107,13 @@ $now=date('Y-m-d- H:i');
     </div>
 	<?php if($abonne)
 	{ ?>
-    <button class="btn btn-lg btn-success">Prolonger mon abonnement (8.90 €)</button>
+    <button class="btn btn-lg btn-success">Prolonger mon abonnement </button>
 		
 	<?php
 	}else
 	{
 		?>
-    <button class="btn btn-lg btn-success">S'abonner (8.90 €)</button>
+    <button class="btn btn-lg btn-success">S'abonner  </button>
 		
 	<?php } ?>
     {{ csrf_field() }}
