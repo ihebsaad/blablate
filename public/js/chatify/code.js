@@ -1604,6 +1604,15 @@ if (index !== -1)
         });
     });		
 	
+	
+    $('.emoji').on('click', function () {
+	var emojis =  $(this).html();
+
+	$('#message').val($('#message').val()+' '+emojis );
+ 
+    });		
+	
+	
     $('.myemoji').on('click', function () {
 	var myemojis =  $(this).html();
 	 $('.myemoji').css('border','none');

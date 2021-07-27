@@ -77,11 +77,11 @@ $now=date('Y-m-d- H:i');
 		<select name="amount" required >
 		<?php if($abonne)
 	{ 
-		if($abonnement==1){ ?>
+		//if($abonnement==1){ ?>
 		<option value="5.90">Premium (5.90 €)</option>
-	<?php	}else{  ?>
+	<?php	//}else{  ?>
 		<option value="7.90">Diamond (7.90 €)</option>
-	<?php	}
+	<?php	//}
 	}else{ ?>
 		
  	 	<option value="7.90">Diamond (7.90 €)</option>
