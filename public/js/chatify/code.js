@@ -1606,11 +1606,15 @@ if (index !== -1)
 	
 	
     $('.emoji').on('click', function () {
-		alert();
+		 
 	var emojis =  $(this).html();
 
-	$('#message').val($('#message').val()+' '+emojis );
- 
+	$('#mymessage').val($('#mymessage').val()+' '+emojis );
+       app_modal({
+            name: 'emojis',
+			show: false,
+
+        });
     });		
 	
 	
