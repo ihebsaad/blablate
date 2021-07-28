@@ -104,12 +104,12 @@
                                                 <input type="text" class="form-control form-control-user" name="ville"   value="{{ $user->ville }}"    style="width:100%"  autocomplete="off"
                                                        id="ville" placeholder="Ville">   
 											</div>
-											
+										<?php if($user->abonnement >0){	?>
                                             <div class="col-sm-6 mb-3 mb-sm-0">
 											<label>Bibliographie</label>											
 											<textarea class="form-control form-control-user" name="bio" id="bio">{{$user->bio}}</textarea>
 											</div>
-											
+										<?php } ?>	
 										</div>
 
                                         <div class="form-group row pl-20">

@@ -74,7 +74,7 @@ $now=date('Y-m-d- H:i');
 	<img style="width:200px;float:right;margin-right:50px" src="{{ asset('storage/logos/cards.png') }}"    />
 	<div class="clearfix"></div>
         <div class="row form-group">
-		<select name="amount" required >
+		<select name="amount" required class="form-control"   style="margin-top:15px;max-width:220px">
 		<?php if($abonne)
 	{ 
 		//if($abonnement==1){ ?>
