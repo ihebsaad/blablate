@@ -18,6 +18,14 @@ use DB;
 
 class MessagesController extends Controller
 {
+	
+	
+	    public function __construct()
+    {
+        $this->middleware('auth')->except('chat');
+    }
+	
+	
     /**
      * Authinticate the connection for pusher
      *
@@ -58,7 +66,9 @@ class MessagesController extends Controller
             ? 'user'
             : \Request::route()->getName();
 
- 			
+ 		if (Auth::check()) {
+		// The user is logged in...
+
         // prepare id
         return view('Chatify::pages.app', [
             'id' => ($id == null) ? 0 : $route . '_' . $id,
@@ -66,6 +76,16 @@ class MessagesController extends Controller
             'messengerColor' => Auth::user()->messenger_color,
             'dark_mode' => Auth::user()->dark_mode < 1 ? 'light' : 'dark',
         ]);
+		
+		}else{
+        return view('Chatify::pages.app', [
+            'id' => 0,
+            'route' => $route,
+            'messengerColor' => '#FF9800',
+            'dark_mode' => 'dark',
+        ]);			
+			
+		}
     }
 
 
