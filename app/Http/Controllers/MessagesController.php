@@ -34,15 +34,17 @@ class MessagesController extends Controller
      */
     public function pusherAuth(Request $request)
     {
-        // Auth data
+        // check if user authorized
+        if (Auth::check()) {
+
+		// Auth data
         $authData = json_encode([
             'user_id' => Auth::user()->id,
             'user_info' => [
                 'name' => Auth::user()->username
             ]
         ]);
-        // check if user authorized
-        if (Auth::check()) {
+
             return Chatify::pusherAuth(
                 $request['channel_name'],
                 $request['socket_id'],
