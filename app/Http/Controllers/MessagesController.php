@@ -63,12 +63,13 @@ class MessagesController extends Controller
      */
     public function index($id = null)
     {
-        // get current route
+        if (Auth::check()) {
+		// get current route
         $route = (in_array(\Request::route()->getName(), ['user', config('chatify.path')]))
             ? 'user'
             : \Request::route()->getName();
 
- 		if (Auth::check()) {
+ 		
 		// The user is logged in...
 
         // prepare id
@@ -82,7 +83,7 @@ class MessagesController extends Controller
 		}else{
         return view('Chatify::pages.app', [
             'id' => 0,
-            'route' => $route,
+            'route' => 'chat',
             'messengerColor' => '#FF9800',
             'dark_mode' => 'dark',
         ]);			
