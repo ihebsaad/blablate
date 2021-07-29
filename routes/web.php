@@ -21,8 +21,8 @@ Route::post('/setprefixe', 'HomeController@setprefixe')->name('setprefixe');
 Route::post('/sendmessage', 'HomeController@sendmessage')->name('sendmessage');
 Route::post('/sendemail', 'HomeController@sendemail')->name('sendemail');
 
-//Verificaation
-//Auth::routes(['verify' => true]);
+
+Auth::routes(/*['verify' => true]*/);
 
 //Route::get('/chat', 'MessagesController@index')->name(config('chatify.path'))->middleware('verified');
 
