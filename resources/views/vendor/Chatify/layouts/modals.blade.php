@@ -121,7 +121,7 @@
 	   <?php 
 	   foreach($users as $user)
 	   { 
-			echo '<tr><td>'.$user->username.'</td><td>'. \App\Salon::where('id',$user->salon)->pluck('name').'('. \App\User::where('salon',$user->salon)->where('active_status',1)->count().')</td></tr>';
+			echo '<tr><td>'.$user->username.'</td><td>'. \App\Salon::where('id',$user->salon)->get('name').'('. \App\User::where('salon',$user->salon)->where('active_status',1)->count().')</td></tr>';
 	   }
 	   ?>
 	   </table>
