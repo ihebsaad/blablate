@@ -109,19 +109,19 @@
   <div class="app-modal" data-name="userslist">
       <div class="app-modal-container">
           <div class="app-modal-card" data-name="userslist" data-modal='0'>
-                  <div class="app-modal-header">Connectés</div>
-                  <div class="app-modal-body">
+                  <div class="app-modal-header">Utilisateurs Connectés</div>
+                  <div class="app-modal-body" style="padding-top:20px">
      
 	   <?php $users= \App\User::where('active_status',1)->get(); ?>
 	   
-	   <table>
+	   <table style="height:300px;overflow:scroll;display:block;">
 	   <thead>
 	   <th>Utilisateur</th><th>Salon</th>
 	   </thead>
 	   <?php 
 	   foreach($users as $user)
 	   { 
-			echo'<tr><td>'.$user->username.'</td><td>'.$user->salon.'</td></tr>';
+			echo '<tr><td>'.$user->username.'</td><td>'. \App\Salon::where('id',$user->salon)->pluck('name').'('. \App\User::where('salon',$salon->id)->where('active_status',1)->count().')</td></tr>';
 	   }
 	   ?>
 	   </table>
