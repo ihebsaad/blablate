@@ -1590,6 +1590,22 @@ if (index !== -1)
     });	
 	
 
+  $('.users-list').on('click', function () {
+        app_modal({
+            name: 'userslist',
+        });
+    });
+	
+    $('.userslist-close').on('click', function () {
+        app_modal({
+            name: 'userslist',
+			show: false,
+
+        });
+    });	
+
+
+
  $('.bloc-btn').on('click', function () {
         app_modal({
             name: 'bloc',

@@ -105,7 +105,40 @@
   </div>
   
  
-
+ {{-- ----------------------  Users Modal ---------------------- --}}
+  <div class="app-modal" data-name="userslist">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="userslist" data-modal='0'>
+                  <div class="app-modal-header">Connectés</div>
+                  <div class="app-modal-body">
+     
+	   <?php $users= \App\User::where('active_status',1)->get(); ?>
+	   
+	   <table>
+	   <thead>
+	   <th>Utilisateur</th><th>Salon</th>
+	   </thead>
+	   <?php 
+	   foreach($users as $user)
+	   { 
+			echo'<tr><td>'.$users->username.'</td><td>'.$users->salon.'</td></tr>';
+	   }
+	   ?>
+	   </table>
+	   
+	   
+	   ?>
+ 
+		
+                  </div>
+                  <div class="app-modal-footer">
+                      <a href="javascript:void(0)" class="app-btn cancel userslist-close">Fermer</a>
+                   </div>
+           </div>
+      </div>
+  </div>
+  
+  
  {{-- ----------------------  Emojis Modal ---------------------- --}}
   <div class="app-modal" data-name="myemojis">
       <div class="app-modal-container">
