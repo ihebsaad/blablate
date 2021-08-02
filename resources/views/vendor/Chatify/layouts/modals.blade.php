@@ -114,16 +114,18 @@
      
 	   <?php $users= \App\User::where('active_status',1)->get(); ?>
 	   
-	   <table style="height:300px;overflow:scroll;display:block;">
+	   <table style="height:300px;overflow-y:scroll;display:block;">
 	   <thead>
 	   <th>Utilisateur</th><th>Salon</th>
 	   </thead>
 	   <?php 
 	   foreach($users as $user)
 	   { 
+	   		if($user->sexe=='masculin'){$color='#4167d5';}else{$color='#ec3aa5';}
+
 			$salon=\App\Salon::where('id',$user->salon)->first();
 		if($user->salon>0){$tot= '('.\App\User::where('salon',$salon['id'])->where('active_status',1)->count().')'; }else{$tot='';}
-			echo '<tr><td>'.$user->username.'</td><td>'.$salon['name'].' '.$tot.'</td></tr>';
+			echo '<tr><td>'.$user->prefixe.' '.$user->username.' ('.$user->age.' ans)</td><td>'.$salon['name'].' '.$tot.'</td></tr>';
 	   }
 	   ?>
 	   </table>
