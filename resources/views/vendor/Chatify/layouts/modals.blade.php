@@ -121,7 +121,9 @@
 	   <?php 
 	   foreach($users as $user)
 	   { 
-			$salon=\App\Salon::where('id',$user->salon)->first(); echo '<tr><td>'.$user->username.'</td><td>'.$salon['name'].'('. \App\User::where('salon',$user->salon)->where('active_status',1)->count().')</td></tr>';
+			$salon=\App\Salon::where('id',$user->salon)->first();
+		if($user->salon>0){$tot= '('.\App\User::where('salon',$salon['id'])->where('active_status',1)->count().')'; }else{$tot='';}
+			echo '<tr><td>'.$user->username.'</td><td>'.$salon['name'].' '.$tot</td></tr>';
 	   }
 	   ?>
 	   </table>
