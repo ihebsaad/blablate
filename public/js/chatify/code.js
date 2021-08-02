@@ -1590,7 +1590,7 @@ if (index !== -1)
     });	
 	
 
-  $('.users-list').on('click', function () {
+  $('#show-users').on('click', function () {
         app_modal({
             name: 'userslist',
         });

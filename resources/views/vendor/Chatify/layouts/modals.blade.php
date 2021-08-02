@@ -121,13 +121,12 @@
 	   <?php 
 	   foreach($users as $user)
 	   { 
-			echo'<tr><td>'.$users->username.'</td><td>'.$users->salon.'</td></tr>';
+			echo'<tr><td>'.$user->username.'</td><td>'.$user->salon.'</td></tr>';
 	   }
 	   ?>
 	   </table>
 	   
-	   
-	   ?>
+	    
  
 		
                   </div>
