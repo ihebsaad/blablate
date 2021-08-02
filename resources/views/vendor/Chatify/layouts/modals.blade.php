@@ -112,7 +112,7 @@
                   <div class="app-modal-header">Utilisateurs Connectés</div>
                   <div class="app-modal-body" style="padding-top:20px">
      
-	   <?php $users= \App\User::where('active_status',1)->get(); ?>
+	   <?php $users= \App\User::where('active_status',1)->orderBy('salon')->get(); ?>
 	   
 	   <table style="height:300px;overflow-y:scroll;display:block;">
 	   <thead>
