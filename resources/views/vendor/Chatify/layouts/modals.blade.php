@@ -124,7 +124,7 @@
 	   		if($user->sexe=='masculin'){$color='#4167d5';}else{$color='#ec3aa5';}
 
 			$salon=\App\Salon::where('id',$user->salon)->first();
-			$type=$salon->type; 
+			$type=$salon['type']; 
 			$couleur='';
 			if($type=='public'){$couleur='#68a5ff';}
 			if($type=='vip'){$couleur='#18aa76';}
