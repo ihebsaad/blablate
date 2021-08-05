@@ -114,14 +114,19 @@
 <h2>Modération</h2>
 <p> Blablate a le droit de bloquer temporairement ou supprimer des utilisateurs selon leurs comportement ou les demandes des autres membres (violence,racisme..)
 
-<h2>Avantages Abonnés</h2>
+	<h4>Abonnement Blablate Premium:</h4>
 	<ul>
-		<li>Accès illimité sur le site</li>
-		<li>Création de salons privés</li>
+ 		<li>Création et accès aux salons privés</li>
 		<li>Envoi des emails aux membres</li>
-		<li>Envoi des images</li>
-		<li>Utilisation des Emojis</li>
+ 		<li>Utilisation des Emojis ...</li>
 	</ul>
+	<h4>Abonnement Blablate Diamond:</h4>
+	 <ul>
+ 		<li>Avantages Premium</li>
+ 		<li>Insertion d'un emoji devant votre pseudo</li>
+		<li>Devenir inbanissable pendant une heure </li>
+		<li>DVoir la liste totale des connectés </li>
+ 	</ul>
  
             </div>
         </div>

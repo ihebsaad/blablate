@@ -62,6 +62,7 @@ $now=date('Y-m-d- H:i');
  		<li>Avantages Premium</li>
  		<li>Insertion d'un emoji devant votre pseudo</li>
 		<li>Devenir inbanissable pendant une heure </li>
+		<li>DVoir la liste totale des connectés </li>
  	</ul>
 	
 <style>
