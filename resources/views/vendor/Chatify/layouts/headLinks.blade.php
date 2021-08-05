@@ -1,14 +1,14 @@
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta content="Site de chat Français" name="description">
+<meta content="Site de chat moderne" name="description">
   <meta content="tchat, chat en france,site de rencontres, site de discussions" name="keywords">
 
  
-<meta property="og:title"              content="Blablate, site de chat français" />
+<meta property="og:title"              content="Blablate, site de chat moderne" />
 <meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
 <meta property="og:image"              content="{{ asset('storage/logos/blabla.png') }}" />
 
-<meta name="twitter:title" content="Blablate, site de chat français">
+<meta name="twitter:title" content="Blablate, site de chat moderne">
 <meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
 <meta name="twitter:image" content="{{ asset('storage/logos/blabla.png') }}">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="app_url" content="<?php echo env('APP_URL'); ?>">
 
-    <title>Blablate, site de chat français</title>
+    <title>Blablate, site de chat moderne</title>
    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 {{-- Meta tags --}}

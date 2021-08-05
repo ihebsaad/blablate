@@ -4,15 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta content="Sit de chat Français" name="description">
+<meta content="Sit de chat moderne" name="description">
   <meta content="tchat, chat en france,site de rencontres, site de discussions" name="keywords">
 
  
-<meta property="og:title"              content="Blablate, site de chat français" />
+<meta property="og:title"              content="Blablate, site de chat moderne" />
 <meta property="og:description"        content="votre site pour rencontrer des nouveaux amis" />
 <meta property="og:image"              content="{{ asset('storage/logos/blabla.png') }}" />
 
-<meta name="twitter:title" content="Blablate, site de chat français">
+<meta name="twitter:title" content="Blablate, site de chat moderne">
 <meta name="twitter:description" content="votre site pour rencontrer des nouveaux amis">
 <meta name="twitter:image" content="{{ asset('storage/logos/blabla.png') }}">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,7 +21,7 @@
   <!-- Favicons -->
   <link href="{{ asset('storage/logos/fav.png') }}"  rel="icon">
   <link href="{{ asset('storage/logos/fav.png') }}" rel="apple-touch-icon">
-      <title>Blablate, site de chat français</title>
+      <title>Blablate, site de chat moderne</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
