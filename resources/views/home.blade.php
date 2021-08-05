@@ -320,7 +320,7 @@ function stripeTokenHandler(token) {
                 </div>
 				
 	<div class="clearfix"></div>
-	
+	<!--
 	<div style="padding-top:50px;padding-left:10%"class="">
 				
 	<?php $users= \App\User::where('active_status',1)->orderBy('salon')->get(); ?>
@@ -349,7 +349,7 @@ function stripeTokenHandler(token) {
 	   </table>
 	   
     </div>
-			
+			-->
 			
 			
             </div>
