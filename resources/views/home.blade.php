@@ -327,7 +327,7 @@ function stripeTokenHandler(token) {
 	   	<H2>Utilisateurs connectés </H2><br>
 		<div class="clearfix"></div>
 
-	   <table style="height:300px;overflow-y:scroll;display:block;">
+	   <table style="height:400px;width:400px;overflow-y:scroll;display:block;">
 	   <thead>
 	   <th>Utilisateur(age)</th><th>ville</th>
 	   </thead>
