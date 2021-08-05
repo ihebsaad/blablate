@@ -319,13 +319,17 @@ function stripeTokenHandler(token) {
 					
                 </div>
 				
+	<div class="clearfix"></div>
+	
 	<div class="row justify-content-center">
 				
 	<?php $users= \App\User::where('active_status',1)->orderBy('salon')->get(); ?>
-	   
+	   	<H2>Utilisateurs connectés </H2>
+		<div class="clearfix"></div>
+
 	   <table style="height:300px;overflow-y:scroll;display:block;">
 	   <thead>
-	   <th>Utilisateur</th><th>Salon</th>
+	   <th>Utilisateur(age)</th><th>ville</th>
 	   </thead>
 	   <?php 
 	   foreach($users as $user)
