@@ -321,13 +321,13 @@ function stripeTokenHandler(token) {
 				
 	<div class="clearfix"></div>
 	
-	<div style="padding-top:50px;padding-left:100px"class="">
+	<div style="padding-top:50px;padding-left:10%"class="">
 				
 	<?php $users= \App\User::where('active_status',1)->orderBy('salon')->get(); ?>
 	   	<H2>Utilisateurs connectés </H2><br>
 		<div class="clearfix"></div>
 
-	   <table style="height:400px;width:400px;overflow-y:scroll;display:block;">
+	   <table style="height:400px;width:350px;overflow-y:scroll;display:block;">
 	   <thead>
 	   <th>Utilisateur(age)</th><th>ville</th>
 	   </thead>
