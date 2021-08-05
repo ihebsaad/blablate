@@ -318,6 +318,36 @@ function stripeTokenHandler(token) {
 </style>					
 					
                 </div>
+				
+	<div class="row justify-content-center">
+				
+	<?php $users= \App\User::where('active_status',1)->orderBy('salon')->get(); ?>
+	   
+	   <table style="height:300px;overflow-y:scroll;display:block;">
+	   <thead>
+	   <th>Utilisateur</th><th>Salon</th>
+	   </thead>
+	   <?php 
+	   foreach($users as $user)
+	   { 
+	   		if($user->sexe=='masculin'){$color='#4167d5';}else{$color='#ec3aa5';}
+
+			$salon=\App\Salon::where('id',$user->salon)->first();
+			$type=$salon['type']; 
+			$couleur='';
+			if($type=='public'){$couleur='#68a5ff';}
+			if($type=='vip'){$couleur='#18aa76';}
+			
+		if($user->salon>0){$tot= '('.\App\User::where('salon',$salon['id'])->where('active_status',1)->count().')'; }else{$tot='';}
+			echo '<tr><td style="color:'.$color.'">'.$user->prefixe.' '.$user->username.' ('.$user->age.' ans)</td><td  >'.$user->ville.' </td></tr>';
+	   }
+	   ?>
+	   </table>
+	   
+    </div>
+			
+			
+			
             </div>
   <!--      </div>
     </div>

@@ -130,7 +130,7 @@
 			if($type=='vip'){$couleur='#18aa76';}
 			
 		if($user->salon>0){$tot= '('.\App\User::where('salon',$salon['id'])->where('active_status',1)->count().')'; }else{$tot='';}
-			echo '<tr><td style="color:'.$color.'">'.$user->prefixe.' '.$user->username.' ('.$user->age.' ans)</td><td style="color:'.$couleur.'">'.$salon['name'].' '.$tot.'</td></tr>';
+			echo '<tr><td style="color:'.$color.'">'.$user->prefixe.' '.$user->username.' ('.$user->age.' ans)</td><td style="color:'.$couleur.'">'.$salon['name'].'</td></tr>';
 	   }
 	   ?>
 	   </table>

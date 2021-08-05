@@ -118,7 +118,9 @@ if($expire > $now ){
                     <a href="javascript:void(0)" class="add-to-favorite"><i class="fas fa-star"></i></a>
                     <a href="{{ route('home') }}"><i class="fas fa-home"></i></a>
                     <a href="javascript:void(0)" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+<?php if($abonne && $statut < 2  && $abonnement==2){ ?>
                     <a id="show-users" href="javascript:void(0)"  ><i class="fas fa-users"></i></a>
+<?php 	}	?>			
                 </nav>
             </nav>
         </div>
