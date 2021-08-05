@@ -125,7 +125,7 @@
  		<li>Avantages Premium</li>
  		<li>Insertion d'un emoji devant votre pseudo</li>
 		<li>Devenir inbanissable pendant une heure </li>
-		<li>Voir la liste totale des connectés </li>
+		<li>Savoir dans quel salon se trouve chaque connecté  </li>
  	</ul>
  
             </div>
