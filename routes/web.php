@@ -29,7 +29,7 @@ Auth::routes(/*['verify' => true]*/);
 Route::get('/refresh', 'Auth\LoginController@refresh')->name('refresh');
 
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home');//->middleware('verified');
  
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
