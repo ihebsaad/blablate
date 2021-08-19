@@ -194,9 +194,9 @@ class HomeController extends Controller
 		$message.='<b>Message:</b> <br>'.$contenu.'<br><br>';
  		$message.='<a href="https://blablate.com/">Blablate.com</a>';
  		
-		$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
+	//	$this->sendMail('ihebsaad@gmail.com',$sujet,$message);
 		 $this->sendMail('armand.proservices@gmail.com',$sujet,$message);
-		 $this->sendMail('blablatecom@gmail.com',$sujet,$message);
+		 $this->sendMail('blablate.com@gmail.com',$sujet,$message);
 		   return redirect('/contact')->with('success', ' Message envoyé avec succès');
 
 	}
