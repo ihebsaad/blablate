@@ -34,7 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');//->middleware('verifi
 $this->post('logout', 'Auth\LoginController@logout')->name('logout');
 $this->get('logout', 'Auth\LoginController@logout')->name('logout');
 
-//  Route::get('/verify', 'UsersController@verify')->name('verify');
+ Route::get('/verify', 'UsersController@verify')->name('verify');
 
  Route::post('/signaler','HomeController@signaler')->name('signaler');
  Route::post('/bloqueruser','HomeController@bloqueruser')->name('bloqueruser');
