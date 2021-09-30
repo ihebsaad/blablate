@@ -1620,6 +1620,21 @@ if (index !== -1)
         });
     });		
 	
+
+
+ $('.alerte-btn').on('click', function () {
+        app_modal({
+            name: 'alerte',
+        });
+    });
+	
+    $('.alerte-close').on('click', function () {
+        app_modal({
+            name: 'alerte',
+			show: false,
+
+        });
+    });	
 	
     $('.emoji').on('click', function () {
 		 

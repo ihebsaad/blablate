@@ -4,6 +4,22 @@
     <img class="imageModal-content" id="imageModalBoxSrc">
   </div>
   
+  
+  
+    {{-- ---------------------- Alerte Modal ---------------------- --}}
+  <div class="app-modal" data-name="alerte">
+      <div class="app-modal-container">
+          <div class="app-modal-card" data-name="alerte" data-modal='0'>
+              <div class="app-modal-header">Accès interdit?</div>
+              <div class="app-modal-body">Accès aux abonnés seulement !</div>
+              <div class="app-modal-footer">
+                  <a href="javascript:void(0)" class="app-btn cancel alerte-close">Fermer</a>
+               </div>
+          </div>
+      </div>
+  </div>
+  
+  
   {{-- ---------------------- Delete Modal ---------------------- --}}
   <div class="app-modal" data-name="delete">
       <div class="app-modal-container">

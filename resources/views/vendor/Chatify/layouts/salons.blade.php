@@ -68,7 +68,7 @@ if( $abonne || $type=='admin' ){
 <?php
 }else{
 ?>	
-	        <tr    style="width:100%">
+	        <tr  class="alerte-btn"  style="width:100%">
             {{-- Avatar side --}}
             <td style="padding:5px !important;">
             <div class="avatar av-m" style="background-color: <?php echo $bg;?>; text-align: center;">
@@ -77,7 +77,7 @@ if( $abonne || $type=='admin' ){
             </td>
             {{-- center side --}}
             <td>
-                <p     ><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
+                <p  style="font-weight"   ><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
              <!--   <span>messages enregistrés</span>-->
             </td>
         </tr>
@@ -86,12 +86,9 @@ if( $abonne || $type=='admin' ){
 }
  
 	
-}
-
-
-	
-	?>
-        <tr data-action="<?php echo $salon->id;?>" class="salon-list-item salons  <?php if(isset($salonid)){ if ($salonid==$salon->id){ echo 'm-list-active';  } }?>" style="width:100%">
+}else{
+?>	
+<tr data-action="<?php echo $salon->id;?>" class="salon-list-item salons  <?php if(isset($salonid)){ if ($salonid==$salon->id){ echo 'm-list-active';  } }?>" style="width:100%">
             {{-- Avatar side --}}
             <td style="padding:5px !important;">
             <div class="avatar av-m" style="background-color: <?php echo $bg;?>; text-align: center;">
@@ -104,10 +101,12 @@ if( $abonne || $type=='admin' ){
              <!--   <span>messages enregistrés</span>-->
             </td>
         </tr>
-
-
 	
-<?php	
+<?php 
+	
+}
+
+ 	
 }
 
 ?>
