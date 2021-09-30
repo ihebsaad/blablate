@@ -77,7 +77,7 @@ if( $abonne || $type=='admin' ){
             </td>
             {{-- center side --}}
             <td>
-                <p  style="font-weight"   ><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
+                <p  style="font-weight:bold;cursor:pointer"   ><?php echo $salon->name;?> (<?php echo \App\User::where('salon',$salon->id)->where('active_status',1)->count(); ?>)</p> 
              <!--   <span>messages enregistrés</span>-->
             </td>
         </tr>

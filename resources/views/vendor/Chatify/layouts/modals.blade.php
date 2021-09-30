@@ -10,8 +10,8 @@
   <div class="app-modal" data-name="alerte">
       <div class="app-modal-container">
           <div class="app-modal-card" data-name="alerte" data-modal='0'>
-              <div class="app-modal-header">Accès interdit?</div>
-              <div class="app-modal-body">Accès aux abonnés seulement !</div>
+              <div class="app-modal-header">Accès interdit!</div>
+              <div class="app-modal-body">Accès aux abonnés seulement </div>
               <div class="app-modal-footer">
                   <a href="javascript:void(0)" class="app-btn cancel alerte-close">Fermer</a>
                </div>
@@ -550,13 +550,13 @@ function stripeTokenHandler(token) {
 			  {{ csrf_field() }}
 		 <input type="hidden" id="user-bloc" name="user" > 
 		 
-			<br><br>Voulez vous vraiment Bloquer cet utilisateur ?<br><br>
+			<br><br>Voulez vous vraiment Bloquer/Débloquer cet utilisateur ?<br><br>
 		  
 		  
 		   <div class="form-group">
 			<div class="row">
 			<div class="col-lg-12">
-				<button  type="submit"  id="blocuser" class="btn btn-primary">Bloquer</button>
+				<button  type="submit"  id="blocuser" class="btn btn-primary"> Oui </button>
 			</div>
 		 
 			</div>

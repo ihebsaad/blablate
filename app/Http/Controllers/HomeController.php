@@ -135,8 +135,12 @@ class HomeController extends Controller
         ]);
       
 	  $bloc->save();
+	  }else{
+		  
+		 Bloc::where('par',$parid)->('user'=>$userid)->delete();
+		  
 	  }
-	    return redirect('/chat')->with('success', 'Utilisateur Bloqué avec succès');
+	    return redirect('/chat')->with('success', 'Utilisateur (Bloqué /Débloqué) avec succès');
 		
 		}
 
